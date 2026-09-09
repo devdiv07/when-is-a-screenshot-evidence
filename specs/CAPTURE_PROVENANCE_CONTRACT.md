@@ -1,6 +1,22 @@
 # Candidate Capture-Provenance Contract
 
-**Status: CANDIDATE. Not validated. Not sufficient.**
+**Status: CANDIDATE. Contract-logic arm evaluated 2026-09-09. Empirical arm NOT run.**
+
+Outcome of the white-box adversarial case evaluation (`outputs/adversarial_experiment_report.md`):
+zero false accepts and zero false rejects at every tier, **but** attack **A13-evasive**
+(`13b`: legitimate viewer opening an agent-authored resource through the GUI rather than
+argv) is **undetected at every configuration including the full ladder** — by abstention,
+not acceptance. **The assurance ceiling is the displayed resource, not the displaying
+process.** No field has been added in response; the ceiling is recorded as a result.
+
+Two gaps found during evaluation and deliberately NOT patched here:
+1. the contract specifies **no mapping from a declared application name to an observed
+   binary** (`libreoffice` -> `soffice.bin`) — E054;
+2. `DISPLAYED_RESOURCE_LINEAGE` is load-bearing for A4/A13 and is the least deployable
+   field in the contract — E051.
+
+Recorder atomicity (Tier D's precondition) is **assumed, not demonstrated**: the timing case
+was blocked — E046.
 
 Every field below satisfies at least one of:
 

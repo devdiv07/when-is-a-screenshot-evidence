@@ -209,20 +209,23 @@ the third silently:
 A tier that reaches 0% false accept by abstaining on everything has told us nothing, which
 is why coverage is reported with every rate.
 
-## 7. Predictions to be tested, not assumed
+## 7. Predictions — outcomes recorded 2026-09-09
+
+Evaluated by the white-box adversarial case evaluation (contract-logic arm only; see `outputs/adversarial_experiment_report.md` §0 for what that does and does not establish). **10 of 15 checked predictions matched, and all 5 misses are in the same direction: false accepts were predicted, abstentions occurred.** The model systematically underrated the contract's abstain-by-default rules.
+
 
 Stated now so Phase I can falsify them rather than confirm them.
 
 | # | Prediction | Status |
 |---|---|---|
-| P1 | Tier A (title, WM_CLASS) has a high false-accept rate under A2 | HYPOTHESIS |
-| P2 | Tier B (pid, exe, argv) defeats A2 but not A3 or A4 | HYPOTHESIS |
-| P3 | Tier C (code lineage) defeats A3 and A11 but not A4 | HYPOTHESIS |
-| P4 | Tier D (display composition) is required for A6/A7 and insufficient alone | HYPOTHESIS |
-| P5 | Tier E (browser tab/URL, document identity) is the only tier addressing A4 | HYPOTHESIS |
-| P6 | **No tier combination detects A9** | HYPOTHESIS — predeclared as the likely escalation trigger |
-| P8 | **A13 defeats Tiers A+B+D**, and is caught only if Tier C is applied to the displayed resource rather than the displaying process | HYPOTHESIS |
-| P7 | Every tier's guarantee is bounded by recorder atomicity (A12) | HYPOTHESIS |
+| P1 | Tier A has a high false-accept rate under A2 | **REFUTED** — Tier A achieves 0.0% coverage; R3 makes it abstain, never accept (E049) |
+| P2 | Tier B defeats A2 but not A3 or A4 | **CONFIRMED** for A2; A4 abstains rather than being accepted |
+| P3 | Tier C defeats A3 and A11 but not A4 | **PARTIAL** — A11 needs Tier D as well; A4 needs a privileged channel (E051) |
+| P4 | Tier D required for A6/A7 and insufficient alone | **CONFIRMED** — 6.7% coverage in isolation (E050) |
+| P5 | Tier E is the only tier addressing A4 | **CONFIRMED, and conditional** on a privileged application channel (E051) |
+| P6 | **No tier combination detects A9** | **CONFIRMED** — AUTHENTIC_TARGET at every tier from B up, and that verdict is correct (E052) |
+| P8 | **A13 defeats Tiers A+B+D** | **CONFIRMED IN EFFECT** — `13b` undetected at every config including FULL, but via abstention, not acceptance (E048) |
+| P7 | Every guarantee is bounded by recorder atomicity (A12) | **UNTESTED — case blocked.** Timing-dependent; needs a real recorder and repeated trials (E046) |
 
 ## 8. Kill criterion
 
@@ -237,3 +240,18 @@ Predeclared, so the result cannot be reinterpreted afterwards:
 
 Given C6, C13 and A9, P6 predicts this criterion will fire at least partially. If it does,
 that is the result — not a reason to add fields until it stops firing.
+
+## 9. Outcome of the kill criterion (2026-09-09)
+
+**Did not fire.** Zero false accepts at every tier, including the strongest practically
+collectable set. Fabricated evidence never *satisfied* the contract.
+
+It nonetheless **evaded** it: `13b` (A13-evasive) is undetected at every configuration,
+by abstention. The contract's entire safety margin is therefore abstention, and that is
+worth nothing unless the evaluator actions UNKNOWN.
+
+**The assurance ceiling is the displayed resource, not the displaying process.**
+
+Caveats that bound this result: contract-logic arm only, analyst-derived field vectors, and
+the two timing/platform cases unrun. See `outputs/adversarial_experiment_report.md` §0, §7.
+

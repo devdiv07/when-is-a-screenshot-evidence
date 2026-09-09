@@ -1,5 +1,12 @@
 # White-Box Adversarial Case Evaluation
 
+> **EXECUTED 2026-09-09 — contract-logic arm only.**
+> Results: `outputs/adversarial_experiment_report.md`. Kill criterion **did not fire**
+> (0 false accepts everywhere), but `13b` (A13-evasive) is **undetected at every
+> configuration** by abstention. **Empirical arm NOT run**: no X11/compositor/recorder on
+> the analysis host. Cases S1 (atomicity race) and S2 (nested compositor) **BLOCKED**, and
+> the Wayland portability arm **unrun**.
+
 **Naming.** This is a *white-box adversarial case evaluation*, not an adaptive red-team.
 The adversary has full knowledge of the contract, but the attacks are **constructed and
 predeclared**. It cannot claim to evaluate a fully adaptive adversarial agent. If the

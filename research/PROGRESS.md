@@ -2,15 +2,41 @@
 
 ## Current status — 2026-09-09
 
-**Gate RESOLVED (negative). Negative result converted into an observability boundary,
-threat model, and candidate capture-provenance contract. Direction = MODIFY.**
+**Phase I executed (contract-logic arm). Kill criterion did NOT fire. Assurance ceiling
+identified. Direction = MODIFY, unchanged.**
+
+### Phase I result in one paragraph
+
+Zero false accepts and zero false rejects at every tier configuration, including the
+strongest practically collectable set. The contract never *accepts* fabricated evidence.
+But `13b` — a legitimate image viewer opened bare and pointed at an agent-authored file
+through the GUI rather than argv — is **undetected at every configuration including the
+full ladder**, by abstention. **The assurance ceiling is the displayed RESOURCE, not the
+displaying PROCESS.** The contract's entire safety margin is abstention, which is worth
+nothing unless the evaluator actions UNKNOWN.
+
+**Scope limit that governs every Phase I number:** this was a CONTRACT-LOGIC evaluation.
+The analysis host has no X11, compositor, `gnome-screenshot` or privileged recorder, so
+**no process was launched and no pixel was captured**; field vectors are analyst-derived.
+Cases S1 (recorder atomicity race) and S2 (nested compositor) are **BLOCKED/unrun**, and
+the Wayland arm is unrun. Recorder atomicity is **assumed, not demonstrated**.
+
+Key numbers: coverage 86.7% at `0+A+B+C+D+E`; Tier A alone **0.0%**; Tier D alone 6.7%;
+Tier B alone 66.7%; without a privileged browser channel coverage falls to 80.0% and case
+05 joins 13b as undetected. Predictions 10/15 matched, all 5 misses in the same direction
+(predicted false accepts, got abstentions).
+
+---
+
+**Earlier: gate RESOLVED (negative), converted into an observability boundary, threat
+model, and candidate capture-provenance contract.**
 
 Read in this order:
 1. `outputs/post_gate_summary.md` — the nine-point state of the project
 2. `research/OBSERVABILITY_BOUNDARY.md` — the research result
 3. `research/THREAT_MODEL.md` — the adversary
 4. `specs/CAPTURE_PROVENANCE_CONTRACT.md` — candidate fields
-5. `specs/ADVERSARIAL_SUFFICIENCY_EXPERIMENT.md` — the falsification test (**not run**)
+5. `outputs/adversarial_experiment_report.md` — Phase I result (contract-logic arm)
 
 ### Frozen audit
 
@@ -47,13 +73,15 @@ Audit kill criteria **2, 3, 5** triggered. **E011 REJECTED.**
 - Deficits are **conjunctive**: in the strict model **no single field resolves any case**
   (E031 — an independent-field encoding wrongly reported 83.6% for one field and was
   discarded).
-- Historical coverage, STRICT: **4 display-composition fields → 83.6%**, 6 → 90.2%,
-  8 → 99.7%. Greedy optimal at sizes 4 and 6 by brute force.
-- **Display composition dominates** (240/287), because a full-screen grab's scene is a
-  *set* of windows.
-- `WINDOW_TITLE` / `WM_CLASS` resolve **zero** cases and are agent-choosable (E034).
-- All 14 adversary capabilities in the threat model were **observed in the benign corpus**
-  (E037).
+- Coverage is reported as three nested outcomes (preflight): the four display-composition
+  fields give 70.6% scene-source resolution and **0.0% target/substitute adjudication**;
+  six fields adjudicate 83.6%, seven 93.0% (E041). The old "83.6% resolved by four fields"
+  is **withdrawn**.
+- `CAPTURE_TRIGGER_ACTION_ID` alone closes 81% of deficits and adjudicates 0% (E042).
+- **Display composition dominates** the deficits (240/287) but adjudicates nothing alone.
+- `WINDOW_TITLE` / `WM_CLASS` resolve **zero** cases and are agent-choosable (E034, E049).
+- **13 of 14** adversary capabilities were observed in the benign corpus; C5 (WM_CLASS
+  spoofing) is derived, not observed (E037).
 
 ## What exists on disk
 
@@ -69,11 +97,16 @@ Audit kill criteria **2, 3, 5** triggered. **E011 REJECTED.**
 | `scripts/run_audit.py` | → `recoverability_cases.csv` |
 | `scripts/audit_metrics.py` | → `audit_metrics.json` |
 | `scripts/information_deficits.py` | Phase C → `information_deficits.csv` (bundles) |
-| `scripts/field_coverage.py` | Phase D → `field_coverage.csv` (bundle-aware set cover) |
+| `scripts/field_coverage.py` | Phase D → `field_coverage.csv` (3 outcomes, bundle-aware set cover) |
+| `scripts/adversarial_cases.py` | Phase I predeclared cases + observed field vectors |
+| `scripts/adjudicator.py` | contract rules, deterministic, no LLM |
+| `scripts/run_adversarial.py` | Phase I matrix → 4 output files |
 
 Outputs: `source_manifest.csv` (697), `recoverability_cases.csv` (825 rows),
 `recoverability_report.md`, `audit_metrics.json`, `information_deficits.csv`,
-`field_coverage.csv`, `field_set_analysis.md`, `post_gate_summary.md`.
+`field_coverage.csv`, `field_set_analysis.md`, `post_gate_summary.md`,
+`adversarial_cases.csv`, `tier_results.csv`, `risk_coverage.csv`,
+`adversarial_metrics.json`, `adversarial_experiment_report.md`.
 Raw data `outputs/raw/`, caches `outputs/cache/` — both gitignored.
 
 ## Key facts a fresh session must not re-derive
@@ -105,24 +138,37 @@ Raw data `outputs/raw/`, caches `outputs/cache/` — both gitignored.
 6. `code --list-extensions` is not a GUI launch.
 7. **Do not score deficit fields independently** — they are conjunctive (E031).
 8. **Do not quote a recoverability number without the lookback sensitivity curve** (E020).
-9. **A field is not secure because it comes from the OS** — T4 fields are truthfully
-   reported and adversarially chosen (`THREAT_MODEL.md` §3).
+9. **A field is not secure because it comes from the OS** — kernel- and compositor-observed
+   fields are truthfully reported and adversarially chosen (`THREAT_MODEL.md` §3).
+10. **Do not conflate abstention with detection.** Phase I's zero false accepts come from
+    abstain-by-default; `13b` is undetected, not caught (E047, E048).
+11. **Do not add fields to catch `13b`.** The ceiling is a result.
 
 ## Next actions
 
-1. Run `specs/ADVERSARIAL_SUFFICIENCY_EXPERIMENT.md` — 12 predeclared cases + 4 stretch,
-   construction-time ground truth, per-tier false accept / false reject / abstention /
-   coverage. **Requires building the instrumented environment and recorder first.**
-2. Honour the predeclared kill criterion. P6 predicts it fires on case 10. **If it fires,
-   that is the result** — do not add fields until it stops.
-3. Treat a clean sweep as suspicious (weak adversary) before believing it.
+**Do NOT add fields to catch 13b.** The ceiling is a result, not a defect list.
+
+1. **Build the empirical arm.** An instrumented X11 host with a privileged recorder, then
+   re-run the 17 evaluable cases against real observations to test whether a real recorder
+   sees what the contract-logic arm assumed.
+2. **Run the two blocked cases.** S1 (recorder atomicity, with repeated trials as the spec
+   requires) and S2 (nested compositor). Either could invalidate Tier D wholesale.
+3. **Run the Wayland arm** — Tier D leans on X11 enumeration that Wayland restricts.
+4. **Determine whether an evaluator can action UNKNOWN.** The contract's whole safety
+   margin is abstention; if unadjudicated evidence is accepted by default, the margin is
+   zero. This is an evaluator-design question, not a contract question.
+5. Adaptive red-teaming only after the empirical arm exists. The suite is not saturated:
+   `13b` was found only because the spec asked for an evasive variant.
 
 ## Blocked / not done
 
 - **Two independent annotators.** Manual validation is single-reviewer; it refuted 4 of the
   first 7 automated claims and drove three rule corrections, but **no inter-rater statistic
   exists**. Never describe it as completed two-reviewer validation.
-- Adversarial experiment **not run**; no recorder built; no classifier built.
+- **Empirical arm of the adversarial evaluation not run**; no recorder built; no
+  classifier built. The contract-logic arm ran (17 of 19 cases; 2 blocked).
+- **Recorder atomicity assumed, not demonstrated** (S1 blocked; repeated-trial requirement
+  unmet).
 - ProcGrep untouched. No BPE. No application prose.
 - Tier D portability to Wayland unresolved (a real deployment blocker).
 - No privacy-minimisation story for visible-window-set + titles + argv + URLs.
