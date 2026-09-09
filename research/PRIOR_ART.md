@@ -136,13 +136,18 @@ Boundaries, verified in the text:
 - it records **no display or screen state** — no screenshots, window identity, active
   window, z-order or capture region. It states the recorder captures the proposed action,
   not the surrounding state;
-- its threat model is **log tampering after compromise**; it presumes the recorder
-  faithfully observes actions during normal operation.
+- its stated guarantee is **integrity of recorded events**;
+- **completeness is explicitly a non-goal** — bypassed or unrecorded actions fall outside
+  the guarantee;
+- **records newly written after full host compromise cannot be guaranteed truthful.**
 
-That second point is precisely our gap. AFR protects the *integrity of the record*. Our
-question is the *integrity of the claim the record describes* — an adversary who never
-tampers with the log and instead arranges the world the log truthfully reports. Our
-threat model's "tier fallacy" section (§3) is the explicit statement of that difference.
+That completeness non-goal is precisely where our question lives. AFR protects the
+*integrity of the record*. Our question is the *integrity of the claim the record
+describes* — an adversary who never tampers with the log, and instead arranges the world
+that the log then truthfully and completely reports. Our threat model's "plane fallacy"
+section (§3) is the explicit statement of that difference.
+
+We do not claim AFR assumes honest actors; that paraphrase was withdrawn (E035).
 
 ## OpenAdapt Capture
 

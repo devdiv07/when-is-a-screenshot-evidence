@@ -92,16 +92,20 @@ marked threat-model-only:
 
 | Tier | Fields | Historical basis |
 |---|---|---|
-| A window labels | title, WM_CLASS | **0 resolving cases** — kept only as the baseline that fails |
+| **0 claim/target context** | task id, evidence claim id, target kind/application/resource, modality, capture scope | **98 cases** unadjudicable without it |
+| A window labels | title, WM_CLASS | **0** for every outcome — kept only as the baseline that fails |
 | B process identity | pid, start identity, argv, exe, ppid | 35 + 36 + 14 cases |
-| C code/content lineage | agent-written lineage, content hash | 14 cases + all 30 derivation chains |
-| D display composition | capture region, visible set, z-order, geometry, active window | **240 cases — dominant** |
+| C code/resource lineage | agent-written lineage, content hash, **displayed-resource lineage** | 14 + 30 chains + 38 viewer/browser cases |
+| D display composition | capture region, visible set, z-order, geometry, active window | **240 cases — dominant, but adjudicates 0 alone** |
 | E application state | browser tab, URL, document identity | 25 + 41 cases |
 | F record integrity | signature, privileged recorder, TEE | **0 — threat model only** |
 
-Historical coverage (STRICT, eligible universe): **4 fields → 83.6%**, **6 → 90.2%**,
-**8 → 99.7%**. Against all 415 unresolved cases: 4 fields → 75.2%, 8 fields → 89.4%.
-Greedy is optimal at sizes 4 and 6 (brute-force verified).
+Historical coverage, **corrected in preflight** to separate three nested outcomes
+(`outputs/field_set_analysis.md`): the four display-composition fields achieve 70.6%
+scene-source resolution (of 385) and **0.0% target/substitute adjudication** — they identify
+contributing surfaces but bind none to a target-comparable identity. **Six** fields
+adjudicate 83.6% of the adjudication universe (287); **seven** reach 93.0%. The earlier
+"83.6% of cases resolved by four fields" is withdrawn.
 
 ## 6. Which fields are spoofable
 

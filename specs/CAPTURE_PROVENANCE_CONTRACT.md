@@ -11,15 +11,67 @@ Every field below satisfies at least one of:
 
 Fields that meet neither test are not in this contract.
 
-Trust tiers T1–T6 are defined in `research/THREAT_MODEL.md` §3. Recall the tier fallacy
-stated there: **a T4 (OS-observed) field is truthfully reported and adversarially chosen.**
-Raising a field's tier buys integrity of the *report*, not integrity of the *claim*.
+**Trust planes** are defined in `research/THREAT_MODEL.md` §3. "OS-observed" is not one
+fact, so the planes separate who actually observes what:
+
+| Plane | Observer | Covers |
+|---|---|---|
+| `EVALUATOR/TASK_SPECIFIED` | the task/evaluator, not telemetry | Tier 0 claim + target context |
+| `AGENT_ASSERTED` | the agent | narrative, filenames |
+| `APPLICATION_ASSERTED` | a process the agent may have written | window title, WM_CLASS, document identity |
+| `HARNESS_OBSERVED` | the agent runtime / tool layer | tool calls, episode file-writes |
+| `KERNEL/RUNTIME_OBSERVED` | kernel + runtime | pid, process start identity, executable, ppid, file/runtime events |
+| `COMPOSITOR/DISPLAY_SERVER_OBSERVED` | display server / compositor | visible window set, geometry, stacking/z-order, active surface |
+| `PRIVILEGED_APPLICATION_OBSERVER` | protected CDP / extension channel | browser tab or target id, URL/origin, app document identity |
+| `TRUSTED_RECORDER_OBSERVED` | the recorder itself | capture bytes, region, timestamp, atomic correlation across the other planes |
+| `HARDWARE/TEE_ATTESTED` | attestation root | integrity measurement of recorder/runtime |
+
+The distinction matters because these planes fail independently: a compositor observation is
+not protected by kernel integrity, and a privileged-application observation depends on a
+channel the agent must not be able to call.
+
+Recall the central principle, unchanged:
+**truthfully observed state can still be adversarially arranged.** Moving a field to a
+higher plane buys integrity of the *report*, never integrity of the *claim*.
 
 This is an **attestation ladder**, not one schema. Each tier is separately collectable,
 separately costed, and separately falsifiable in Phase I. **No claim is made that the top
 tier is sufficient** — that is precisely what the experiment must test.
 
 ---
+
+## Tier 0 — Evidence claim / target context
+
+**Not attestation. Not telemetry.** This is evaluator/task specification, on the
+`EVALUATOR/TASK_SPECIFIED` plane. It is a *prerequisite* for the tiers below, not a
+defence against them.
+
+Historical basis: **98 cases** in the frozen corpus where target/substitute adjudication is
+impossible for any capture-side field set, because the task never declared a target
+(`outputs/field_set_analysis.md` §2). Those cases are why this tier exists.
+
+| Field | Description | Notes |
+|---|---|---|
+| `task_id` | which task the evidence belongs to | |
+| `evidence_claim_id` | which specific claim this artifact is offered as evidence for | one artifact may support several claims |
+| `target_kind` | application / document / service / system state / other | |
+| `target_application` | the substrate, **when the task specifies one** | |
+| `target_resource` | document, file or record, **when specified** | |
+| `evidence_modality` | screenshot / synthesised render / derived image / log | |
+| `capture_scope` | full screen / window / region, as the claim requires | |
+| `expected_renderer_identity` | allowed application identity, **where meaningful** | often absent, and that is data |
+| `state_predicate` / `evaluator_reference` | the checkable condition, where one exists | |
+
+**Rules**
+
+1. **Do not invent target semantics the task does not provide.** An absent field is
+   recorded absent, never inferred from a filename, a window title, or a task's prose.
+2. **When the target is undefined, TARGET/SUBSTITUTE adjudication is `UNKNOWN`.** It is not
+   a failure of the capture tiers and must not be scored as one.
+3. **Tier 0 is not trusted telemetry.** It is a declaration by the evaluator. It says what
+   was *asked for*, never what *happened*. It cannot be used as evidence about the scene.
+4. Tier 0 being complete is necessary and nowhere near sufficient: it makes adjudication
+   *possible*, and Tiers B–E decide it.
 
 ## Tier A — Human-readable window metadata
 
@@ -30,7 +82,7 @@ first and because Phase I needs it as the baseline that fails.
 |---|---|---|
 | description | title string of the relevant window | window-manager class / app id |
 | historical cases addressed | 0 as a resolving bundle (272 cases as a **verdict-`no`** bundle) | 0 as resolving |
-| trust source | **T2 APPLICATION_ASSERTED** | **T2 APPLICATION_ASSERTED** |
+| trust source | `APPLICATION_ASSERTED` | `APPLICATION_ASSERTED` |
 | agent spoofability | **total** — `root.title(...)` (observed, C4) | **total** where the toolkit permits (C5) |
 | application spoofability | total | total |
 | OS/kernel observability | readable via X11/Wayland properties, but the value is app-supplied | same |
@@ -55,7 +107,7 @@ narrow a candidate set; they never bind a scene.
 |---|---|---|---|---|---|
 | description | pid owning the relevant window | pid + start time / generation | resolved exe behind that pid | argv | ppid chain |
 | historical cases | 35 (with active window), 41 (with lifecycle) | 36 (with lifecycle) | 0 directly | **14** | 0 — threat model only |
-| trust source | **T4 OS_OBSERVED** | **T4/T5** | T4 | T4 | T4 |
+| trust source | `KERNEL/RUNTIME_OBSERVED` | `KERNEL/RUNTIME_OBSERVED` | `KERNEL/RUNTIME` | `KERNEL/RUNTIME` | `KERNEL/RUNTIME` |
 | agent spoofability | cannot forge the value; **fully controls which process owns the window** | cannot forge; controls | cannot forge; controls by choosing what to launch | cannot forge; **chooses argv** | controls by choosing the launcher |
 | application spoofability | no | no | no | no | no |
 | OS observability | high | high | high | high | high |
@@ -75,27 +127,35 @@ interpreter. Only argv exposes the script. This is a direct consequence of the m
 `Command still running (session …, pid …)` as liveness for a process that had already
 exited (report §8; observability boundary §2.1). pid alone is reusable and stale.
 
-## Tier C — Code and content lineage
+## Tier C — Code, content and displayed-resource lineage
 
-| | `AGENT_WRITTEN_CODE_LINEAGE` | `CONTENT_HASH` |
-|---|---|---|
-| description | was the owning executable/script authored during this episode? | hash of captured bytes and of any source image |
-| historical cases | 14 | **43** (every derivation chain) |
-| trust source | **T3 HARNESS_OBSERVED** (the harness sees the writes) | T3/T5 depending on who hashes |
-| agent spoofability | **partial and important**: cannot hide a write the harness saw, but *can* pre-stage content, write via a child process, or fetch code written earlier/elsewhere | cannot forge a hash; **can choose what to hash** |
-| application spoofability | n/a | n/a |
-| OS observability | needs harness file-write tracking, not just OS | high |
-| cost | medium — requires episode-scoped write tracking | low |
-| privacy | medium (file contents) | low |
-| portability | harness-specific | universal |
-| failure modes | **A4** — the *browser* is not agent-written; the HTML it renders is. Lineage must follow the **content**, not the binary | derivation root may be a synthesised image, so chaining terminates without resolving (30 cases) |
-| absence ⇒ UNKNOWN? | yes, for interpreter/browser-mediated scenes | **yes**, for any derived artifact |
-| required? | **required** | **required** |
+| | `AGENT_WRITTEN_CODE_LINEAGE` | `CONTENT_HASH` | `DISPLAYED_RESOURCE_LINEAGE` |
+|---|---|---|---|
+| description | was the owning executable/script authored during this episode? | hash of captured bytes and of any source image | provenance of the **resource the surface is displaying** — the file, document or URL opened, and whether *it* was authored this episode |
+| historical cases | 14 | **43** (every derivation chain) | **38** (browser/viewer-mediated captures) |
+| trust source | `HARNESS_OBSERVED` (the harness sees the writes) | `HARNESS_OBSERVED` / `TRUSTED_RECORDER_OBSERVED` | `HARNESS_OBSERVED` + `PRIVILEGED_APPLICATION_OBSERVER` (to learn *what* is open) |
+| agent spoofability | **partial**: cannot hide a write the harness saw, but *can* pre-stage content, write via a child process, or fetch code authored earlier/elsewhere | cannot forge a hash; **can choose what to hash** | same pre-staging weakness; also requires the viewer to disclose what it has open, which many applications do not |
+| application spoofability | n/a | n/a | total for an agent-authored "viewer" |
+| OS observability | needs harness file-write tracking | high | **not OS-observable** — needs harness lineage joined to app-reported resource identity |
+| cost | medium | low | **high** — join across two planes |
+| privacy | medium (file contents) | low | **high** (documents opened) |
+| portability | harness-specific | universal | per-application |
+| failure modes | **A3**; pre-staging (S3) | derivation root may be a synthesised image, so chaining terminates without resolving (30 cases) | **A13 if absent**; pre-staging if the resource predates the episode |
+| absence ⇒ UNKNOWN? | yes, for interpreter-mediated scenes | **yes**, for any derived artifact | **yes**, for any viewer- or browser-mediated scene |
+| required? | **required** | **required** | **required for viewer/browser captures** |
 
-This tier is where the `DAV_task_0` case is actually decided: the deciding fact is not that
-a Tk window existed, but that **the code drawing it was written 3 events earlier by the
-agent**. It is also the tier most likely to be under-specified — "written during the
-episode" needs a precise definition covering pre-staging and indirection.
+This tier decides `DAV_task_0`: the deciding fact is not that a Tk window existed, but that
+**the code drawing it was written 3 events earlier by the agent**.
+
+`DISPLAYED_RESOURCE_LINEAGE` is the answer to **A13** (legitimate viewer displaying
+agent-authored content) and its browser special case A4. Without it, the contract stops at
+"a genuine viewer process owned a genuine window" — which is *true* and *worthless*, because
+the agent chose what that viewer opened. With it, the question becomes the provenance of the
+opened resource, which is the question that was actually being asked.
+
+It is also the most expensive and least portable field in the contract: it requires joining
+harness file-write lineage to an application's own report of what it has open, and most
+applications do not report that at all.
 
 ## Tier D — Display composition
 
@@ -106,7 +166,7 @@ none is useful alone (Phase D §2).
 |---|---|---|---|---|---|
 | description | rectangle actually captured | every mapped window at the capture instant | stacking order | per-window position/size | which window held focus |
 | historical cases | 240 (bundle) | 240 | 240 | 240 | 35/41/32 (bundles) |
-| trust source | **T3/T4** — depends whether the harness or the compositor reports it | **T4** | **T4** | **T4** | **T4** |
+| trust source | `TRUSTED_RECORDER_OBSERVED` | `COMPOSITOR/DISPLAY_SERVER` | `COMPOSITOR/DISPLAY_SERVER` | `COMPOSITOR/DISPLAY_SERVER` | `COMPOSITOR/DISPLAY_SERVER` |
 | agent spoofability | cannot forge; chooses full-screen vs window-scoped | cannot forge; **fully controls which windows exist** | cannot forge; **fully controls stacking** (C8) | cannot forge; controls | cannot forge; controls focus |
 | application spoofability | no | no | no | no | no |
 | OS observability | high | high on X11; **Wayland restricts cross-client enumeration** | same restriction | same | same |
@@ -132,7 +192,7 @@ description of an ambiguous scene, not a verdict.
 |---|---|---|---|
 | description | foreground tab at capture time | URL/origin in that tab at capture time | app-specific open document / session identity |
 | historical cases | **25** | **25** | 41 (uncertain bundle) |
-| trust source | **T2 APPLICATION_ASSERTED**, promotable to T4 via a privileged browser extension / CDP over a channel the agent cannot call | T2→T4 as above | **T2** — asserted by an app the agent may have written |
+| trust source | `APPLICATION_ASSERTED`, promotable to T4 via a privileged browser extension / CDP over a channel the agent cannot call | promotable as above | `APPLICATION_ASSERTED` — asserted by an app the agent may have written |
 | agent spoofability | cannot forge if read out-of-band; **fully controls what the URL points at** | same — a `file:///tmp/fake.html` URL is a *true* answer | **total when the app is agent-authored** |
 | application spoofability | a real browser will not lie; an agent-authored "browser" will | same | total |
 | OS observability | **not OS-observable** — requires app cooperation | not OS-observable | not OS-observable |
@@ -159,7 +219,7 @@ the record was tampered with; they failed because the record was never made.
 |---|---|---|---|
 | description | signed, hash-chained event record | recorder the agent cannot call, race, or read | hardware-rooted attestation of the recorder |
 | historical cases | **0 — threat model only** | **0 — threat model only** | **0 — threat model only** |
-| trust source | T5 | T5 | **T6** |
+| trust source | `TRUSTED_RECORDER_OBSERVED` | `TRUSTED_RECORDER_OBSERVED` | `HARDWARE/TEE_ATTESTED` |
 | agent spoofability | negligible under the stated boundary | negligible under the boundary | negligible |
 | cost | low | **high — privileged deployment** | very high |
 | privacy | neutral | neutral | neutral |

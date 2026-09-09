@@ -4,152 +4,160 @@ Phase D. Derived from `outputs/information_deficits.csv` by `scripts/field_cover
 Machine-readable results: `outputs/field_coverage.csv`.
 
 > **Scope warning, applies to every number below.**
-> This measures **HISTORICAL COVERAGE**: which fields, had they been recorded, would have
-> resolved the scene-source question for benign traces already collected.
-> It says **nothing** about **ADVERSARIAL SUFFICIENCY — NOT YET TESTED**. An agent that
-> knows the contract can choose window titles, launch real interpreters, and place real
-> windows. Every field here is evaluated for spoofability in
-> `specs/CAPTURE_PROVENANCE_CONTRACT.md`, and only Phase I can decide sufficiency.
+> This is **HISTORICAL** analysis of benign traces already collected. It says nothing about
+> whether a field survives a contract-aware adversary. That is the
+> **white-box adversarial case evaluation** (`specs/ADVERSARIAL_SUFFICIENCY_EXPERIMENT.md`).
 
 ---
 
-## 1. Population
+## 1. Three outcomes, not one
 
-| | n |
-|---|---|
-| delivered visual artifacts (frozen audit) | 453 |
-| unresolved (UNKNOWN scene, or WEAK source, or derivation chain) | 415 |
-| — **eligible**: a capture-time field could plausibly resolve it | **287** |
-| — `no_target_defined`: task names no target application at all | 98 |
-| — `derivation_chain`: artifact is a transform/copy of a prior image | 30 |
+Earlier drafts said a field bundle "resolved" a case and reported *83.6% of cases resolved
+by four fields*. **That claim is withdrawn.** It conflated three separate things, and the
+strongest of them was never measured. The contract itself states that complete
+display-composition metadata can leave a composite scene genuinely UNKNOWN, so "resolved"
+was never the right word.
 
-The 98 `no_target_defined` cases are excluded from the coverage universe on purpose.
-No capture-side field can decide "target vs substitute" when the benchmark task never
-says what the target is. That deficit is in the **task specification**, not the runtime,
-and is recorded separately as `TARGET_APPLICATION_IDENTITY`.
+The three are now scored separately and are strictly nested:
 
-## 2. Fields are conjunctive, not independent
-
-The single most important structural result:
-
-**In the STRICT model, no single field resolves a single case.**
-
-`Z_ORDER` without `VISIBLE_WINDOW_SET` is "stacking order of what?". Neither can be
-intersected with the delivered image without `CAPTURE_REGION`. An earlier version of this
-analysis treated fields independently and reported that one field resolved 83.6% of cases;
-that was an artifact of the encoding, not a finding, and it was discarded. Deficits are
-therefore recorded as conjunctive **bundles** (`bundle_id`, `bundle_fields`), and a case
-counts as covered only when a whole bundle is supplied.
-
-Observed bundles, by number of eligible cases they would resolve:
-
-| cases | bundle (all fields required together) | verdict |
+| | Concept | What it means |
 |---|---|---|
-| 240 | `CAPTURE_REGION + VISIBLE_WINDOW_SET + WINDOW_GEOMETRY + Z_ORDER` | yes |
-| 41 | `ACTIVE_PID + ACTIVE_WINDOW_IDENTITY + PROCESS_LIFECYCLE_AT_CAPTURE` | yes |
-| 36 | `PROCESS_LIFECYCLE_AT_CAPTURE + PROCESS_START_IDENTITY` | yes |
-| 35 | `ACTIVE_PID + ACTIVE_WINDOW_IDENTITY` | yes |
-| 32 | `ACTIVE_WINDOW_IDENTITY + Z_ORDER` | yes |
-| 25 | `ACTIVE_WINDOW_IDENTITY + BROWSER_TAB_ID + BROWSER_URL` | yes |
-| 14 | `ACTIVE_PID + COMMAND_LINE` | yes |
-| 14 | `ACTIVE_PID + AGENT_WRITTEN_CODE_LINEAGE + COMMAND_LINE + PROCESS_START_IDENTITY` | yes |
+| 1 | **INFORMATION_DEFICIT_CLOSURE** | the historically missing fields would no longer be missing |
+| 2 | **SCENE_SOURCE_RESOLUTION** | the evidence identifies which process / resource / display surface contributed the relevant captured pixels |
+| 3 | **TARGET/SUBSTITUTE_ADJUDICATION** | the evidence decides whether that scene corresponds to the **declared** task target |
 
-Two bundles are recorded with verdict **no**, and they matter as much as the positive ones:
+Closure is necessary for resolution; resolution is necessary for adjudication.
+Adjudication additionally requires a **declared target** (Tier 0). Where no target is
+declared, adjudication is **UNKNOWN** — never "failed".
 
-- `WINDOW_TITLE + WM_CLASS` (272 cases) — human-readable labels narrow the candidate set
-  but never bind the scene, and **both are chosen by the agent**.
-- `CAPTURE_TRIGGER_ACTION_ID` (312 cases) — binds the image *file* to the action that
-  produced it. That is artifact provenance, which the audit already recovers at 453/453.
-  It says nothing about what the pixels depicted.
+### Why the split matters immediately
 
-## 3. Coverage curves
+`CAPTURE_TRIGGER_ACTION_ID` — a single field that binds an image file to the action that
+produced it — **closes 81.0% of information deficits on its own** and **adjudicates 0%**.
+It is artifact provenance, which the frozen audit already recovers at 453/453. A "coverage"
+metric on which that field scores 81% is measuring the wrong thing. That is the clearest
+demonstration that closure is a weak concept and adjudication is the one that answers the
+project's question.
 
-Two models, because the honest answer differs.
-**STRICT** counts only bundles marked `yes`. **LENIENT** also counts `uncertain` bundles —
-chiefly the assumption that focus identity plus capture region is decisive, which the
-audit's own composite-scene finding says is *not* generally true.
+## 2. Populations
 
-### STRICT (defensible)
-
-| fields | set | eligible covered | % |
-|---|---|---|---|
-| 4 | `CAPTURE_REGION + VISIBLE_WINDOW_SET + WINDOW_GEOMETRY + Z_ORDER` | 240 | **83.6%** |
-| 6 | + `PROCESS_LIFECYCLE_AT_CAPTURE + PROCESS_START_IDENTITY` | 259 | **90.2%** |
-| 8 | + `ACTIVE_PID + ACTIVE_WINDOW_IDENTITY` | 286 | **99.7%** |
-
-Thresholds: 50% and 75% are both first crossed at **4 fields**; 90% at **6 fields**.
-
-### LENIENT (optimistic)
-
-| fields | set | eligible covered | % |
-|---|---|---|---|
-| 3 | `ACTIVE_PID + ACTIVE_WINDOW_IDENTITY + CAPTURE_REGION` | 208 | 72.5% |
-| 4 | + `PROCESS_LIFECYCLE_AT_CAPTURE` | 249 | 86.8% |
-| 5 | + `PROCESS_START_IDENTITY` | 285 | 99.3% |
-
-The gap between the models is the whole composite-scene problem. LENIENT reaches 72.5%
-with three cheap fields *only by assuming* that naming the focused window settles what a
-full-screen grab depicted. The audit refuted that assumption on real data
-(`view_dashboard_and_editor.png`, report §8). **STRICT is the number to quote.**
-
-### Greedy vs optimal
-
-Exact minimum set cover is NP-hard, and the yes/uncertain mapping carries genuine
-ambiguity, so exact minimality would be false precision. Bundle-greedy was used and is
-labelled an approximation. Brute force over all subsets up to size 7 gives the gap:
-
-| size | STRICT optimal | greedy | gap |
-|---|---|---|---|
-| 2 | 36 (12.5%) | 0 | 36 |
-| 3 | 76 (26.5%) | 0 | 76 |
-| 4 | 240 (83.6%) | 240 | **0** |
-| 5 | 240 (83.6%) | 240 | 0 |
-| 6 | 259 (90.2%) | 259 | **0** |
-| 7 | 267 (93.0%) | 259 | 8 |
-
-Greedy is optimal at the sizes that matter (4 and 6) and within 8 cases at size 7.
-The sub-4 gaps are an artifact of greedy committing to a whole 4-field bundle first.
-
-## 4. What this does and does not license
-
-**Supported (HISTORICAL COVERAGE, MEASURED FACT):**
-
-- Four display-composition fields would have retrospectively resolved 83.6% of the
-  eligible unresolved cases; six reach 90.2%.
-- No single field is useful alone.
-- Window title and WM_CLASS are *not* on the critical path; they were already available in
-  the 12 traces carrying `xwininfo` and did not resolve those cases.
-- Process-lifecycle fields are the second-largest block, and they correspond to a
-  measured error the audit actually made (stale "still running" evidence, report §8).
-
-**Not supported (would be an overclaim):**
-
-- That recording these fields makes visual evidence trustworthy. Coverage is measured on
-  agents that were **not trying to defeat a recorder**. None of these fields was collected
-  adversarially, and the strongest ones — `VISIBLE_WINDOW_SET`, `Z_ORDER`, `WINDOW_GEOMETRY` —
-  describe a display the agent can populate at will.
-- That 99.7% is the practical ceiling. It is coverage of the **eligible** universe only.
-  Against all 415 unresolved cases the 8-field set reaches 371/415 = **89.4%**, and the
-  4-field set 312/415 = **75.2%**. Both figures overstate what is actually answered: for
-  the 98 `no_target_defined` cases these fields identify *what produced the pixels* but
-  still cannot say whether that thing was the task's target, because the task never named
-  one. Scene-source recovery and target-vs-substitute adjudication are different questions,
-  and only the first is addressed by capture-time fields.
-- Any statement about false-accept rates. This analysis has no adversarial cases in it.
-
-## 5. Direct input to the contract
-
-Phase H must justify every proposed field from this table or from the threat model. The
-mapping is:
-
-| Contract tier | Fields | Justification here |
+| Universe | n | Excludes |
 |---|---|---|
-| A window labels | `WINDOW_TITLE`, `WM_CLASS` | verdict **no** — included only as context, never as evidence |
-| B process identity | `ACTIVE_PID`, `PROCESS_START_IDENTITY`, `COMMAND_LINE`, `EXECUTABLE_PATH` | 35 + 36 + 14 cases |
-| C code lineage | `AGENT_WRITTEN_CODE_LINEAGE`, `CONTENT_HASH` | 14 cases + all 30 derivation chains |
-| D display composition | `CAPTURE_REGION`, `VISIBLE_WINDOW_SET`, `Z_ORDER`, `WINDOW_GEOMETRY`, `ACTIVE_WINDOW_IDENTITY` | **240 cases — the dominant block** |
-| E application state | `BROWSER_TAB_ID`, `BROWSER_URL`, `DOCUMENT_INSTANCE_ID` | 25 + 41 cases |
-| F record integrity | — | no historical deficit; required by the threat model only |
+| unresolved cases | 415 | — |
+| **scene-source universe** | **385** | 30 derivation chains (lineage recurses out of the capture layer) |
+| **adjudication universe** | **287** | additionally the 98 cases with no declared target |
 
-Tier F earns no cases in this analysis at all. It is included in the contract solely
-because the threat model requires it, and that distinction is stated explicitly there.
+The 98 no-declared-target cases are not a rounding detail. They are the empirical
+demonstration behind **Tier 0** in the contract: provenance cannot adjudicate
+target-vs-substitute without a declared target, no matter how good the telemetry.
+
+## 3. Fields are conjunctive
+
+**No single field achieves resolution or adjudication alone.** `Z_ORDER` without
+`VISIBLE_WINDOW_SET` is "stacking order of what?", and neither intersects the image without
+`CAPTURE_REGION`. An earlier encoding scored fields independently and produced an 83.6%
+single-field figure that was an artifact of the encoding; it was discarded. Deficits are
+recorded as conjunctive **bundles**, and a case counts only when a whole bundle is supplied.
+
+## 4. The headline correction
+
+| Field set | closure (of 385) | scene-source resolution (of 385) | **adjudication (of 287)** |
+|---|---|---|---|
+| **D4 display-composition** — capture region, visible set, geometry, z-order | 272 / **70.6%** | 272 / **70.6%** | **0 / 0.0%** |
+| D4 + active window + active pid (6) | 312 / 81.0% | 312 / 81.0% | 240 / **83.6%** |
+| + lifecycle + start identity (8) | 371 / 96.4% | 339 / 88.1% | 267 / **93.0%** |
+
+**The four display-composition fields adjudicate nothing.** They determine which surfaces
+contributed pixels, and then stop: nothing binds a contributing surface to an identity
+comparable with a declared target. Adjudication needs process identity
+(`ACTIVE_PID`, and in interpreter cases `COMMAND_LINE`) on top of the display fields.
+
+So the corrected statement of the old headline is:
+
+> **83.6% of eligible cases had their recorded display-composition information deficit
+> closed by four fields** — and of those, **0%** could be adjudicated target-vs-substitute
+> without also binding surface to process identity. Six fields adjudicate 83.6% of the
+> adjudication universe; seven reach 93.0%.
+
+Note the denominators differ (385 vs 287) and are not interchangeable.
+
+## 5. Curves
+
+### Adjudication — the operative one
+
+| fields | set | of 287 |
+|---|---|---|
+| 6 | capture region + visible set + geometry + z-order + active window + active pid | **83.6%** |
+| 7 | + process lifecycle at capture | **93.0%** |
+| 9 | + agent-written code lineage + command line | 95.1% |
+
+Thresholds: 50% and 75% both first crossed at **6 fields**; 90% at **7**.
+Brute force to size 7 confirms greedy is optimal at sizes 6 and 7 (gap 0); sizes 1–5
+adjudicate **0.0%**, because no subset that small contains both a display bundle and a
+process binding.
+
+### Scene-source resolution
+
+| fields | set | of 385 |
+|---|---|---|
+| 4 | D4 display-composition | 70.6% |
+| 6 | + active window + active pid | 81.0% |
+| 8 | + lifecycle + start identity | 88.1% |
+
+A lenient variant (counting `uncertain` bundles, chiefly the assumption that focus identity
+settles a full-screen grab) reaches 70.6% with **three** cheap fields. The audit refuted
+that assumption on real data (`view_dashboard_and_editor.png`). **Quote the strict column.**
+
+### Closure — reported for completeness, not for decisions
+
+81.0% from one field; 91.7% from four. Closure says the recorder wrote something down. It
+does not say the something was useful.
+
+## 6. Bundle inventory
+
+| eligible cases | bundle (all fields required together) | resolution | adjudication |
+|---|---|---|---|
+| 240 | capture region + visible set + geometry + z-order + active window + active pid | yes | yes |
+| 272 | capture region + visible set + geometry + z-order | yes | **no** — no identity binding |
+| 41 | active window + active pid + lifecycle at capture | uncertain | no |
+| 38 | tab id + URL + active window + **displayed-resource lineage** | yes | yes |
+| 36 | lifecycle at capture + process start identity | no | no |
+| 25 | active pid + command line | uncertain | no |
+| 272 | window title + WM_CLASS | **no** | no |
+| 312 | capture trigger action id | **no** | no |
+
+`DISPLAYED_RESOURCE_LINEAGE` is new in this pass. It exists because a legitimate viewer
+showing agent-authored content (threat-model **A13**, the generic form of A4) is not
+addressed by tab id and URL alone: those fields truthfully report a resource whose own
+provenance is the actual question.
+
+## 7. What this licenses
+
+**Supported (MEASURED FACT, historical):**
+
+- Six fields would have adjudicated 83.6% of the adjudication universe; seven, 93.0%.
+- Display composition alone adjudicates **nothing**.
+- No single field achieves resolution or adjudication.
+- `WINDOW_TITLE` / `WM_CLASS` achieve neither, in any combination. They were already present
+  in the 12 traces carrying `xwininfo` and did not resolve those cases.
+- Adjudication is impossible without a declared target, for 98 cases in this corpus.
+
+**Not supported:**
+
+- That these fields make visual evidence trustworthy. Coverage was measured on agents not
+  trying to defeat a recorder; several made attribution possible by accident.
+- Any false-accept rate. There are no adversarial cases in this analysis.
+- Practical deployability. Display composition leans on X11 enumeration; Wayland restricts
+  exactly these queries.
+
+## 8. Input to the contract
+
+| Contract tier | Fields | Historical basis |
+|---|---|---|
+| **0 claim / target context** | task id, evidence claim id, target kind/application/resource, modality, capture scope | **98 cases** where adjudication is impossible without it |
+| A window labels | title, WM_CLASS | **0** for every outcome — baseline that fails |
+| B process identity | pid, start identity, argv, exe, ppid | required for **all** adjudication; +25 for interpreter cases |
+| C code/resource lineage | agent-written lineage, content hash, displayed-resource lineage | 14 + 30 chains + 38 browser/viewer cases |
+| D display composition | capture region, visible set, z-order, geometry, active window | **240 — dominant, but adjudicates 0 alone** |
+| E application state | browser tab, URL, document identity | 38 + 41 |
+| F record integrity | signature, privileged recorder, TEE | **0 — threat model only** |

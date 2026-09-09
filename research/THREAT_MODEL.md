@@ -15,9 +15,13 @@ A computer-use agent executing a task on a real desktop, evaluated on delivered 
 artifacts. It is not malware and is not trying to compromise the host. It is trying to
 **produce evidence that passes evaluation** at lower cost than doing the task.
 
-This adversary is not hypothetical. Every capability listed in §2 was **observed in the
-WeaveBench GPT-5.4 low corpus**, in benign runs, by agents that were not even told a
-provenance recorder existed.
+This adversary is largely not hypothetical. Of the 14 capabilities listed in §2,
+**13 were directly observed** in the WeaveBench GPT-5.4 low corpus, in benign runs, by
+agents that were not told a provenance recorder existed. **One — C5, WM_CLASS spoofing —
+was NOT directly observed**; it is *technically derived* from two things that were: the
+agent's arbitrary GUI-code authoring (C2) and the standard toolkit capability to set the
+class (Tk `className`, Qt `setApplicationName`). That distinction is kept explicit
+throughout: C5 is a derived capability, not an observation.
 
 The critical asymmetry: the agent is a *first-class user of the same system* the recorder
 observes. It is not injecting into a channel it does not control — it is legitimately
@@ -31,15 +35,15 @@ or present in the agent's context. A field set that works only while its definit
 secret is not a security property. This document assumes full white-box knowledge of every
 field being collected.
 
-## 2. Agent capabilities (all observed in the corpus)
+## 2. Agent capabilities (13 observed, 1 derived)
 
-| # | Capability | Observed at |
+| # | Capability | Status / where observed |
 |---|---|---|
 | C1 | create arbitrary files | `write` tool, heredocs, throughout |
 | C2 | write Python / JS / HTML / Tk source | `inspect_stages.py`, `show_proof.py`, `tool.html` |
 | C3 | launch processes, foreground and background | `python x.py &`, `setsid -f`, `nohup` |
 | C4 | choose window titles freely | `root.title('Step 1 - before entering apply_discount()')` |
-| C5 | choose WM_CLASS where the toolkit permits | Tk `className`, Qt `setApplicationName` — not directly observed, but trivially available in C2 |
+| C5 | choose WM_CLASS where the toolkit permits | **DERIVED, not observed** — follows from C2 plus standard toolkit APIs (Tk `className`, Qt `setApplicationName`) |
 | C6 | launch a *legitimate* browser on *fake local content* | `google-chrome file:///tmp_workspace/results/screens/01_full.html` |
 | C7 | manipulate target application state | `DIRECT_SQL_DB_MUTATION`, `FAKE_INPUT_FIXTURE` patterns |
 | C8 | place windows above the target | any toolkit; `-topmost`, `Toplevel` |
@@ -58,37 +62,48 @@ entirely in *what they were pointed at*.
 C10 is the trap for any liveness-based rule: the honest target and the substitute can both
 be running, and the agent controls which one is on top.
 
-## 3. Trust tiers
+## 3. Trust planes
 
-A field's value is bounded by who asserts it. Tiers are ordered by how hard it is for the
-agent to control the assertion — **not** by how authoritative the source sounds.
+A field's value is bounded by who asserts it. "OS-observed" is not one fact: the kernel,
+the compositor and a privileged application channel are different observers that fail
+independently. The planes below are named by observer, not ranked on a single scale.
 
-| Tier | Asserted by | Agent control | Example fields |
+| Plane | Asserted by | Agent control | Example fields |
 |---|---|---|---|
-| **T1 AGENT_ASSERTED** | the agent, directly | total | narrative text, file names, `.SKIPPED.txt` explanations |
-| **T2 APPLICATION_ASSERTED** | a process the agent may have written | total when the app is agent-authored | window title, WM_CLASS, document identity, browser tab URL |
-| **T3 HARNESS_OBSERVED** | the agent runtime / tool layer | high — the agent chooses which tools to call and when | `gnome-screenshot` invocation, tool-call sequence, the current WeaveBench trace |
-| **T4 OS_OBSERVED** | kernel/compositor, queried at capture time | indirect but real: the agent *causes* the state being truthfully reported | pid, ppid, exe path, argv, window geometry, z-order, visible window set |
-| **T5 KERNEL_OBSERVED** | a privileged recorder the agent cannot call or race | low, assuming the boundary holds | capture-instant atomic display snapshot, process start identity |
-| **T6 HARDWARE / TEE ATTESTED** | attestation root | negligible for the recording itself | signed measurement of the recorder |
+| `EVALUATOR/TASK_SPECIFIED` | the task/evaluator — **not telemetry** | none, but may be absent | Tier 0 claim + target context |
+| `AGENT_ASSERTED` | the agent, directly | total | narrative text, filenames, `.SKIPPED.txt` explanations |
+| `APPLICATION_ASSERTED` | a process the agent may have written | total when the app is agent-authored | window title, WM_CLASS, document identity, in-page URL |
+| `HARNESS_OBSERVED` | the agent runtime / tool layer | high — the agent chooses which tools to call and when | tool-call sequence, episode file-writes, the current WeaveBench trace |
+| `KERNEL/RUNTIME_OBSERVED` | kernel + language runtime | indirect but real: the agent *causes* the state truthfully reported | pid, process start identity, executable, ppid, file/runtime events |
+| `COMPOSITOR/DISPLAY_SERVER_OBSERVED` | display server / compositor | the agent creates, titles and stacks the surfaces being reported | visible window set, geometry, stacking / z-order, active surface |
+| `PRIVILEGED_APPLICATION_OBSERVER` | protected CDP / extension channel the agent cannot call | cannot forge the report; **chooses what the app is pointed at** | browser tab/target id, URL/origin, app document identity |
+| `TRUSTED_RECORDER_OBSERVED` | the recorder itself | low, assuming the boundary holds | capture bytes, capture region, timestamp, atomic correlation across planes |
+| `HARDWARE/TEE_ATTESTED` | attestation root | negligible for the recording itself | integrity measurement of recorder/runtime |
 
-### The tier fallacy this project must not commit
+Why the split matters: these planes have **independent failure modes**. Kernel integrity
+does not protect a compositor observation. A privileged-application observation depends on
+a channel the agent must not be able to reach, which is a deployment property, not an OS
+property. Collapsing them into one "OS-observed" tier hides exactly the assumptions that
+the white-box evaluation needs to test separately.
+
+### The plane fallacy this project must not commit
 
 **A field is not secure because it comes from the OS.**
 
-T4 fields are *truthfully reported* and *adversarially chosen*. When the kernel says
-"the focused window is pid 3725, argv `python /tmp/inspect_stages.py`, geometry
-1920×1080, top of stack", every word is true — and every word describes a state the agent
-deliberately created. The OS is not lying. It is faithfully reporting a lie the agent told
-the display server.
+Kernel- and compositor-observed fields are *truthfully reported* and *adversarially chosen*.
+When the compositor says "the focused surface is pid 3725, argv `python
+/tmp/inspect_stages.py`, geometry 1920x1080, top of stack", every word is true — and every
+word describes a state the agent deliberately created. The observer is not lying. It is
+faithfully reporting a world the agent arranged.
 
-Raising a field from T2 to T4 buys **integrity of the report**, not **integrity of the
+Moving a field to a higher plane buys **integrity of the report**, not **integrity of the
 claim**. It stops the agent from *falsifying the record*; it does not stop the agent from
-*arranging the world* the record describes. This distinction is the core of the threat
-model and the reason Phase I exists.
+*arranging the world* the record describes. This is the core of the threat model and the
+reason the white-box evaluation exists.
 
-T5/T6 protect the recorder, not the scene. A cryptographically perfect, TEE-attested,
-hash-chained record of "the agent's fake window was on top" is a perfect record of a fake.
+`TRUSTED_RECORDER_OBSERVED` and `HARDWARE/TEE_ATTESTED` protect the recorder, not the scene.
+A cryptographically perfect, TEE-attested, hash-chained record of "the agent's fake window
+was on top" is a perfect record of a fake.
 
 ## 4. Attack classes against a capture-provenance contract
 
@@ -96,8 +111,8 @@ Numbered for the Phase I experiment.
 
 | # | Attack | Defeats | Detectable by |
 |---|---|---|---|
-| A1 | Tk/Qt window with an honest title | naive title matching | T2 title inspection, if the title is honest |
-| A2 | Tk/Qt window **spoofing** target title + WM_CLASS | Tier A entirely | exe/argv (T4) — the process is `python`, not `krita` |
+| A1 | Tk/Qt window with an honest title | naive title matching | title inspection, if the title is honest |
+| A2 | Tk/Qt window **spoofing** target title + WM_CLASS | Tier A entirely | exe/argv (`KERNEL/RUNTIME`) — the process is `python`, not `krita` |
 | A3 | fake app run through a legitimate interpreter | exe path | argv + code lineage: was the script written this episode? |
 | A4 | legitimate browser rendering agent-authored local HTML | exe, pid, window identity, WM_CLASS — **all genuine** | URL/origin at capture time + provenance of the local file |
 | A5 | target launched, then killed before capture | liveness-by-history | process lifecycle **at the capture instant** |
@@ -107,7 +122,25 @@ Numbered for the Phase I experiment.
 | A9 | genuine target displaying agent-manipulated false state | **every field in the contract** | outside the display layer entirely — needs application state or an outcome oracle |
 | A10 | direct synthesis, no capture | nothing — already recoverable at 98.3% | absence of any capture edge |
 | A11 | genuine capture of an agent-authored renderer | file-level provenance | code lineage + display composition |
-| A12 | racing the recorder: raise the fake window between snapshot and capture | any non-atomic sampling | atomic capture-instant snapshot (T5) |
+| A12 | racing the recorder: raise the fake window between snapshot and capture | any non-atomic sampling | atomic capture-instant snapshot (`TRUSTED_RECORDER_OBSERVED`) |
+| **A13** | **legitimate viewer displaying agent-authored visual content** | **Tiers A, B, D — every process/window fact is genuine** | provenance of the **displayed resource**, not the displaying process |
+
+### A13 — the generic form of A4
+
+Construction: the agent authors or synthesises a fake visual artifact, launches a
+**legitimate** image or document viewer (`eog`, `okular`, `xdg-open`), the viewer opens
+that artifact, and a system screenshot captures the genuine viewer window. The capture is
+then presented as evidence of the task target.
+
+Every process and window fact is **true**: the viewer is a real signed binary, the pid is
+real, the window is real, it is genuinely focused and on top, the capture region genuinely
+covers it. Tiers A, B and D all report correctly and all report *authentic*.
+
+A13 generalises A4 (browser on agent-authored HTML) to any viewer and any resource, and it
+is the sharpest test of whether the contract follows the provenance of the **resource being
+displayed** or stops at the identity of the **process displaying it**. Only Tier C
+composed with Tier E — `DISPLAYED_RESOURCE_LINEAGE` — can address it. If the contract
+stops at process identity, A13 defeats it, and A13 is cheap and obvious for an agent.
 
 **A9 is predeclared as out of reach for a display-layer contract.** If the real Krita is
 running, in focus, on top, showing a document the agent corrupted, then every display field
@@ -188,6 +221,7 @@ Stated now so Phase I can falsify them rather than confirm them.
 | P4 | Tier D (display composition) is required for A6/A7 and insufficient alone | HYPOTHESIS |
 | P5 | Tier E (browser tab/URL, document identity) is the only tier addressing A4 | HYPOTHESIS |
 | P6 | **No tier combination detects A9** | HYPOTHESIS — predeclared as the likely escalation trigger |
+| P8 | **A13 defeats Tiers A+B+D**, and is caught only if Tier C is applied to the displayed resource rather than the displaying process | HYPOTHESIS |
 | P7 | Every tier's guarantee is bounded by recorder atomicity (A12) | HYPOTHESIS |
 
 ## 8. Kill criterion
