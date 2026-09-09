@@ -2,7 +2,36 @@
 
 ## Current status — 2026-09-09
 
-**Phase I EMPIRICAL arm executed on a real X11 lab. THE KILL CRITERION FIRED.**
+**PHASE I CLOSED AND FROZEN. Kill criterion FIRED. Contract branch CLOSED / INSUFFICIENT.**
+
+Read first: `outputs/phase1_final_summary.md`, then
+`research/PHASE1_EMPIRICAL_CONCLUSIONS.md`. Machine-readable:
+`outputs/phase1_final_metrics.json`.
+
+**Frozen decision:** capture-time system/display provenance is **insufficient** for visual
+claim integrity under the tested white-box adversary. Primary falsifier **case 13b**.
+Assurance boundary: `process/surface identity != displayed-resource identity`;
+`path identity != content identity`.
+
+**Do not add displayed-resource fields to the frozen contract.** 13b is not a missing
+field. A successor contract must be predeclared separately before testing. The successor
+hypothesis **H-RB** is registered and **not executed**.
+
+The assurance chain, with what was actually established:
+
+```
+artifact ──► capture ──► process/surface ──► displayed resource ──► application state ──► claim
+   OK          OK             OK                  FAILED                untested         untested
+```
+
+Three evidence classes must never be merged: **ANALYTIC** (derived vectors, criterion did
+not fire), **EMPIRICAL** (real lab, criterion **FIRED**), **BLOCKED/UNRUN** (Wayland,
+adaptive red-team, A9). Where the arms disagree the empirical arm governs — and they
+disagreed on 13b in the **unsafe** direction.
+
+---
+
+**Phase I EMPIRICAL arm — detail.**
 
 | Freeze | |
 |---|---|
@@ -133,6 +162,7 @@ Audit kill criteria **2, 3, 5** triggered. **E011 REJECTED.**
 | `scripts/adjudicator.py` | contract rules, deterministic, no LLM |
 | `scripts/run_adversarial.py` | Phase I analytic matrix → 4 output files |
 | `scripts/score_empirical.py` | Phase I empirical scoring → 5 output files |
+| `scripts/freeze_phase1.py` | Phase I closure → `phase1_final_metrics.json` |
 | `infra/Dockerfile` + `entrypoint.sh` | reproducible headless X11 lab (Xvfb + Openbox) |
 | `infra/recorder.py` | trusted recorder; derives every field from live state |
 | `infra/scenarios.py` | attack constructors, run unprivileged |
@@ -184,20 +214,27 @@ Raw data `outputs/raw/`, caches `outputs/cache/` — both gitignored.
 
 ## Next actions
 
-**Do NOT patch the contract to catch 13b.** The kill criterion fired; that is the result.
-Any v2 contract must be predeclared separately, before it is tested.
+**Phase I is closed. Do NOT patch the contract to catch 13b — the failure IS the result.**
 
-1. **Decide the escalation.** Predeclared options, unchanged: application-specific state
-   attestation, trusted-display mechanisms, an independent outcome oracle, or the
-   conclusion that this layer cannot establish the property.
-2. **The UNKNOWN policy result is actionable now and independent of the contract**:
-   fail-closed handling of UNKNOWN is the largest measured security effect (E062).
-3. **Wayland arm** — still unrun; Tier D leans on X11 enumeration Wayland restricts.
-4. **Atomicity is an engineering question**: S1 measured one naive recorder. A server-side
-   grab or single atomic snapshot primitive must be built and re-measured before Tier D is
+The single highest-value next step is to test the recorded threat to the 13b mechanism:
+
+1. **Build a filesystem-EVENT-based journal (inotify/fanotify) and re-run 13b.** The
+   current journal was write-API-keyed and never saw the `cp` (E066). If an event-based
+   journal catches it, the mechanism is narrower than stated — the criterion still fired,
+   but the boundary claim must be re-scoped. If it does not, the boundary hardens.
+2. **Decide the escalation** from the predeclared options: application-specific state
+   attestation, trusted-display mechanisms, an independent outcome oracle, or that this
+   layer cannot establish the property.
+3. **Fail-closed UNKNOWN is actionable now and independent of the contract** (E069) — but
+   note it does not touch 13b.
+4. **Atomicity is an engineering question.** S1 measured one naive recorder; a server-side
+   grab or atomic snapshot primitive must be built and re-measured before Tier D is
    credited with anything.
-5. Adaptive red-teaming remains future work. The suite is nowhere near saturated — `13b`
-   only became a real attack after IC-4 corrected its construction.
+5. **Wayland arm** still unrun. **Adaptive red-teaming** still unrun; the suite is nowhere
+   near saturated — 13b only became a real attack after IC-4 corrected its construction.
+
+H-RB is registered as a documented option and must **not** be executed until Phase I
+closure is committed and a successor contract is predeclared.
 
 ## Blocked / not done
 

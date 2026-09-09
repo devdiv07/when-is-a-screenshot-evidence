@@ -283,3 +283,46 @@ A new adversary capability is therefore recorded, observed rather than derived:
 Neither is addressed by any tier of the frozen contract, and per the predeclared rule no
 field has been added in response.
 
+## 11. PHASE I CLOSED — final status (2026-09-09)
+
+**The predeclared kill criterion FIRED empirically.** Capture-time system/display
+provenance is **insufficient** for visual claim integrity under the tested white-box
+adversary. Primary falsifier: **case 13b**.
+
+The contract branch is **CLOSED / INSUFFICIENT**. No field was added in response, and none
+may be added to rescue it.
+
+### The boundary this threat model failed to anticipate
+
+Every capability in §2 concerned what the agent could *run*, *title*, *stack* or *launch* —
+that is, attacks on **process and surface identity**. The successful attack was none of
+those. It left process and surface identity entirely truthful and attacked the **resource**
+the surface displayed:
+
+```
+process/surface identity  ≠  displayed-resource identity
+path identity             ≠  content identity
+```
+
+C15 and C16 (§10) were added from observation. C15 is the one that matters: the threat
+model had no capability describing *in-place replacement of a declared resource's bytes
+while a legitimate renderer holds it open*, which is why no tier defended against it.
+
+### Predictions, final status
+
+| | Status |
+|---|---|
+| P6 — no tier detects A9 | CONFIRMED analytically; **not exercised empirically** (out of scope) |
+| P7 — guarantees bounded by recorder atomicity | **CONFIRMED EMPIRICALLY** — 120/120 in both runs, for the *tested implementation* |
+| P8 — A13 defeats Tiers A+B+D | **CONFIRMED, and worse than predicted**: empirically a **false accept**, not an abstention |
+
+### What this threat model may no longer be used to claim
+
+- that any tier combination binds displayed pixels to a resource;
+- that abstention protects anything 13b touches — 13b was **accepted**, never UNKNOWN;
+- that atomicity is impossible, or that nested displays defeat provenance generally. Both
+  results are scoped to the tested implementation and substrate.
+
+Successor work is registered as **H-RB** (`research/PHASE1_EMPIRICAL_CONCLUSIONS.md` §10)
+and is **not executed**.
+

@@ -1,22 +1,41 @@
 # Candidate Capture-Provenance Contract
 
-**Status: CANDIDATE. Contract-logic arm evaluated 2026-09-09. Empirical arm NOT run.**
+**Status: CLOSED / INSUFFICIENT — FROZEN 2026-09-09. Do not extend this contract.**
 
-Outcome of the white-box adversarial case evaluation (`outputs/adversarial_experiment_report.md`):
-zero false accepts and zero false rejects at every tier, **but** attack **A13-evasive**
-(`13b`: legitimate viewer opening an agent-authored resource through the GUI rather than
-argv) is **undetected at every configuration including the full ladder** — by abstention,
-not acceptance. **The assurance ceiling is the displayed resource, not the displaying
-process.** No field has been added in response; the ceiling is recorded as a result.
+> **The predeclared kill criterion FIRED empirically.** In a real X11 lab, case **13b**
+> produced a **false accept** (`AUTHENTIC_TARGET`) at `0+A+B+C+D+E` and at the full ladder,
+> from an **unprivileged** attacker, with **no** recorder/kernel/compositor compromise.
+>
+> A legitimate viewer was opened on the **declared target path** and that file's **bytes**
+> were replaced with attacker-authored content. Every field in this contract was obtained
+> and every field was **truthful**. Zero field observation failures.
+>
+> **Assurance boundary:** `process/surface identity ≠ displayed-resource identity`;
+> `path identity ≠ content identity`.
+>
+> **13b is NOT a missing field in this contract.** Do not add displayed-resource fields to
+> rescue it: binding pixels to a *path* instead of a *process* moves the boundary one step
+> and no further, because a path is not its bytes. `CONTENT_HASH` is present in this
+> contract and did not help — it carries no *expected* value to compare against, so content
+> identity is unverifiable in principle within this ladder.
+>
+> A successor contract must be **predeclared separately, before testing**. The successor
+> hypothesis **H-RB** is registered in `research/PHASE1_EMPIRICAL_CONCLUSIONS.md` §10 and is
+> **not executed**.
 
-Two gaps found during evaluation and deliberately NOT patched here:
-1. the contract specifies **no mapping from a declared application name to an observed
-   binary** (`libreoffice` -> `soffice.bin`) — E054;
+Superseded status note (kept for provenance): an earlier header, written at the analytic
+commit, recorded "Empirical arm NOT run" and described 13b as undetected *by abstention,
+not acceptance*. **The empirical arm falsified that**: 13b is an acceptance. See
+`outputs/phase1_final_summary.md`.
+
+Two further gaps found during evaluation and deliberately **not patched**:
+1. no mapping from a declared application name to an observed binary
+   (`libreoffice` → `soffice.bin`) — E054;
 2. `DISPLAYED_RESOURCE_LINEAGE` is load-bearing for A4/A13 and is the least deployable
-   field in the contract — E051.
+   field here — E051; and it did not prevent 13b.
 
-Recorder atomicity (Tier D's precondition) is **assumed, not demonstrated**: the timing case
-was blocked — E046.
+Recorder atomicity (Tier D's precondition) was **empirically violated in 120/120 trials in
+each of two runs** for the tested recorder implementation — E058, E067.
 
 Every field below satisfies at least one of:
 

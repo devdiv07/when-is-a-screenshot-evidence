@@ -1,0 +1,275 @@
+{
+  "_README": "Phase I closure metrics. Three evidence classes are kept separate and must not be merged. Discarded defect runs are listed and excluded.",
+  "evidence_classes": {
+    "ANALYTIC": {
+      "what": "contract-logic evaluation over analyst-derived field vectors",
+      "tag": "phase1-analytic-v1",
+      "commit": "fa78c2d",
+      "status": "FROZEN, superseded in the unsafe direction by the empirical arm",
+      "kill_criterion_fired": false,
+      "strongest_config_false_accepts": 0,
+      "strongest_config_abstentions": 2,
+      "caveat": "No process launched, no pixel captured. Field vectors were cleaner and more content-aware than a real recorder produces."
+    },
+    "EMPIRICAL": {
+      "what": "real Xvfb X11 display, Openbox WM, real Tk/ImageMagick windows, real X11 pixel grabs, unprivileged attacker (uid 1000), independently observing privileged recorder (root + CAP_SYS_PTRACE)",
+      "tag": "phase1-empirical-v1",
+      "lab_image": "sceneprov-lab:2.1 (infra/Dockerfile)",
+      "capture_tool": "ImageMagick import (declared gnome-screenshot equivalent)",
+      "pid_source": "X-Resource XResQueryClientIds (server-observed)",
+      "n_scenarios": 13,
+      "n_tier_rows": 169,
+      "ground_truth_mix": {
+        "AUTHENTIC_TARGET": 1,
+        "SUBSTITUTE": 11,
+        "AMBIGUOUS": 1
+      },
+      "ground_truth_isolation": "PASS (static + dynamic open() guard + non-vacuity; 13 GT files, 0 touched)",
+      "kill_criterion_fired": true
+    },
+    "BLOCKED_OR_UNRUN": {
+      "wayland_arm": "NOT RUN. External validity to Wayland unknown.",
+      "A9_application_state": "Not exercised empirically; predeclared out of scope for a display-layer contract.",
+      "adaptive_red_team": "NOT RUN. Adversary was contract-aware but attacks were predeclared, not searched."
+    }
+  },
+  "DISCARDED_RUNS_NOT_COUNTED": [
+    {
+      "run": "empirical suite on sceneprov-lab:1.6 and earlier",
+      "invalidated_by": "IC-2",
+      "defect": "cleanup used pkill -f 'python3 ' which missed the `python3 < script` case; one window leaked into 7 later scenarios and produced spurious R5_composite_frame abstentions",
+      "superseded_by": "run on sceneprov-lab:2.0+"
+    },
+    {
+      "run": "case 13b on sceneprov-lab:2.0 and earlier",
+      "invalidated_by": "IC-4",
+      "defect": "13b put the resource path in argv and never rendered the fabrication, so its SUBSTITUTE verdict was correct for the wrong reason; it did not implement A13-evasive",
+      "superseded_by": "13b on sceneprov-lab:2.1 (final)"
+    },
+    {
+      "run": "visible-window-set PIDs before IC-3",
+      "invalidated_by": "IC-3",
+      "defect": "wmctrl pid column reads _NET_WM_PID and returned 0 throughout",
+      "superseded_by": "X-Resource resolution on sceneprov-lab:2.0+"
+    }
+  ],
+  "IMPLEMENTATION_CORRECTIONS": {
+    "IC-1": "PID via X-Resource, not _NET_WM_PID (contract specifies kernel/runtime-observed; _NET_WM_PID is application-asserted)",
+    "IC-2": "cleanup kills by uid and waits for zero managed windows",
+    "IC-3": "visible-window-set PIDs also via X-Resource",
+    "IC-4": "case 13b re-specified so the predeclared attack is actually built",
+    "note": "All four are implementation/spec disagreements. None changed the frozen contract. All were documented before re-running affected cases."
+  },
+  "FINAL_EMPIRICAL_RESULT": {
+    "strongest_practical_config": "0+A+B+C+D+E",
+    "false_accepts": 1,
+    "false_accept_scenarios": [
+      "13b_viewer_agent_image_hidden"
+    ],
+    "false_rejects": 0,
+    "coverage_pct": 76.9,
+    "secure_coverage_pct": 69.2,
+    "abstention_rate_pct": 23.1,
+    "MODE1_permissive_exposure_pct": 27.3,
+    "MODE2_failclosed_exposure_pct": 9.1,
+    "note": "13 scenarios, 11 substitutes. Constructed suite. NOT a population estimate."
+  },
+  "BOUNDARY_1_RESOURCE": {
+    "case": "13b_viewer_agent_image_hidden",
+    "verdict": "AUTHENTIC_TARGET (false accept)",
+    "ground_truth": "SUBSTITUTE",
+    "fires_at": [
+      "0+A+B+C+D",
+      "0+A+B+C+D+E",
+      "FULL(0+A..F)",
+      "SENS:no_resource_lineage",
+      "SENS:no_resource_lineage_no_browser_url"
+    ],
+    "observed_executable": "/usr/bin/display-im6.q16",
+    "observed_command_line": "display -update 1 -geometry 900x640+80+60 /lab/work/pre_existing_report.png",
+    "observed_pid": 297,
+    "observed_process_uid": 1000,
+    "displayed_resource_lineage": "/lab/work/pre_existing_report.png:pre_existing",
+    "agent_written_code_lineage": "not_agent_authored",
+    "field_observation_failures": [],
+    "image_sha256": "58e3a03a5f3a03ea3f65702a072226e643680da24552b82378ce6afbb77b3860",
+    "assurance_boundary": "process/surface identity != displayed-resource identity; path identity != content identity",
+    "INSTRUMENTATION_CAVEAT": {
+      "what": "The episode write journal was WRITE-API-keyed: it recorded only writes made through the harness helper. The byte replacement at the declared target path was performed with `cp` via subprocess and was therefore never journalled.",
+      "evidence": {
+        "target_path": "/lab/work/pre_existing_report.png",
+        "target_path_in_journal": false,
+        "fabricated_payload_in_journal": true
+      },
+      "consequence": "A filesystem-EVENT-based journal (e.g. inotify/fanotify) might have observed this particular write and flagged the case. This is the primary threat to the 13b finding and MUST be tested before the boundary is treated as settled.",
+      "why_the_boundary_still_stands": [
+        "even an event-based journal binds paths and write events, not rendered bytes",
+        "pre-staging the content before the episode window evades it (the S3 theme)",
+        "network- or pipe-sourced resources have no local write to observe",
+        "the contract carries CONTENT_HASH but no expected value to compare it against, so content identity is unverifiable in principle within the frozen ladder"
+      ],
+      "status": "The kill criterion fired on its own predeclared terms: fabricated evidence satisfied the strongest practical field set with no recorder/kernel/compositor compromise. The caveat bounds how far the mechanism generalises, not whether it fired."
+    }
+  },
+  "BOUNDARY_2_ATOMICITY": {
+    "claim_scope": "The TESTED recorder implementation failed to atomically bind display metadata and pixels. This is NOT a claim that atomic provenance is impossible in principle.",
+    "runs": [
+      {
+        "run": 1,
+        "lab_image": "sceneprov-lab:1.6",
+        "trials": 120,
+        "invariant_violations": 120,
+        "violation_rate_pct": 100.0,
+        "metadata_inconsistent": 113,
+        "pixel_metadata_mismatch": 7,
+        "skew_ms_min": 105.37,
+        "skew_ms_max": 161.94,
+        "artifact_retained": false,
+        "provenance_of_figures": "run log only; the JSON artifact was overwritten before export and is NOT on disk"
+      },
+      {
+        "run": 2,
+        "lab_image": "sceneprov-lab:2.1",
+        "trials": 120,
+        "invariant_violations": 120,
+        "violation_rate_pct": 100.0,
+        "metadata_inconsistent": 7,
+        "pixel_metadata_mismatch": 113,
+        "skew_ms_min": 118.28,
+        "skew_ms_max": 169.95,
+        "artifact_retained": true,
+        "artifact": "outputs/empirical_raw/s1_race.json"
+      }
+    ],
+    "replication": "Both runs: 120/120 violations. The violation MODE inverted between runs (113/7 vs 7/113), which is why repeated trials were required and a single trial would have been worthless.",
+    "attacker_privilege": "unprivileged; wmctrl -a at ~50 ms period"
+  },
+  "BOUNDARY_3_NESTED_DISPLAY": {
+    "claim_scope": "The TESTED outer recorder could not structurally recover inner scene provenance through a nested X server. Untested substrates (Wayland, other compositors, VMs) are NOT covered.",
+    "outer_resolved_executable": "/usr/bin/Xephyr",
+    "outer_resolved_command_line": "Xephyr :77 -screen 960x720 -ac -br -noreset",
+    "outer_resolved_pid": 4391,
+    "inner_window_visible_in_outer_window_set": false,
+    "field_observation_failures": [],
+    "note": "Every field correct and complete; provenance terminates at the nested X server process rather than the process that drew the pixels."
+  },
+  "ANALYTIC_VS_EMPIRICAL": {
+    "compared_pairs": 169,
+    "agreements": 127,
+    "agreement_pct": 75.1,
+    "disagreement_directions": {
+      "AUTHENTIC_TARGET->UNKNOWN": 3,
+      "SUBSTITUTE->UNKNOWN": 34,
+      "UNKNOWN->AUTHENTIC_TARGET": 5
+    },
+    "unsafe_transitions": {
+      "count": 5,
+      "direction": "UNKNOWN -> AUTHENTIC_TARGET",
+      "scenarios": [
+        "13b_viewer_agent_image_hidden"
+      ],
+      "tier_configs": [
+        "0+A+B+C+D",
+        "0+A+B+C+D+E",
+        "FULL(0+A..F)",
+        "SENS:no_resource_lineage",
+        "SENS:no_resource_lineage_no_browser_url"
+      ]
+    },
+    "methodological_lesson_INFERENCE": "Derived field vectors can overstate security assurance by supplying semantic cleanliness and bindings unavailable to a real recorder. This is an INFERENCE from one experiment, not a universal benchmark claim."
+  },
+  "UNKNOWN_POLICY": {
+    "separation": "mechanism (what the recorder can observe) is distinct from enforcement (what the evaluator does with the verdict)",
+    "MODE1_permissive": "UNKNOWN may still receive automated credit",
+    "MODE2_failclosed": "UNKNOWN receives no automatic credit; review or independent verification",
+    "exposure_by_tier": [
+      {
+        "tier_config": "0",
+        "MODE1_pct": 100.0,
+        "MODE2_pct": 0.0
+      },
+      {
+        "tier_config": "0+A",
+        "MODE1_pct": 100.0,
+        "MODE2_pct": 0.0
+      },
+      {
+        "tier_config": "0+A+B",
+        "MODE1_pct": 100.0,
+        "MODE2_pct": 0.0
+      },
+      {
+        "tier_config": "0+A+B+C",
+        "MODE1_pct": 100.0,
+        "MODE2_pct": 0.0
+      },
+      {
+        "tier_config": "0+A+B+C+D",
+        "MODE1_pct": 27.3,
+        "MODE2_pct": 9.1
+      },
+      {
+        "tier_config": "0+A+B+C+D+E",
+        "MODE1_pct": 27.3,
+        "MODE2_pct": 9.1
+      },
+      {
+        "tier_config": "FULL(0+A..F)",
+        "MODE1_pct": 27.3,
+        "MODE2_pct": 9.1
+      },
+      {
+        "tier_config": "iso:D",
+        "MODE1_pct": 90.9,
+        "MODE2_pct": 0.0
+      },
+      {
+        "tier_config": "iso:B",
+        "MODE1_pct": 100.0,
+        "MODE2_pct": 0.0
+      },
+      {
+        "tier_config": "iso:C",
+        "MODE1_pct": 100.0,
+        "MODE2_pct": 0.0
+      },
+      {
+        "tier_config": "iso:E",
+        "MODE1_pct": 100.0,
+        "MODE2_pct": 0.0
+      },
+      {
+        "tier_config": "SENS:no_resource_lineage",
+        "MODE1_pct": 27.3,
+        "MODE2_pct": 9.1
+      },
+      {
+        "tier_config": "SENS:no_resource_lineage_no_browser_url",
+        "MODE1_pct": 27.3,
+        "MODE2_pct": 9.1
+      }
+    ],
+    "CRITICAL": "Fail-closed UNKNOWN materially reduces exposure but DOES NOT repair a false AUTHENTIC_TARGET. Case 13b survives fail-closed UNKNOWN, because it was never UNKNOWN: it was accepted.",
+    "admissibility_semantics": {
+      "AUTHENTIC_TARGET": "may be automatically considered",
+      "SUBSTITUTE": "reject / flag",
+      "UNKNOWN": "no automatic credit; review or independent verification"
+    }
+  },
+  "NET_WM_PID_SCOPE": {
+    "measured": "In the tested Debian bookworm / Xvfb / Openbox environment, _NET_WM_PID was absent across all tested windows (Python/Tk, ImageMagick display, Openbox) and wmctrl reported pid=0, so X-Resource correlation was required.",
+    "NOT_claimed": "This is NOT claimed to be universally true of X11. Many real toolkits (GTK, Qt) do set _NET_WM_PID. The finding is that it cannot be RELIED upon, and that it sits on the application-asserted plane regardless of availability."
+  },
+  "DIRECTION": {
+    "capture_provenance_contract_branch": "CLOSED / INSUFFICIENT",
+    "reason": "Capture-time system/display provenance is insufficient for visual claim integrity under the tested white-box adversary.",
+    "primary_falsifier": "case 13b",
+    "prohibition": "Do not add displayed-resource fields to the frozen contract to rescue it. The failure is the result.",
+    "future_option_not_executed": {
+      "id": "H-RB",
+      "statement": "Can application-independent system telemetry bind displayed pixels to the actual resource bytes consumed by a legitimate renderer?",
+      "status": "DOCUMENTED OPTION ONLY. Not executed in this task.",
+      "falsification_condition": "If legitimate viewers/browsers can consume and display attacker-controlled resources whose actual rendered-byte identity cannot be structurally reconstructed from system-level telemetry, then application-independent resource binding fails and the problem escalates to application-specific state attestation or an independent outcome oracle."
+    }
+  }
+}
