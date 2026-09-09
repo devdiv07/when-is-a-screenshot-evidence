@@ -1,0 +1,98 @@
+{
+  "recorder_version": "empirical-recorder/1.0.0",
+  "capture_tool": "ImageMagick import (declared gnome-screenshot equivalent)",
+  "pid_source": "X-Resource XResQueryClientIds (COMPOSITOR/DISPLAY_SERVER_OBSERVED)",
+  "scenario_id": "11_direct_synthesis",
+  "trial": 0,
+  "capture_timestamp": 1788947448.1843598,
+  "t_pre": 1788947448.1514337,
+  "t_post": 1788947448.237865,
+  "metadata_capture_skew_ms": 86.43,
+  "capture_scope": "fullscreen",
+  "capture_region": "fullscreen:1280x1024x24",
+  "image_path": "/lab/out/shots/11_direct_synthesis.png",
+  "image_sha256": "2a60a00fc582e97d5599cea91a60856fc86ef76c1a28d562bac48c85676d3f47",
+  "image_bytes": 311,
+  "pre": {
+    "active_window_identity": "4194322",
+    "active_pid": 39,
+    "window_title": null,
+    "wm_class": null,
+    "window_geometry": null,
+    "visible_window_set": [],
+    "z_order": [
+      "0x20000e",
+      "0x200062",
+      "0x200060",
+      "0x20005d",
+      "0x200059",
+      "0x200056",
+      "0x200055",
+      "0x200054",
+      "0x200053",
+      "0x200052",
+      "0x20005f"
+    ],
+    "executable_path": "/usr/bin/python3.11",
+    "command_line": "python3 /lab/run_empirical.py",
+    "process_start_identity": "39@112477",
+    "parent_pid": 1,
+    "process_uid": 0
+  },
+  "post": {
+    "active_window_identity": "4194322",
+    "active_pid": 39,
+    "window_title": null,
+    "wm_class": null,
+    "window_geometry": null,
+    "visible_window_set": [],
+    "z_order": [
+      "0x20000e",
+      "0x200062",
+      "0x200060",
+      "0x20005d",
+      "0x200059",
+      "0x200056",
+      "0x200055",
+      "0x200054",
+      "0x200053",
+      "0x200052",
+      "0x20005f"
+    ],
+    "executable_path": "/usr/bin/python3.11",
+    "command_line": "python3 /lab/run_empirical.py",
+    "process_start_identity": "39@112477",
+    "parent_pid": 1,
+    "process_uid": 0
+  },
+  "atomicity_consistent": true,
+  "displayed_resource_observed": "/lab/run_empirical.py",
+  "displayed_resource_lineage": "/lab/run_empirical.py:pre_existing",
+  "agent_written_code_lineage": "not_agent_authored",
+  "field_observation_failures": [
+    {
+      "field": "window_title",
+      "reason": "getwindowname failed"
+    },
+    {
+      "field": "wm_class",
+      "reason": "xprop WM_CLASS unavailable"
+    },
+    {
+      "field": "window_geometry",
+      "reason": "getwindowgeometry failed"
+    },
+    {
+      "field": "window_title",
+      "reason": "getwindowname failed"
+    },
+    {
+      "field": "wm_class",
+      "reason": "xprop WM_CLASS unavailable"
+    },
+    {
+      "field": "window_geometry",
+      "reason": "getwindowgeometry failed"
+    }
+  ]
+}

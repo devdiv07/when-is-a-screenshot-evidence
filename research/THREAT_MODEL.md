@@ -224,8 +224,8 @@ Stated now so Phase I can falsify them rather than confirm them.
 | P4 | Tier D required for A6/A7 and insufficient alone | **CONFIRMED** — 6.7% coverage in isolation (E050) |
 | P5 | Tier E is the only tier addressing A4 | **CONFIRMED, and conditional** on a privileged application channel (E051) |
 | P6 | **No tier combination detects A9** | **CONFIRMED** — AUTHENTIC_TARGET at every tier from B up, and that verdict is correct (E052) |
-| P8 | **A13 defeats Tiers A+B+D** | **CONFIRMED IN EFFECT** — `13b` undetected at every config including FULL, but via abstention, not acceptance (E048) |
-| P7 | Every guarantee is bounded by recorder atomicity (A12) | **UNTESTED — case blocked.** Timing-dependent; needs a real recorder and repeated trials (E046) |
+| P8 | **A13 defeats Tiers A+B+D** | **CONFIRMED, AND WORSE THAN PREDICTED** — empirically `13b` is a FALSE ACCEPT at the full ladder, not an abstention (E056). The analytic abstention was an artifact of derived field vectors. |
+| P7 | Every guarantee is bounded by recorder atomicity (A12) | **CONFIRMED EMPIRICALLY** — invariant violated in 120/120 trials, 113 hard pixel/metadata mismatches, 118-170 ms skew (E058) |
 
 ## 8. Kill criterion
 
@@ -254,4 +254,32 @@ worth nothing unless the evaluator actions UNKNOWN.
 
 Caveats that bound this result: contract-logic arm only, analyst-derived field vectors, and
 the two timing/platform cases unrun. See `outputs/adversarial_experiment_report.md` §0, §7.
+
+## 10. Empirical outcome (2026-09-09) — supersedes §9 for the empirical arm
+
+§9 recorded that the kill criterion did not fire in the **analytic** arm. In the
+**empirical** arm, on a real X11 display with real processes and real pixels, it **FIRED**.
+
+| | Analytic (derived vectors) | Empirical (real lab) |
+|---|---|---|
+| `13b` at strongest practical tier | UNKNOWN | **AUTHENTIC_TARGET — false accept** |
+| Recorder atomicity (A12/S1) | untested | **120/120 invariant violations** |
+| Nested display (S2) | untested | **provenance terminates at Xephyr** |
+| Agreement between arms | — | 127/169 = 75.1%; **5 pairs UNKNOWN→AUTHENTIC (unsafe direction)** |
+
+Three distinct boundaries are now located empirically:
+
+1. **content vs path** — resource lineage is path-level, the attack is content-level;
+2. **atomicity** — metadata and pixels are 118–170 ms apart and trivially desynchronised;
+3. **display server** — a nested X server makes the scene opaque.
+
+A new adversary capability is therefore recorded, observed rather than derived:
+
+| # | Capability | Status |
+|---|---|---|
+| **C15** | replace the **content** of a declared target resource in place, while a legitimate viewer holds it open | **OBSERVED empirically** (case 13b) |
+| **C16** | interpose a nested display server between the recorder and the scene, unprivileged | **OBSERVED empirically** (S2) |
+
+Neither is addressed by any tier of the frozen contract, and per the predeclared rule no
+field has been added in response.
 

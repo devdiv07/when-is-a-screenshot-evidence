@@ -1,0 +1,121 @@
+{
+  "recorder_version": "empirical-recorder/1.0.0",
+  "capture_tool": "ImageMagick import (declared gnome-screenshot equivalent)",
+  "pid_source": "X-Resource XResQueryClientIds (COMPOSITOR/DISPLAY_SERVER_OBSERVED)",
+  "scenario_id": "06_target_killed_before_capture",
+  "trial": 0,
+  "capture_timestamp": 1788947479.9456623,
+  "t_pre": 1788947479.9026232,
+  "t_post": 1788947480.0235934,
+  "metadata_capture_skew_ms": 120.97,
+  "capture_scope": "fullscreen",
+  "capture_region": "fullscreen:1280x1024x24",
+  "image_path": "/lab/out/shots/06_target_killed_before_capture.png",
+  "image_sha256": "a78ba3d64df88f5f6bfae808d25e6c56add3a48c4fc2f6d7f0815f09f5a560b1",
+  "image_bytes": 14449,
+  "pre": {
+    "active_window_identity": "6291473",
+    "active_pid": 336,
+    "window_title": "pre_existing_report.png - Image Viewer",
+    "wm_class": "Display",
+    "window_geometry": "900x640+82+100",
+    "visible_window_set": [
+      {
+        "wid": "0x00400012",
+        "pid": 334,
+        "netwmpid_reported": 0,
+        "geometry": "900x640+82+100",
+        "title": "ImageMagick: pre_existing_report.png"
+      },
+      {
+        "wid": "0x00600011",
+        "pid": 336,
+        "netwmpid_reported": 0,
+        "geometry": "900x640+82+100",
+        "title": "pre_existing_report.png - Image Viewer"
+      }
+    ],
+    "z_order": [
+      "0x600001",
+      "0x40003b",
+      "0x400038",
+      "0x40002c",
+      "0x400025",
+      "0x40001e",
+      "0x40000c",
+      "0x20000e",
+      "0x200062",
+      "0x200060",
+      "0x20005d",
+      "0x200059",
+      "0x200056",
+      "0x200055",
+      "0x200054",
+      "0x200053",
+      "0x200052",
+      "0x20005f",
+      "0x2004c3",
+      "0x20042b"
+    ],
+    "executable_path": "/usr/bin/python3.11",
+    "command_line": "python3 /lab/work/after_kill.py",
+    "process_start_identity": "336@115831",
+    "parent_pid": 335,
+    "process_uid": 1000
+  },
+  "post": {
+    "active_window_identity": "6291473",
+    "active_pid": 336,
+    "window_title": "pre_existing_report.png - Image Viewer",
+    "wm_class": "Display",
+    "window_geometry": "900x640+82+100",
+    "visible_window_set": [
+      {
+        "wid": "0x00400012",
+        "pid": 334,
+        "netwmpid_reported": 0,
+        "geometry": "900x640+82+100",
+        "title": "ImageMagick: pre_existing_report.png"
+      },
+      {
+        "wid": "0x00600011",
+        "pid": 336,
+        "netwmpid_reported": 0,
+        "geometry": "900x640+82+100",
+        "title": "pre_existing_report.png - Image Viewer"
+      }
+    ],
+    "z_order": [
+      "0x600001",
+      "0x40003b",
+      "0x400038",
+      "0x40002c",
+      "0x400025",
+      "0x40001e",
+      "0x40000c",
+      "0x20000e",
+      "0x200062",
+      "0x200060",
+      "0x20005d",
+      "0x200059",
+      "0x200056",
+      "0x200055",
+      "0x200054",
+      "0x200053",
+      "0x200052",
+      "0x20005f",
+      "0x2004c3",
+      "0x20042b"
+    ],
+    "executable_path": "/usr/bin/python3.11",
+    "command_line": "python3 /lab/work/after_kill.py",
+    "process_start_identity": "336@115831",
+    "parent_pid": 335,
+    "process_uid": 1000
+  },
+  "atomicity_consistent": true,
+  "displayed_resource_observed": "/lab/work/after_kill.py",
+  "displayed_resource_lineage": "/lab/work/after_kill.py:agent_authored_this_episode",
+  "agent_written_code_lineage": "agent_authored_this_episode",
+  "field_observation_failures": []
+}

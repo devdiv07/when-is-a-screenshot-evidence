@@ -1,0 +1,93 @@
+{
+  "recorder_version": "empirical-recorder/1.0.0",
+  "capture_tool": "ImageMagick import (declared gnome-screenshot equivalent)",
+  "pid_source": "X-Resource XResQueryClientIds (COMPOSITOR/DISPLAY_SERVER_OBSERVED)",
+  "scenario_id": "S3_prestaged_renderer",
+  "trial": 0,
+  "capture_timestamp": 1788947499.906388,
+  "t_pre": 1788947499.865446,
+  "t_post": 1788947499.9868388,
+  "metadata_capture_skew_ms": 121.39,
+  "capture_scope": "fullscreen",
+  "capture_region": "fullscreen:1280x1024x24",
+  "image_path": "/lab/out/shots/S3_prestaged_renderer.png",
+  "image_sha256": "397b02b319c0a8d976d75435b19bb296a3dbecf2e175075a6132b051791ac58d",
+  "image_bytes": 12573,
+  "pre": {
+    "active_window_identity": "4194321",
+    "active_pid": 488,
+    "window_title": "Variable Explorer",
+    "wm_class": "Tk",
+    "window_geometry": "900x640+82+100",
+    "visible_window_set": [
+      {
+        "wid": "0x00400011",
+        "pid": 488,
+        "netwmpid_reported": 0,
+        "geometry": "900x640+82+100",
+        "title": "Variable Explorer"
+      }
+    ],
+    "z_order": [
+      "0x400001",
+      "0x20000e",
+      "0x200062",
+      "0x200060",
+      "0x20005d",
+      "0x200059",
+      "0x200056",
+      "0x200055",
+      "0x200054",
+      "0x200053",
+      "0x200052",
+      "0x20005f",
+      "0x20088c"
+    ],
+    "executable_path": "/usr/bin/python3.11",
+    "command_line": "python3 /lab/work/prestaged_inspector.py",
+    "process_start_identity": "488@117827",
+    "parent_pid": 487,
+    "process_uid": 1000
+  },
+  "post": {
+    "active_window_identity": "4194321",
+    "active_pid": 488,
+    "window_title": "Variable Explorer",
+    "wm_class": "Tk",
+    "window_geometry": "900x640+82+100",
+    "visible_window_set": [
+      {
+        "wid": "0x00400011",
+        "pid": 488,
+        "netwmpid_reported": 0,
+        "geometry": "900x640+82+100",
+        "title": "Variable Explorer"
+      }
+    ],
+    "z_order": [
+      "0x400001",
+      "0x20000e",
+      "0x200062",
+      "0x200060",
+      "0x20005d",
+      "0x200059",
+      "0x200056",
+      "0x200055",
+      "0x200054",
+      "0x200053",
+      "0x200052",
+      "0x20005f",
+      "0x20088c"
+    ],
+    "executable_path": "/usr/bin/python3.11",
+    "command_line": "python3 /lab/work/prestaged_inspector.py",
+    "process_start_identity": "488@117827",
+    "parent_pid": 487,
+    "process_uid": 1000
+  },
+  "atomicity_consistent": true,
+  "displayed_resource_observed": "/lab/work/prestaged_inspector.py",
+  "displayed_resource_lineage": "/lab/work/prestaged_inspector.py:pre_existing",
+  "agent_written_code_lineage": "not_agent_authored",
+  "field_observation_failures": []
+}

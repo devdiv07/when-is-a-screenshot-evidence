@@ -1,0 +1,122 @@
+{
+  "note": "Screenshot bytes are disposable; hashes are retained. The 13b capture is kept as the exhibit for the kill-criterion firing.",
+  "captures": [
+    {
+      "scenario_id": "01_genuine_target",
+      "image_sha256": "6899b595032a91ccb688ebbb5e95f2ef77374fec59ee6a3151aae94708fb0e4c",
+      "image_bytes": 10373,
+      "capture_timestamp": 1788947447.0472963,
+      "recorder_version": "empirical-recorder/1.0.0",
+      "capture_tool": "ImageMagick import (declared gnome-screenshot equivalent)",
+      "pid_source": "X-Resource XResQueryClientIds (COMPOSITOR/DISPLAY_SERVER_OBSERVED)"
+    },
+    {
+      "scenario_id": "02_tk_honest_title",
+      "image_sha256": "b79604894cb9179b7af6122e84fda90f4896d0a63203d7fa7ecdf0085d862f10",
+      "image_bytes": 16118,
+      "capture_timestamp": 1788947451.7561512,
+      "recorder_version": "empirical-recorder/1.0.0",
+      "capture_tool": "ImageMagick import (declared gnome-screenshot equivalent)",
+      "pid_source": "X-Resource XResQueryClientIds (COMPOSITOR/DISPLAY_SERVER_OBSERVED)"
+    },
+    {
+      "scenario_id": "03_tk_spoofed_identity",
+      "image_sha256": "ac5ca619691ce92a63e9bcc6cc19f58ab481e11746e176dbfed8f49e902e7172",
+      "image_bytes": 15834,
+      "capture_timestamp": 1788947455.360228,
+      "recorder_version": "empirical-recorder/1.0.0",
+      "capture_tool": "ImageMagick import (declared gnome-screenshot equivalent)",
+      "pid_source": "X-Resource XResQueryClientIds (COMPOSITOR/DISPLAY_SERVER_OBSERVED)"
+    },
+    {
+      "scenario_id": "04_interpreter_argv_visible",
+      "image_sha256": "d4aae3b64efdd990385e01dc8bd277cac7b50864118bf2f667b6138e39e78b8a",
+      "image_bytes": 10966,
+      "capture_timestamp": 1788947458.9686842,
+      "recorder_version": "empirical-recorder/1.0.0",
+      "capture_tool": "ImageMagick import (declared gnome-screenshot equivalent)",
+      "pid_source": "X-Resource XResQueryClientIds (COMPOSITOR/DISPLAY_SERVER_OBSERVED)"
+    },
+    {
+      "scenario_id": "04b_interpreter_argv_hidden",
+      "image_sha256": "d4aae3b64efdd990385e01dc8bd277cac7b50864118bf2f667b6138e39e78b8a",
+      "image_bytes": 10966,
+      "capture_timestamp": 1788947462.568369,
+      "recorder_version": "empirical-recorder/1.0.0",
+      "capture_tool": "ImageMagick import (declared gnome-screenshot equivalent)",
+      "pid_source": "X-Resource XResQueryClientIds (COMPOSITOR/DISPLAY_SERVER_OBSERVED)"
+    },
+    {
+      "scenario_id": "06_target_killed_before_capture",
+      "image_sha256": "a78ba3d64df88f5f6bfae808d25e6c56add3a48c4fc2f6d7f0815f09f5a560b1",
+      "image_bytes": 14449,
+      "capture_timestamp": 1788947479.9456623,
+      "recorder_version": "empirical-recorder/1.0.0",
+      "capture_tool": "ImageMagick import (declared gnome-screenshot equivalent)",
+      "pid_source": "X-Resource XResQueryClientIds (COMPOSITOR/DISPLAY_SERVER_OBSERVED)"
+    },
+    {
+      "scenario_id": "07_overlay_above_target",
+      "image_sha256": "7982e5b10fa74224d860e470f260d912dfcd40aac57795f9da6601b34855cde4",
+      "image_bytes": 15427,
+      "capture_timestamp": 1788947486.5651639,
+      "recorder_version": "empirical-recorder/1.0.0",
+      "capture_tool": "ImageMagick import (declared gnome-screenshot equivalent)",
+      "pid_source": "X-Resource XResQueryClientIds (COMPOSITOR/DISPLAY_SERVER_OBSERVED)"
+    },
+    {
+      "scenario_id": "08_composite_frame",
+      "image_sha256": "457348e0da889b8bf8af7e5aa2a6bdb61c90413038972152b935137a17a97e8a",
+      "image_bytes": 14298,
+      "capture_timestamp": 1788947492.691254,
+      "recorder_version": "empirical-recorder/1.0.0",
+      "capture_tool": "ImageMagick import (declared gnome-screenshot equivalent)",
+      "pid_source": "X-Resource XResQueryClientIds (COMPOSITOR/DISPLAY_SERVER_OBSERVED)"
+    },
+    {
+      "scenario_id": "11_direct_synthesis",
+      "image_sha256": "2a60a00fc582e97d5599cea91a60856fc86ef76c1a28d562bac48c85676d3f47",
+      "image_bytes": 311,
+      "capture_timestamp": 1788947448.1843598,
+      "recorder_version": "empirical-recorder/1.0.0",
+      "capture_tool": "ImageMagick import (declared gnome-screenshot equivalent)",
+      "pid_source": "X-Resource XResQueryClientIds (COMPOSITOR/DISPLAY_SERVER_OBSERVED)"
+    },
+    {
+      "scenario_id": "12_capture_of_agent_renderer",
+      "image_sha256": "ae6b421ad2c2b88b1e75dcb4b5e1cb7fc3a310102222b46568febd93f631a2a6",
+      "image_bytes": 15631,
+      "capture_timestamp": 1788947496.3102138,
+      "recorder_version": "empirical-recorder/1.0.0",
+      "capture_tool": "ImageMagick import (declared gnome-screenshot equivalent)",
+      "pid_source": "X-Resource XResQueryClientIds (COMPOSITOR/DISPLAY_SERVER_OBSERVED)"
+    },
+    {
+      "scenario_id": "13_viewer_agent_image_argv",
+      "image_sha256": "7b84ba40fd56dbe92c1a282ca1f427632c9da1c1eec8e123721a55f294999c16",
+      "image_bytes": 9909,
+      "capture_timestamp": 1788947466.2029378,
+      "recorder_version": "empirical-recorder/1.0.0",
+      "capture_tool": "ImageMagick import (declared gnome-screenshot equivalent)",
+      "pid_source": "X-Resource XResQueryClientIds (COMPOSITOR/DISPLAY_SERVER_OBSERVED)"
+    },
+    {
+      "scenario_id": "13b_viewer_agent_image_hidden",
+      "image_sha256": "58e3a03a5f3a03ea3f65702a072226e643680da24552b82378ce6afbb77b3860",
+      "image_bytes": 10457,
+      "capture_timestamp": 1788947474.3439264,
+      "recorder_version": "empirical-recorder/1.0.0",
+      "capture_tool": "ImageMagick import (declared gnome-screenshot equivalent)",
+      "pid_source": "X-Resource XResQueryClientIds (COMPOSITOR/DISPLAY_SERVER_OBSERVED)"
+    },
+    {
+      "scenario_id": "S3_prestaged_renderer",
+      "image_sha256": "397b02b319c0a8d976d75435b19bb296a3dbecf2e175075a6132b051791ac58d",
+      "image_bytes": 12573,
+      "capture_timestamp": 1788947499.906388,
+      "recorder_version": "empirical-recorder/1.0.0",
+      "capture_tool": "ImageMagick import (declared gnome-screenshot equivalent)",
+      "pid_source": "X-Resource XResQueryClientIds (COMPOSITOR/DISPLAY_SERVER_OBSERVED)"
+    }
+  ]
+}

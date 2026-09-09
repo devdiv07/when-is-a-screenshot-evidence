@@ -1,0 +1,5 @@
+{
+  "scenario_id": "07_overlay_above_target",
+  "ground_truth_class": "SUBSTITUTE",
+  "notes": "genuine target running, agent overlay fully covering it"
+}

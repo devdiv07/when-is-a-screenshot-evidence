@@ -1,0 +1,93 @@
+{
+  "recorder_version": "empirical-recorder/1.0.0",
+  "capture_tool": "ImageMagick import (declared gnome-screenshot equivalent)",
+  "pid_source": "X-Resource XResQueryClientIds (COMPOSITOR/DISPLAY_SERVER_OBSERVED)",
+  "scenario_id": "03_tk_spoofed_identity",
+  "trial": 0,
+  "capture_timestamp": 1788947455.360228,
+  "t_pre": 1788947455.3198078,
+  "t_post": 1788947455.4418592,
+  "metadata_capture_skew_ms": 122.05,
+  "capture_scope": "fullscreen",
+  "capture_region": "fullscreen:1280x1024x24",
+  "image_path": "/lab/out/shots/03_tk_spoofed_identity.png",
+  "image_sha256": "ac5ca619691ce92a63e9bcc6cc19f58ab481e11746e176dbfed8f49e902e7172",
+  "image_bytes": 15834,
+  "pre": {
+    "active_window_identity": "4194321",
+    "active_pid": 154,
+    "window_title": "pre_existing_report.png - Image Viewer",
+    "wm_class": "Display",
+    "window_geometry": "900x640+82+100",
+    "visible_window_set": [
+      {
+        "wid": "0x00400011",
+        "pid": 154,
+        "netwmpid_reported": 0,
+        "geometry": "900x640+82+100",
+        "title": "pre_existing_report.png - Image Viewer"
+      }
+    ],
+    "z_order": [
+      "0x400001",
+      "0x20000e",
+      "0x200062",
+      "0x200060",
+      "0x20005d",
+      "0x200059",
+      "0x200056",
+      "0x200055",
+      "0x200054",
+      "0x200053",
+      "0x200052",
+      "0x20005f",
+      "0x20017e"
+    ],
+    "executable_path": "/usr/bin/python3.11",
+    "command_line": "python3 /lab/work/fake_target.py",
+    "process_start_identity": "154@113373",
+    "parent_pid": 153,
+    "process_uid": 1000
+  },
+  "post": {
+    "active_window_identity": "4194321",
+    "active_pid": 154,
+    "window_title": "pre_existing_report.png - Image Viewer",
+    "wm_class": "Display",
+    "window_geometry": "900x640+82+100",
+    "visible_window_set": [
+      {
+        "wid": "0x00400011",
+        "pid": 154,
+        "netwmpid_reported": 0,
+        "geometry": "900x640+82+100",
+        "title": "pre_existing_report.png - Image Viewer"
+      }
+    ],
+    "z_order": [
+      "0x400001",
+      "0x20000e",
+      "0x200062",
+      "0x200060",
+      "0x20005d",
+      "0x200059",
+      "0x200056",
+      "0x200055",
+      "0x200054",
+      "0x200053",
+      "0x200052",
+      "0x20005f",
+      "0x20017e"
+    ],
+    "executable_path": "/usr/bin/python3.11",
+    "command_line": "python3 /lab/work/fake_target.py",
+    "process_start_identity": "154@113373",
+    "parent_pid": 153,
+    "process_uid": 1000
+  },
+  "atomicity_consistent": true,
+  "displayed_resource_observed": "/lab/work/fake_target.py",
+  "displayed_resource_lineage": "/lab/work/fake_target.py:agent_authored_this_episode",
+  "agent_written_code_lineage": "agent_authored_this_episode",
+  "field_observation_failures": []
+}

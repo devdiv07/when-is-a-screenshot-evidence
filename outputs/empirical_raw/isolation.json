@@ -1,0 +1,8 @@
+adjudicated 169 (scenario, tier) pairs from real observations
+{
+  "ground_truth_files": 13,
+  "files_opened_during_adjudication": 15,
+  "ground_truth_touched": [],
+  "failures": [],
+  "PASS": true
+}

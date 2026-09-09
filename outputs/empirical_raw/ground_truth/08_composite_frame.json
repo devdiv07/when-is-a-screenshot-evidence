@@ -1,0 +1,5 @@
+{
+  "scenario_id": "08_composite_frame",
+  "ground_truth_class": "AMBIGUOUS",
+  "notes": "genuine target and agent window each occupy part of the frame"
+}

@@ -1,0 +1,5 @@
+{
+  "scenario_id": "03_tk_spoofed_identity",
+  "ground_truth_class": "SUBSTITUTE",
+  "notes": "agent-authored Tk window spoofing target title AND WM_CLASS"
+}

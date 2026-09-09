@@ -1,0 +1,5 @@
+{
+  "scenario_id": "04_interpreter_argv_visible",
+  "ground_truth_class": "SUBSTITUTE",
+  "notes": "fake GUI via legitimate interpreter, script path in argv"
+}

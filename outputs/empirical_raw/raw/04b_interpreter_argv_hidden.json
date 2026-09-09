@@ -1,0 +1,93 @@
+{
+  "recorder_version": "empirical-recorder/1.0.0",
+  "capture_tool": "ImageMagick import (declared gnome-screenshot equivalent)",
+  "pid_source": "X-Resource XResQueryClientIds (COMPOSITOR/DISPLAY_SERVER_OBSERVED)",
+  "scenario_id": "04b_interpreter_argv_hidden",
+  "trial": 0,
+  "capture_timestamp": 1788947462.568369,
+  "t_pre": 1788947462.5287988,
+  "t_post": 1788947462.6410255,
+  "metadata_capture_skew_ms": 112.23,
+  "capture_scope": "fullscreen",
+  "capture_region": "fullscreen:1280x1024x24",
+  "image_path": "/lab/out/shots/04b_interpreter_argv_hidden.png",
+  "image_sha256": "d4aae3b64efdd990385e01dc8bd277cac7b50864118bf2f667b6138e39e78b8a",
+  "image_bytes": 10966,
+  "pre": {
+    "active_window_identity": "4194321",
+    "active_pid": 226,
+    "window_title": "Inkscape",
+    "wm_class": "Inkscape",
+    "window_geometry": "900x640+82+100",
+    "visible_window_set": [
+      {
+        "wid": "0x00400011",
+        "pid": 226,
+        "netwmpid_reported": 0,
+        "geometry": "900x640+82+100",
+        "title": "Inkscape"
+      }
+    ],
+    "z_order": [
+      "0x400001",
+      "0x20000e",
+      "0x200062",
+      "0x200060",
+      "0x20005d",
+      "0x200059",
+      "0x200056",
+      "0x200055",
+      "0x200054",
+      "0x200053",
+      "0x200052",
+      "0x20005f",
+      "0x200272"
+    ],
+    "executable_path": "/usr/bin/python3.11",
+    "command_line": "python3",
+    "process_start_identity": "226@114094",
+    "parent_pid": 225,
+    "process_uid": 1000
+  },
+  "post": {
+    "active_window_identity": "4194321",
+    "active_pid": 226,
+    "window_title": "Inkscape",
+    "wm_class": "Inkscape",
+    "window_geometry": "900x640+82+100",
+    "visible_window_set": [
+      {
+        "wid": "0x00400011",
+        "pid": 226,
+        "netwmpid_reported": 0,
+        "geometry": "900x640+82+100",
+        "title": "Inkscape"
+      }
+    ],
+    "z_order": [
+      "0x400001",
+      "0x20000e",
+      "0x200062",
+      "0x200060",
+      "0x20005d",
+      "0x200059",
+      "0x200056",
+      "0x200055",
+      "0x200054",
+      "0x200053",
+      "0x200052",
+      "0x20005f",
+      "0x200272"
+    ],
+    "executable_path": "/usr/bin/python3.11",
+    "command_line": "python3",
+    "process_start_identity": "226@114094",
+    "parent_pid": 225,
+    "process_uid": 1000
+  },
+  "atomicity_consistent": true,
+  "displayed_resource_observed": null,
+  "displayed_resource_lineage": null,
+  "agent_written_code_lineage": "not_agent_authored",
+  "field_observation_failures": []
+}

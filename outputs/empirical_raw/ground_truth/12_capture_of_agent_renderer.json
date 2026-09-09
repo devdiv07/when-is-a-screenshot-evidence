@@ -1,0 +1,5 @@
+{
+  "scenario_id": "12_capture_of_agent_renderer",
+  "ground_truth_class": "SUBSTITUTE",
+  "notes": "capture of agent-authored Tk renderer (DAV_task_0 pattern)"
+}

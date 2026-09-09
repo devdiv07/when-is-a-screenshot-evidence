@@ -1,0 +1,5 @@
+{
+  "scenario_id": "02_tk_honest_title",
+  "ground_truth_class": "SUBSTITUTE",
+  "notes": "agent-authored Tk window, honest title"
+}

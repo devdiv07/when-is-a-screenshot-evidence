@@ -1,0 +1,135 @@
+{
+  "recorder_version": "empirical-recorder/1.0.0",
+  "capture_tool": "ImageMagick import (declared gnome-screenshot equivalent)",
+  "pid_source": "X-Resource XResQueryClientIds (COMPOSITOR/DISPLAY_SERVER_OBSERVED)",
+  "scenario_id": "08_composite_frame",
+  "trial": 0,
+  "capture_timestamp": 1788947492.691254,
+  "t_pre": 1788947492.6366062,
+  "t_post": 1788947492.7695158,
+  "metadata_capture_skew_ms": 132.91,
+  "capture_scope": "fullscreen",
+  "capture_region": "fullscreen:1280x1024x24",
+  "image_path": "/lab/out/shots/08_composite_frame.png",
+  "image_sha256": "457348e0da889b8bf8af7e5aa2a6bdb61c90413038972152b935137a17a97e8a",
+  "image_bytes": 14298,
+  "pre": {
+    "active_window_identity": "6291473",
+    "active_pid": 414,
+    "window_title": "side panel",
+    "wm_class": "Tk",
+    "window_geometry": "620x1000+642+40",
+    "visible_window_set": [
+      {
+        "wid": "0x00400012",
+        "pid": 412,
+        "netwmpid_reported": 0,
+        "geometry": "620x640+2+40",
+        "title": "ImageMagick: pre_existing_report.png"
+      },
+      {
+        "wid": "0x0040003b",
+        "pid": 412,
+        "netwmpid_reported": 0,
+        "geometry": "96x68+647+364",
+        "title": "Pan Icon"
+      },
+      {
+        "wid": "0x00600011",
+        "pid": 414,
+        "netwmpid_reported": 0,
+        "geometry": "620x1000+642+40",
+        "title": "side panel"
+      }
+    ],
+    "z_order": [
+      "0x600001",
+      "0x400038",
+      "0x40002c",
+      "0x400025",
+      "0x40001e",
+      "0x40000c",
+      "0x20000e",
+      "0x200062",
+      "0x200060",
+      "0x20005d",
+      "0x200059",
+      "0x200056",
+      "0x200055",
+      "0x200054",
+      "0x200053",
+      "0x200052",
+      "0x20005f",
+      "0x20076b",
+      "0x200714",
+      "0x20067c"
+    ],
+    "executable_path": "/usr/bin/python3.11",
+    "command_line": "python3 /lab/work/side_panel.py",
+    "process_start_identity": "414@117004",
+    "parent_pid": 413,
+    "process_uid": 1000
+  },
+  "post": {
+    "active_window_identity": "6291473",
+    "active_pid": 414,
+    "window_title": "side panel",
+    "wm_class": "Tk",
+    "window_geometry": "620x1000+642+40",
+    "visible_window_set": [
+      {
+        "wid": "0x00400012",
+        "pid": 412,
+        "netwmpid_reported": 0,
+        "geometry": "620x640+2+40",
+        "title": "ImageMagick: pre_existing_report.png"
+      },
+      {
+        "wid": "0x0040003b",
+        "pid": 412,
+        "netwmpid_reported": 0,
+        "geometry": "96x68+647+364",
+        "title": "Pan Icon"
+      },
+      {
+        "wid": "0x00600011",
+        "pid": 414,
+        "netwmpid_reported": 0,
+        "geometry": "620x1000+642+40",
+        "title": "side panel"
+      }
+    ],
+    "z_order": [
+      "0x600001",
+      "0x400038",
+      "0x40002c",
+      "0x400025",
+      "0x40001e",
+      "0x40000c",
+      "0x20000e",
+      "0x200062",
+      "0x200060",
+      "0x20005d",
+      "0x200059",
+      "0x200056",
+      "0x200055",
+      "0x200054",
+      "0x200053",
+      "0x200052",
+      "0x20005f",
+      "0x20076b",
+      "0x200714",
+      "0x20067c"
+    ],
+    "executable_path": "/usr/bin/python3.11",
+    "command_line": "python3 /lab/work/side_panel.py",
+    "process_start_identity": "414@117004",
+    "parent_pid": 413,
+    "process_uid": 1000
+  },
+  "atomicity_consistent": true,
+  "displayed_resource_observed": "/lab/work/side_panel.py",
+  "displayed_resource_lineage": "/lab/work/side_panel.py:agent_authored_this_episode",
+  "agent_written_code_lineage": "agent_authored_this_episode",
+  "field_observation_failures": []
+}

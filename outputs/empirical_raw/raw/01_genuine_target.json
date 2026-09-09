@@ -1,0 +1,103 @@
+{
+  "recorder_version": "empirical-recorder/1.0.0",
+  "capture_tool": "ImageMagick import (declared gnome-screenshot equivalent)",
+  "pid_source": "X-Resource XResQueryClientIds (COMPOSITOR/DISPLAY_SERVER_OBSERVED)",
+  "scenario_id": "01_genuine_target",
+  "trial": 0,
+  "capture_timestamp": 1788947447.0472963,
+  "t_pre": 1788947446.9739847,
+  "t_post": 1788947447.131348,
+  "metadata_capture_skew_ms": 157.36,
+  "capture_scope": "fullscreen",
+  "capture_region": "fullscreen:1280x1024x24",
+  "image_path": "/lab/out/shots/01_genuine_target.png",
+  "image_sha256": "6899b595032a91ccb688ebbb5e95f2ef77374fec59ee6a3151aae94708fb0e4c",
+  "image_bytes": 10373,
+  "pre": {
+    "active_window_identity": "4194322",
+    "active_pid": 47,
+    "window_title": "ImageMagick: pre_existing_report.png",
+    "wm_class": "Display-im6.q16",
+    "window_geometry": "900x640+82+100",
+    "visible_window_set": [
+      {
+        "wid": "0x00400012",
+        "pid": 47,
+        "netwmpid_reported": 0,
+        "geometry": "900x640+82+100",
+        "title": "ImageMagick: pre_existing_report.png"
+      }
+    ],
+    "z_order": [
+      "0x40003b",
+      "0x400038",
+      "0x40002c",
+      "0x400025",
+      "0x40001e",
+      "0x40000c",
+      "0x20000e",
+      "0x200062",
+      "0x200060",
+      "0x20005d",
+      "0x200059",
+      "0x200056",
+      "0x200055",
+      "0x200054",
+      "0x200053",
+      "0x200052",
+      "0x20005f",
+      "0x200064"
+    ],
+    "executable_path": "/usr/bin/display-im6.q16",
+    "command_line": "display -geometry 900x640+80+60 /lab/work/pre_existing_report.png",
+    "process_start_identity": "47@112537",
+    "parent_pid": 46,
+    "process_uid": 1000
+  },
+  "post": {
+    "active_window_identity": "4194322",
+    "active_pid": 47,
+    "window_title": "ImageMagick: pre_existing_report.png",
+    "wm_class": "Display-im6.q16",
+    "window_geometry": "900x640+82+100",
+    "visible_window_set": [
+      {
+        "wid": "0x00400012",
+        "pid": 47,
+        "netwmpid_reported": 0,
+        "geometry": "900x640+82+100",
+        "title": "ImageMagick: pre_existing_report.png"
+      }
+    ],
+    "z_order": [
+      "0x40003b",
+      "0x400038",
+      "0x40002c",
+      "0x400025",
+      "0x40001e",
+      "0x40000c",
+      "0x20000e",
+      "0x200062",
+      "0x200060",
+      "0x20005d",
+      "0x200059",
+      "0x200056",
+      "0x200055",
+      "0x200054",
+      "0x200053",
+      "0x200052",
+      "0x20005f",
+      "0x200064"
+    ],
+    "executable_path": "/usr/bin/display-im6.q16",
+    "command_line": "display -geometry 900x640+80+60 /lab/work/pre_existing_report.png",
+    "process_start_identity": "47@112537",
+    "parent_pid": 46,
+    "process_uid": 1000
+  },
+  "atomicity_consistent": true,
+  "displayed_resource_observed": "/lab/work/pre_existing_report.png",
+  "displayed_resource_lineage": "/lab/work/pre_existing_report.png:pre_existing",
+  "agent_written_code_lineage": "not_agent_authored",
+  "field_observation_failures": []
+}

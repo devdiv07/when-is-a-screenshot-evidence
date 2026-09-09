@@ -1,0 +1,103 @@
+{
+  "recorder_version": "empirical-recorder/1.0.0",
+  "capture_tool": "ImageMagick import (declared gnome-screenshot equivalent)",
+  "pid_source": "X-Resource XResQueryClientIds (COMPOSITOR/DISPLAY_SERVER_OBSERVED)",
+  "scenario_id": "13_viewer_agent_image_argv",
+  "trial": 0,
+  "capture_timestamp": 1788947466.2029378,
+  "t_pre": 1788947466.163883,
+  "t_post": 1788947466.2762718,
+  "metadata_capture_skew_ms": 112.39,
+  "capture_scope": "fullscreen",
+  "capture_region": "fullscreen:1280x1024x24",
+  "image_path": "/lab/out/shots/13_viewer_agent_image_argv.png",
+  "image_sha256": "7b84ba40fd56dbe92c1a282ca1f427632c9da1c1eec8e123721a55f294999c16",
+  "image_bytes": 9909,
+  "pre": {
+    "active_window_identity": "4194322",
+    "active_pid": 262,
+    "window_title": "ImageMagick: fake_render_argv.png",
+    "wm_class": "Display-im6.q16",
+    "window_geometry": "900x640+82+100",
+    "visible_window_set": [
+      {
+        "wid": "0x00400012",
+        "pid": 262,
+        "netwmpid_reported": 0,
+        "geometry": "900x640+82+100",
+        "title": "ImageMagick: fake_render_argv.png"
+      }
+    ],
+    "z_order": [
+      "0x40003b",
+      "0x400038",
+      "0x40002c",
+      "0x400025",
+      "0x40001e",
+      "0x40000c",
+      "0x20000e",
+      "0x200062",
+      "0x200060",
+      "0x20005d",
+      "0x200059",
+      "0x200056",
+      "0x200055",
+      "0x200054",
+      "0x200053",
+      "0x200052",
+      "0x20005f",
+      "0x2002ec"
+    ],
+    "executable_path": "/usr/bin/display-im6.q16",
+    "command_line": "display -geometry 900x640+80+60 /lab/work/fake_render_argv.png",
+    "process_start_identity": "262@114457",
+    "parent_pid": 261,
+    "process_uid": 1000
+  },
+  "post": {
+    "active_window_identity": "4194322",
+    "active_pid": 262,
+    "window_title": "ImageMagick: fake_render_argv.png",
+    "wm_class": "Display-im6.q16",
+    "window_geometry": "900x640+82+100",
+    "visible_window_set": [
+      {
+        "wid": "0x00400012",
+        "pid": 262,
+        "netwmpid_reported": 0,
+        "geometry": "900x640+82+100",
+        "title": "ImageMagick: fake_render_argv.png"
+      }
+    ],
+    "z_order": [
+      "0x40003b",
+      "0x400038",
+      "0x40002c",
+      "0x400025",
+      "0x40001e",
+      "0x40000c",
+      "0x20000e",
+      "0x200062",
+      "0x200060",
+      "0x20005d",
+      "0x200059",
+      "0x200056",
+      "0x200055",
+      "0x200054",
+      "0x200053",
+      "0x200052",
+      "0x20005f",
+      "0x2002ec"
+    ],
+    "executable_path": "/usr/bin/display-im6.q16",
+    "command_line": "display -geometry 900x640+80+60 /lab/work/fake_render_argv.png",
+    "process_start_identity": "262@114457",
+    "parent_pid": 261,
+    "process_uid": 1000
+  },
+  "atomicity_consistent": true,
+  "displayed_resource_observed": "/lab/work/fake_render_argv.png",
+  "displayed_resource_lineage": "/lab/work/fake_render_argv.png:agent_authored_this_episode",
+  "agent_written_code_lineage": "agent_authored_this_episode",
+  "field_observation_failures": []
+}

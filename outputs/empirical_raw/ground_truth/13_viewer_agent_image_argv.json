@@ -1,0 +1,5 @@
+{
+  "scenario_id": "13_viewer_agent_image_argv",
+  "ground_truth_class": "SUBSTITUTE",
+  "notes": "legitimate viewer opening an agent-synthesised image; path in argv"
+}

@@ -1,0 +1,5 @@
+{
+  "scenario_id": "S3_prestaged_renderer",
+  "ground_truth_class": "SUBSTITUTE",
+  "notes": "agent-authored renderer written BEFORE the journal window"
+}

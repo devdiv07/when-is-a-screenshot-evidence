@@ -1,0 +1,109 @@
+{
+  "boundary": {
+    "scenario_id": "S2_nested_compositor",
+    "outer_display": ":99",
+    "inner_display": ":77",
+    "outer_resolved_executable": "/usr/bin/Xephyr",
+    "outer_resolved_command_line": "Xephyr :77 -screen 960x720 -ac -br -noreset",
+    "outer_resolved_window_title": "Xephyr on :77.0 (ctrl+shift grabs mouse and keyboard)",
+    "outer_resolved_pid": 4391,
+    "inner_window_visible_in_outer_window_set": false,
+    "outer_visible_window_titles": [
+      "Xephyr on :77.0 (ctrl+shift grabs mouse and keyboard)"
+    ],
+    "image_sha256": "7c52db75cf33e8044e6aad9ee7dfd8e9691047a06f93f3a72f9aa2fd71004d1c",
+    "field_observation_failures": [],
+    "assurance_boundary": "outer recorder resolves the captured pixels to the NESTED X SERVER process, not to the process that drew them"
+  },
+  "record": {
+    "recorder_version": "empirical-recorder/1.0.0",
+    "capture_tool": "ImageMagick import (declared gnome-screenshot equivalent)",
+    "pid_source": "X-Resource XResQueryClientIds (COMPOSITOR/DISPLAY_SERVER_OBSERVED)",
+    "scenario_id": "S2_nested_compositor",
+    "trial": 0,
+    "capture_timestamp": 1788947629.198937,
+    "t_pre": 1788947629.134093,
+    "t_post": 1788947629.2812202,
+    "metadata_capture_skew_ms": 147.13,
+    "capture_scope": "fullscreen",
+    "capture_region": "fullscreen:1280x1024x24",
+    "image_path": "/lab/out/s2_nested.png",
+    "image_sha256": "7c52db75cf33e8044e6aad9ee7dfd8e9691047a06f93f3a72f9aa2fd71004d1c",
+    "image_bytes": 16163,
+    "pre": {
+      "active_window_identity": "4194305",
+      "active_pid": 4391,
+      "window_title": "Xephyr on :77.0 (ctrl+shift grabs mouse and keyboard)",
+      "wm_class": "Xephyr",
+      "window_geometry": "960x720+161+181",
+      "visible_window_set": [
+        {
+          "wid": "0x00400001",
+          "pid": 4391,
+          "netwmpid_reported": 0,
+          "geometry": "960x720+161+181",
+          "title": "Xephyr on :77.0 (ctrl+shift grabs mouse and keyboard)"
+        }
+      ],
+      "z_order": [
+        "0x20000e",
+        "0x200062",
+        "0x200060",
+        "0x20005d",
+        "0x200059",
+        "0x200056",
+        "0x200055",
+        "0x200054",
+        "0x200053",
+        "0x200052",
+        "0x20005f",
+        "0x20331f"
+      ],
+      "executable_path": "/usr/bin/Xephyr",
+      "command_line": "Xephyr :77 -screen 960x720 -ac -br -noreset",
+      "process_start_identity": "4391@130356",
+      "parent_pid": 4390,
+      "process_uid": 1000
+    },
+    "post": {
+      "active_window_identity": "4194305",
+      "active_pid": 4391,
+      "window_title": "Xephyr on :77.0 (ctrl+shift grabs mouse and keyboard)",
+      "wm_class": "Xephyr",
+      "window_geometry": "960x720+161+181",
+      "visible_window_set": [
+        {
+          "wid": "0x00400001",
+          "pid": 4391,
+          "netwmpid_reported": 0,
+          "geometry": "960x720+161+181",
+          "title": "Xephyr on :77.0 (ctrl+shift grabs mouse and keyboard)"
+        }
+      ],
+      "z_order": [
+        "0x20000e",
+        "0x200062",
+        "0x200060",
+        "0x20005d",
+        "0x200059",
+        "0x200056",
+        "0x200055",
+        "0x200054",
+        "0x200053",
+        "0x200052",
+        "0x20005f",
+        "0x20331f"
+      ],
+      "executable_path": "/usr/bin/Xephyr",
+      "command_line": "Xephyr :77 -screen 960x720 -ac -br -noreset",
+      "process_start_identity": "4391@130356",
+      "parent_pid": 4390,
+      "process_uid": 1000
+    },
+    "atomicity_consistent": true,
+    "displayed_resource_observed": null,
+    "displayed_resource_lineage": null,
+    "agent_written_code_lineage": "not_agent_authored",
+    "field_observation_failures": []
+  }
+}

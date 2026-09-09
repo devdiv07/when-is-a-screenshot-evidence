@@ -1,0 +1,5 @@
+{
+  "scenario_id": "04b_interpreter_argv_hidden",
+  "ground_truth_class": "SUBSTITUTE",
+  "notes": "same, but code fed on stdin so argv discloses nothing"
+}

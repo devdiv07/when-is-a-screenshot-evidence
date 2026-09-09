@@ -1,0 +1,121 @@
+{
+  "recorder_version": "empirical-recorder/1.0.0",
+  "capture_tool": "ImageMagick import (declared gnome-screenshot equivalent)",
+  "pid_source": "X-Resource XResQueryClientIds (COMPOSITOR/DISPLAY_SERVER_OBSERVED)",
+  "scenario_id": "07_overlay_above_target",
+  "trial": 0,
+  "capture_timestamp": 1788947486.5651639,
+  "t_pre": 1788947486.517189,
+  "t_post": 1788947486.6455219,
+  "metadata_capture_skew_ms": 128.33,
+  "capture_scope": "fullscreen",
+  "capture_region": "fullscreen:1280x1024x24",
+  "image_path": "/lab/out/shots/07_overlay_above_target.png",
+  "image_sha256": "7982e5b10fa74224d860e470f260d912dfcd40aac57795f9da6601b34855cde4",
+  "image_bytes": 15427,
+  "pre": {
+    "active_window_identity": "6291473",
+    "active_pid": 374,
+    "window_title": "overlay",
+    "wm_class": "Tk",
+    "window_geometry": "900x640+82+100",
+    "visible_window_set": [
+      {
+        "wid": "0x00400012",
+        "pid": 372,
+        "netwmpid_reported": 0,
+        "geometry": "900x640+2+40",
+        "title": "ImageMagick: pre_existing_report.png"
+      },
+      {
+        "wid": "0x00600011",
+        "pid": 374,
+        "netwmpid_reported": 0,
+        "geometry": "900x640+82+100",
+        "title": "overlay"
+      }
+    ],
+    "z_order": [
+      "0x600001",
+      "0x40003b",
+      "0x400038",
+      "0x40002c",
+      "0x400025",
+      "0x40001e",
+      "0x40000c",
+      "0x20000e",
+      "0x200062",
+      "0x200060",
+      "0x20005d",
+      "0x200059",
+      "0x200056",
+      "0x200055",
+      "0x200054",
+      "0x200053",
+      "0x200052",
+      "0x2005e4",
+      "0x20005f",
+      "0x20054c"
+    ],
+    "executable_path": "/usr/bin/python3.11",
+    "command_line": "python3 /lab/work/overlay.py",
+    "process_start_identity": "374@116392",
+    "parent_pid": 373,
+    "process_uid": 1000
+  },
+  "post": {
+    "active_window_identity": "6291473",
+    "active_pid": 374,
+    "window_title": "overlay",
+    "wm_class": "Tk",
+    "window_geometry": "900x640+82+100",
+    "visible_window_set": [
+      {
+        "wid": "0x00400012",
+        "pid": 372,
+        "netwmpid_reported": 0,
+        "geometry": "900x640+2+40",
+        "title": "ImageMagick: pre_existing_report.png"
+      },
+      {
+        "wid": "0x00600011",
+        "pid": 374,
+        "netwmpid_reported": 0,
+        "geometry": "900x640+82+100",
+        "title": "overlay"
+      }
+    ],
+    "z_order": [
+      "0x600001",
+      "0x40003b",
+      "0x400038",
+      "0x40002c",
+      "0x400025",
+      "0x40001e",
+      "0x40000c",
+      "0x20000e",
+      "0x200062",
+      "0x200060",
+      "0x20005d",
+      "0x200059",
+      "0x200056",
+      "0x200055",
+      "0x200054",
+      "0x200053",
+      "0x200052",
+      "0x2005e4",
+      "0x20005f",
+      "0x20054c"
+    ],
+    "executable_path": "/usr/bin/python3.11",
+    "command_line": "python3 /lab/work/overlay.py",
+    "process_start_identity": "374@116392",
+    "parent_pid": 373,
+    "process_uid": 1000
+  },
+  "atomicity_consistent": true,
+  "displayed_resource_observed": "/lab/work/overlay.py",
+  "displayed_resource_lineage": "/lab/work/overlay.py:agent_authored_this_episode",
+  "agent_written_code_lineage": "agent_authored_this_episode",
+  "field_observation_failures": []
+}

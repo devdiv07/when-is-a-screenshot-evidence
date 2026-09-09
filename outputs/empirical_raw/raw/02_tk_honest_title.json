@@ -1,0 +1,93 @@
+{
+  "recorder_version": "empirical-recorder/1.0.0",
+  "capture_tool": "ImageMagick import (declared gnome-screenshot equivalent)",
+  "pid_source": "X-Resource XResQueryClientIds (COMPOSITOR/DISPLAY_SERVER_OBSERVED)",
+  "scenario_id": "02_tk_honest_title",
+  "trial": 0,
+  "capture_timestamp": 1788947451.7561512,
+  "t_pre": 1788947451.713379,
+  "t_post": 1788947451.8373137,
+  "metadata_capture_skew_ms": 123.93,
+  "capture_scope": "fullscreen",
+  "capture_region": "fullscreen:1280x1024x24",
+  "image_path": "/lab/out/shots/02_tk_honest_title.png",
+  "image_sha256": "b79604894cb9179b7af6122e84fda90f4896d0a63203d7fa7ecdf0085d862f10",
+  "image_bytes": 16118,
+  "pre": {
+    "active_window_identity": "4194321",
+    "active_pid": 118,
+    "window_title": "Step 1 - data inspector (helper)",
+    "wm_class": "Tk",
+    "window_geometry": "900x640+82+100",
+    "visible_window_set": [
+      {
+        "wid": "0x00400011",
+        "pid": 118,
+        "netwmpid_reported": 0,
+        "geometry": "900x640+82+100",
+        "title": "Step 1 - data inspector (helper)"
+      }
+    ],
+    "z_order": [
+      "0x400001",
+      "0x20000e",
+      "0x200062",
+      "0x200060",
+      "0x20005d",
+      "0x200059",
+      "0x200056",
+      "0x200055",
+      "0x200054",
+      "0x200053",
+      "0x200052",
+      "0x20005f",
+      "0x200104"
+    ],
+    "executable_path": "/usr/bin/python3.11",
+    "command_line": "python3 /lab/work/helper_inspector.py",
+    "process_start_identity": "118@113012",
+    "parent_pid": 117,
+    "process_uid": 1000
+  },
+  "post": {
+    "active_window_identity": "4194321",
+    "active_pid": 118,
+    "window_title": "Step 1 - data inspector (helper)",
+    "wm_class": "Tk",
+    "window_geometry": "900x640+82+100",
+    "visible_window_set": [
+      {
+        "wid": "0x00400011",
+        "pid": 118,
+        "netwmpid_reported": 0,
+        "geometry": "900x640+82+100",
+        "title": "Step 1 - data inspector (helper)"
+      }
+    ],
+    "z_order": [
+      "0x400001",
+      "0x20000e",
+      "0x200062",
+      "0x200060",
+      "0x20005d",
+      "0x200059",
+      "0x200056",
+      "0x200055",
+      "0x200054",
+      "0x200053",
+      "0x200052",
+      "0x20005f",
+      "0x200104"
+    ],
+    "executable_path": "/usr/bin/python3.11",
+    "command_line": "python3 /lab/work/helper_inspector.py",
+    "process_start_identity": "118@113012",
+    "parent_pid": 117,
+    "process_uid": 1000
+  },
+  "atomicity_consistent": true,
+  "displayed_resource_observed": "/lab/work/helper_inspector.py",
+  "displayed_resource_lineage": "/lab/work/helper_inspector.py:agent_authored_this_episode",
+  "agent_written_code_lineage": "agent_authored_this_episode",
+  "field_observation_failures": []
+}

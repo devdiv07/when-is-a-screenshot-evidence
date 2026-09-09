@@ -1,0 +1,5 @@
+{
+  "scenario_id": "01_genuine_target",
+  "ground_truth_class": "AUTHENTIC_TARGET",
+  "notes": "real non-agent X client displaying a pre-existing resource"
+}

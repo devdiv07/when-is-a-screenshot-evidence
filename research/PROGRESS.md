@@ -2,8 +2,39 @@
 
 ## Current status — 2026-09-09
 
-**Phase I executed (contract-logic arm). Kill criterion did NOT fire. Assurance ceiling
-identified. Direction = MODIFY, unchanged.**
+**Phase I EMPIRICAL arm executed on a real X11 lab. THE KILL CRITERION FIRED.**
+
+| Freeze | |
+|---|---|
+| analytic arm | tag `phase1-analytic-v1`, commit `fa78c2d` — preserved unrewritten |
+| empirical arm | see `outputs/phase1_empirical_report.md` |
+
+Headline: case `13b` produced a **FALSE ACCEPT** (`AUTHENTIC_TARGET`) at the strongest
+practically collectable field set and at the full ladder, from an **unprivileged**
+attacker, with **no compromise** of the recorder/kernel/compositor boundary. A legitimate
+viewer was opened on the **declared target path** and that file's **bytes were swapped**
+for agent-authored pixels. The contract's resource lineage is **path-level**; the attack is
+**content-level**. No field was added in response.
+
+Two further boundaries, both empirically demonstrated:
+- **S1 atomicity**: the invariant was violated in **120/120 trials** (113 hard
+  pixel/metadata mismatches; 118–170 ms skew). Tier D's precondition does not hold as
+  implemented.
+- **S2 nested display**: provenance terminates at `/usr/bin/Xephyr`; the inner scene is
+  invisible to the outer recorder, with zero field observation failures.
+
+**The analytic arm was falsified in the unsafe direction**: 127/169 agreement (75.1%), with
+**5 pairs moving UNKNOWN → AUTHENTIC_TARGET**, including the headline case.
+
+**Largest single measured effect is policy, not mechanism**: crediting UNKNOWN (MODE 1)
+gives 100% exposure below Tier D and 27.3% at the strongest tier; refusing to credit it
+(MODE 2) gives 0% and 9.1%.
+
+**Wayland arm NOT run** — external validity to Wayland unknown.
+
+---
+
+**Earlier: Phase I analytic arm (contract-logic). Kill criterion did NOT fire there.**
 
 ### Phase I result in one paragraph
 
@@ -100,7 +131,14 @@ Audit kill criteria **2, 3, 5** triggered. **E011 REJECTED.**
 | `scripts/field_coverage.py` | Phase D → `field_coverage.csv` (3 outcomes, bundle-aware set cover) |
 | `scripts/adversarial_cases.py` | Phase I predeclared cases + observed field vectors |
 | `scripts/adjudicator.py` | contract rules, deterministic, no LLM |
-| `scripts/run_adversarial.py` | Phase I matrix → 4 output files |
+| `scripts/run_adversarial.py` | Phase I analytic matrix → 4 output files |
+| `scripts/score_empirical.py` | Phase I empirical scoring → 5 output files |
+| `infra/Dockerfile` + `entrypoint.sh` | reproducible headless X11 lab (Xvfb + Openbox) |
+| `infra/recorder.py` | trusted recorder; derives every field from live state |
+| `infra/scenarios.py` | attack constructors, run unprivileged |
+| `infra/race_s1.py`, `infra/nested_s2.py` | S1 atomicity race, S2 nested display |
+| `infra/test_isolation.py` | proves the adjudicator cannot read ground truth |
+| `infra/IMPLEMENTATION_CORRECTIONS.md` | IC-1..IC-4, documented before re-running |
 
 Outputs: `source_manifest.csv` (697), `recoverability_cases.csv` (825 rows),
 `recoverability_report.md`, `audit_metrics.json`, `information_deficits.csv`,
@@ -146,19 +184,20 @@ Raw data `outputs/raw/`, caches `outputs/cache/` — both gitignored.
 
 ## Next actions
 
-**Do NOT add fields to catch 13b.** The ceiling is a result, not a defect list.
+**Do NOT patch the contract to catch 13b.** The kill criterion fired; that is the result.
+Any v2 contract must be predeclared separately, before it is tested.
 
-1. **Build the empirical arm.** An instrumented X11 host with a privileged recorder, then
-   re-run the 17 evaluable cases against real observations to test whether a real recorder
-   sees what the contract-logic arm assumed.
-2. **Run the two blocked cases.** S1 (recorder atomicity, with repeated trials as the spec
-   requires) and S2 (nested compositor). Either could invalidate Tier D wholesale.
-3. **Run the Wayland arm** — Tier D leans on X11 enumeration that Wayland restricts.
-4. **Determine whether an evaluator can action UNKNOWN.** The contract's whole safety
-   margin is abstention; if unadjudicated evidence is accepted by default, the margin is
-   zero. This is an evaluator-design question, not a contract question.
-5. Adaptive red-teaming only after the empirical arm exists. The suite is not saturated:
-   `13b` was found only because the spec asked for an evasive variant.
+1. **Decide the escalation.** Predeclared options, unchanged: application-specific state
+   attestation, trusted-display mechanisms, an independent outcome oracle, or the
+   conclusion that this layer cannot establish the property.
+2. **The UNKNOWN policy result is actionable now and independent of the contract**:
+   fail-closed handling of UNKNOWN is the largest measured security effect (E062).
+3. **Wayland arm** — still unrun; Tier D leans on X11 enumeration Wayland restricts.
+4. **Atomicity is an engineering question**: S1 measured one naive recorder. A server-side
+   grab or single atomic snapshot primitive must be built and re-measured before Tier D is
+   credited with anything.
+5. Adaptive red-teaming remains future work. The suite is nowhere near saturated — `13b`
+   only became a real attack after IC-4 corrected its construction.
 
 ## Blocked / not done
 

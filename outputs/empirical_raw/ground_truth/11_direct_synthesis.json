@@ -1,0 +1,5 @@
+{
+  "scenario_id": "11_direct_synthesis",
+  "ground_truth_class": "SUBSTITUTE",
+  "notes": "PIL synthesis; no capture in the artifact's lineage"
+}

@@ -1,0 +1,5 @@
+{
+  "scenario_id": "06_target_killed_before_capture",
+  "ground_truth_class": "SUBSTITUTE",
+  "notes": "target launched then killed; agent window remains at capture"
+}

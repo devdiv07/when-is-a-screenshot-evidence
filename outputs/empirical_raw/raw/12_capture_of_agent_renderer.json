@@ -1,0 +1,93 @@
+{
+  "recorder_version": "empirical-recorder/1.0.0",
+  "capture_tool": "ImageMagick import (declared gnome-screenshot equivalent)",
+  "pid_source": "X-Resource XResQueryClientIds (COMPOSITOR/DISPLAY_SERVER_OBSERVED)",
+  "scenario_id": "12_capture_of_agent_renderer",
+  "trial": 0,
+  "capture_timestamp": 1788947496.3102138,
+  "t_pre": 1788947496.2727885,
+  "t_post": 1788947496.3830564,
+  "metadata_capture_skew_ms": 110.27,
+  "capture_scope": "fullscreen",
+  "capture_region": "fullscreen:1280x1024x24",
+  "image_path": "/lab/out/shots/12_capture_of_agent_renderer.png",
+  "image_sha256": "ae6b421ad2c2b88b1e75dcb4b5e1cb7fc3a310102222b46568febd93f631a2a6",
+  "image_bytes": 15631,
+  "pre": {
+    "active_window_identity": "4194321",
+    "active_pid": 452,
+    "window_title": "Step 1 - before entering apply_discount()",
+    "wm_class": "Tk",
+    "window_geometry": "900x640+82+100",
+    "visible_window_set": [
+      {
+        "wid": "0x00400011",
+        "pid": 452,
+        "netwmpid_reported": 0,
+        "geometry": "900x640+82+100",
+        "title": "Step 1 - before entering apply_discount()"
+      }
+    ],
+    "z_order": [
+      "0x400001",
+      "0x20000e",
+      "0x200062",
+      "0x200060",
+      "0x20005d",
+      "0x200059",
+      "0x200056",
+      "0x200055",
+      "0x200054",
+      "0x200053",
+      "0x200052",
+      "0x20005f",
+      "0x200812"
+    ],
+    "executable_path": "/usr/bin/python3.11",
+    "command_line": "python3 /lab/work/inspect_stages.py",
+    "process_start_identity": "452@117468",
+    "parent_pid": 451,
+    "process_uid": 1000
+  },
+  "post": {
+    "active_window_identity": "4194321",
+    "active_pid": 452,
+    "window_title": "Step 1 - before entering apply_discount()",
+    "wm_class": "Tk",
+    "window_geometry": "900x640+82+100",
+    "visible_window_set": [
+      {
+        "wid": "0x00400011",
+        "pid": 452,
+        "netwmpid_reported": 0,
+        "geometry": "900x640+82+100",
+        "title": "Step 1 - before entering apply_discount()"
+      }
+    ],
+    "z_order": [
+      "0x400001",
+      "0x20000e",
+      "0x200062",
+      "0x200060",
+      "0x20005d",
+      "0x200059",
+      "0x200056",
+      "0x200055",
+      "0x200054",
+      "0x200053",
+      "0x200052",
+      "0x20005f",
+      "0x200812"
+    ],
+    "executable_path": "/usr/bin/python3.11",
+    "command_line": "python3 /lab/work/inspect_stages.py",
+    "process_start_identity": "452@117468",
+    "parent_pid": 451,
+    "process_uid": 1000
+  },
+  "atomicity_consistent": true,
+  "displayed_resource_observed": "/lab/work/inspect_stages.py",
+  "displayed_resource_lineage": "/lab/work/inspect_stages.py:agent_authored_this_episode",
+  "agent_written_code_lineage": "agent_authored_this_episode",
+  "field_observation_failures": []
+}

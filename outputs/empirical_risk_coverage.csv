@@ -1,0 +1,14 @@
+tier_config,n_cases,classified,coverage_pct,false_accepts,false_accept_rate_among_classified_pct,false_rejects,false_reject_rate_among_classified_pct,abstentions,abstention_rate_pct,abstention_failure_to_adjudicate,secure_coverage_pct,n_substitute_cases,MODE1_permissive_effective_false_accepts,MODE1_permissive_exposure_pct,MODE2_failclosed_effective_false_accepts,MODE2_failclosed_exposure_pct,defeated_by
+0,13,0,0.0,0,0.0,0,0.0,13,100.0,12,0.0,11,11,100.0,0,0.0,
+0+A,13,0,0.0,0,0.0,0,0.0,13,100.0,12,0.0,11,11,100.0,0,0.0,
+0+A+B,13,0,0.0,0,0.0,0,0.0,13,100.0,12,0.0,11,11,100.0,0,0.0,
+0+A+B+C,13,0,0.0,0,0.0,0,0.0,13,100.0,12,0.0,11,11,100.0,0,0.0,
+0+A+B+C+D,13,10,76.9,1,10.0,0,0.0,3,23.1,2,69.2,11,3,27.3,1,9.1,13b_viewer_agent_image_hidden
+0+A+B+C+D+E,13,10,76.9,1,10.0,0,0.0,3,23.1,2,69.2,11,3,27.3,1,9.1,13b_viewer_agent_image_hidden
+FULL(0+A..F),13,10,76.9,1,10.0,0,0.0,3,23.1,2,69.2,11,3,27.3,1,9.1,13b_viewer_agent_image_hidden
+iso:D,13,1,7.7,0,0.0,0,0.0,12,92.3,11,7.7,11,10,90.9,0,0.0,
+iso:B,13,0,0.0,0,0.0,0,0.0,13,100.0,12,0.0,11,11,100.0,0,0.0,
+iso:C,13,0,0.0,0,0.0,0,0.0,13,100.0,12,0.0,11,11,100.0,0,0.0,
+iso:E,13,0,0.0,0,0.0,0,0.0,13,100.0,12,0.0,11,11,100.0,0,0.0,
+SENS:no_resource_lineage,13,10,76.9,1,10.0,0,0.0,3,23.1,2,69.2,11,3,27.3,1,9.1,13b_viewer_agent_image_hidden
+SENS:no_resource_lineage_no_browser_url,13,10,76.9,1,10.0,0,0.0,3,23.1,2,69.2,11,3,27.3,1,9.1,13b_viewer_agent_image_hidden
