@@ -2,84 +2,127 @@
 
 ## Current status — 2026-09-09
 
-**The provenance-recoverability gate is RESOLVED, with a negative result for the general construct.**
+**Gate RESOLVED (negative). Negative result converted into an observability boundary,
+threat model, and candidate capture-provenance contract. Direction = MODIFY.**
 
-### Frozen
+Read in this order:
+1. `outputs/post_gate_summary.md` — the nine-point state of the project
+2. `research/OBSERVABILITY_BOUNDARY.md` — the research result
+3. `research/THREAT_MODEL.md` — the adversary
+4. `specs/CAPTURE_PROVENANCE_CONTRACT.md` — candidate fields
+5. `specs/ADVERSARIAL_SUFFICIENCY_EXPERIMENT.md` — the falsification test (**not run**)
+
+### Frozen audit
 
 | | |
 |---|---|
-| commit | `2e197064f4c2a91de8bd0a4844ea147974ef9237` |
+| commit | `f8e23a57e37a55306f77280e7cc453d0b64d4be4` |
 | tag | `recoverability-audit-v1` |
 | repo root | `C:/Users/ASUS/Desktop/scene-provenance-lab/scene-provenance-lab` (nested; the parent repo at `Desktop/scene-provenance-lab` was deliberately NOT committed into) |
 | contents | 35 files, 1.0 MB; `outputs/raw/` (1.7 GB) and `outputs/cache/` gitignored |
 
-Phase-A reproduction check before freezing: 10/10 headline figures re-derived exactly from `outputs/recoverability_cases.csv`. **One correction**: the lookback sweep in report §5.2 had been computed with the pre-correction resolver and read 5.5%→72.7%; recomputed against the final resolver it is **4.8%→54.9%** (E029). The EXACT/STRONG sub-curve is nearly flat across the sweep (2.4%→11.9%), which strengthens rather than weakens the conclusion.
+Phase-A reproduction before freezing: **10/10 headline figures re-derived exactly** from
+`outputs/recoverability_cases.csv`. **One correction (E029):** the lookback sweep in report
+§5.2 had been computed with the pre-correction resolver and read 5.5%→72.7%; recomputed
+against the final resolver it is **4.8%→54.9%**, with the EXACT/STRONG sub-curve nearly flat
+at 2.4%→11.9%. That strengthens the conclusion.
 
-Read `outputs/recoverability_report.md` first. It is the deliverable.
-
-Headline (MEASURED FACT, 117 traces, 453 delivered visual artifacts):
+### Headline (MEASURED FACT, 117 traces, 453 delivered visual artifacts)
 
 - R0 quote localization 181/257 = 70.4%
-- R1 producer recovery 40/40 = 100% on visual-linked quotes
-- R2 artifact linkage 453/453 (444 exact path, 9 templated)
-- R3 capture-source: **EXACT 0**, STRONG 26/394 = 6.6%, WEAK 96, UNKNOWN 272
-- R4 scene lineage classified 81/453 = 17.9%
+- R1 producer recovery 40/40 = 100%
+- R2 artifact linkage 453/453
+- R3 capture-source **EXACT 0**, STRONG 26/394 = 6.6%
+- R4 scene lineage 81/453 = 17.9%
 - R5 target reachability 38/453 = 8.4%
-- shell-routed captures classify at 5.9%; direct-write artifacts at 98.3%
-- negative-control false attribution 0/99 (NC-A), 0/73 (NC-B)
+- direct-write 98.3% vs shell-routed capture 5.9%
+- negative-control false attribution 0/99, 0/73
 
-Audit kill criteria **2, 3 and 5 are triggered**. E011 is REJECTED.
+Audit kill criteria **2, 3, 5** triggered. **E011 REJECTED.**
 
-The result is the boundary itself: **structural artifact/file lineage is recoverable; structural scene lineage is not**, because the WeaveBench desktop never records which window owned the screen at capture time (`wmctrl`/`xdotool` absent; `xwininfo` in 12/117 traces; 125/145 captures full-screen).
+### Post-gate result (Phases C–I)
+
+- 415 of 453 artifacts unresolved; **287 capture-addressable**, 98 no task-defined target,
+  30 derivation chains.
+- Deficits are **conjunctive**: in the strict model **no single field resolves any case**
+  (E031 — an independent-field encoding wrongly reported 83.6% for one field and was
+  discarded).
+- Historical coverage, STRICT: **4 display-composition fields → 83.6%**, 6 → 90.2%,
+  8 → 99.7%. Greedy optimal at sizes 4 and 6 by brute force.
+- **Display composition dominates** (240/287), because a full-screen grab's scene is a
+  *set* of windows.
+- `WINDOW_TITLE` / `WM_CLASS` resolve **zero** cases and are agent-choosable (E034).
+- All 14 adversary capabilities in the threat model were **observed in the benign corpus**
+  (E037).
 
 ## What exists on disk
-
-Pipeline (stdlib + deterministic, no LLM/VLM anywhere):
 
 | File | Role |
 |---|---|
 | `scripts/remote_zip.py` | selective ZIP member reads over HTTP range requests |
-| `scripts/fetch_members.py` | fetch archive members, record source manifest with SHA-256 |
-| `scripts/fetch_tasks.py` | fetch WeaveBench task specs (independent target definitions) |
+| `scripts/fetch_members.py` | fetch archive members + source manifest with SHA-256 |
+| `scripts/fetch_tasks.py` | fetch WeaveBench task specs (judge-independent targets) |
 | `scripts/trace_model.py` | `chat.jsonl` → ordered Event list; canonical tool renderings |
-| `scripts/quote_locator.py` | deterministic L0–L6 match ladder for judge quotes |
-| `scripts/task_spec.py` | required deliverables, target apps, capture-vs-synthesis obligation |
+| `scripts/quote_locator.py` | deterministic L0–L6 match ladder |
+| `scripts/task_spec.py` | deliverables, target apps, capture-vs-synthesis obligation |
 | `scripts/scene_provenance.py` | R1–R5 reconstruction, edge confidences |
-| `scripts/run_audit.py` | drives the audit → `recoverability_cases.csv` |
+| `scripts/run_audit.py` | → `recoverability_cases.csv` |
 | `scripts/audit_metrics.py` | → `audit_metrics.json` |
+| `scripts/information_deficits.py` | Phase C → `information_deficits.csv` (bundles) |
+| `scripts/field_coverage.py` | Phase D → `field_coverage.csv` (bundle-aware set cover) |
 
-Outputs: `outputs/source_manifest.csv` (697 records), `outputs/recoverability_cases.csv` (825 rows), `outputs/recoverability_report.md`, `outputs/audit_metrics.json`.
-Raw data under `outputs/raw/` and caches under `outputs/cache/` (both gitignored).
+Outputs: `source_manifest.csv` (697), `recoverability_cases.csv` (825 rows),
+`recoverability_report.md`, `audit_metrics.json`, `information_deficits.csv`,
+`field_coverage.csv`, `field_set_analysis.md`, `post_gate_summary.md`.
+Raw data `outputs/raw/`, caches `outputs/cache/` — both gitignored.
 
 ## Key facts a fresh session must not re-derive
 
-- Trace schema: `chat.jsonl` lines are `{id,parentId,timestamp,type,message}`; `message.role` ∈ assistant/toolResult/user; assistant content carries `toolCall` parts; `toolCallId` links call↔result **exactly**.
-- Tool vocabulary: `exec`, `read`, `write`, `edit`, `__computer__`, `process`, `image`, `browser`, `web_fetch`, `memory_search`.
-- `__computer__` has **no screenshot action** — wait/click/keypress/type/scroll/double_click/move/drag. A screenshot is returned as a side effect of every action (2,118 across 115 traces) and is not addressable as a deliverable.
-- The `image` tool is an **agent-side VLM call** (`{image, prompt}` → natural-language answer). Its text was never used to decide provenance; doing so would violate the gate.
+- Trace schema: `{id,parentId,timestamp,type,message}`; `message.role` ∈
+  assistant/toolResult/user; assistant content carries `toolCall` parts; `toolCallId` links
+  call↔result **exactly**.
+- Tools: `exec`, `read`, `write`, `edit`, `__computer__`, `process`, `image`, `browser`,
+  `web_fetch`, `memory_search`.
+- `__computer__` has **no screenshot action** — a screenshot is a side effect of every GUI
+  action (2,118 across 115 traces), stored under `_screenshots/`, not addressable as a
+  deliverable.
+- The `image` tool is an **agent-side VLM call**. Never used for provenance decisions.
 - `browser` tool is disabled in this runtime.
-- Judge quotes are not verbatim: 28% contain `...` elisions; tool calls are cited as `read <path>`, `write <path> <content>`, `edit new_string: …`, `toolCall: …`.
+- `wmctrl`/`xdotool` absent; `xwininfo` in 12/117 traces; focus control in 4/117;
+  125/145 captures full-screen.
+- Judge quotes are not verbatim: 28% contain `...`; tool calls cited as `read <path>`,
+  `write <path> <content>`, `edit new_string: …`.
 
 ## Do not repeat these mistakes
 
-Each was caught by manual validation and cost a re-measurement (report Sect. 8):
-
-1. A preceding `python x.py` launch is **not** a scene source unless the authored file is GUI-capable — three claims were refuted by headless CLI scripts and a web server.
-2. `Command still running (session …, pid …)` goes stale; a later `Process exited with code 0` invalidates it.
+1. A preceding `python x.py` launch is **not** a scene source unless the authored file is
+   GUI-capable — three claims refuted by headless CLI scripts and a web server.
+2. `Command still running (session …, pid …)` goes stale; a later `Process exited with
+   code 0` invalidates it.
 3. Full-screen capture makes the scene a **set**, not one process.
-4. `DIRECT_SYNTHESIS` is not fabrication — check the task's capture-vs-synthesis obligation first.
-5. Harness screenshots must not be scored as delivered evidence; they cap at R1 and inflate R5 if included.
+4. `DIRECT_SYNTHESIS` is not fabrication — check the capture-vs-synthesis obligation.
+5. Harness screenshots are not delivered evidence; including them inflates R5.
 6. `code --list-extensions` is not a GUI launch.
+7. **Do not score deficit fields independently** — they are conjunctive (E031).
+8. **Do not quote a recoverability number without the lookback sensitivity curve** (E020).
+9. **A field is not secure because it comes from the OS** — T4 fields are truthfully
+   reported and adversarially chosen (`THREAT_MODEL.md` §3).
 
-## Next actions (gate resolved; these are the reframing options)
+## Next actions
 
-Per `outputs/recoverability_report.md` §12, in preference order:
+1. Run `specs/ADVERSARIAL_SUFFICIENCY_EXPERIMENT.md` — 12 predeclared cases + 4 stretch,
+   construction-time ground truth, per-tier false accept / false reject / abstention /
+   coverage. **Requires building the instrumented environment and recorder first.**
+2. Honour the predeclared kill criterion. P6 predicts it fires on case 10. **If it fires,
+   that is the result** — do not add fields until it stops.
+3. Treat a clean sweep as suspicious (weak adversary) before believing it.
 
-1. Write up the boundary as a measurement/limits result with the instrumentation ask.
-2. Specify the minimal capture-time provenance record (active window title, WM_CLASS, PID, geometry) and demonstrate UNKNOWN→EXACT conversion on the 12 traces that carry `xwininfo`.
-3. Keep the narrow high-precision instrument, always reporting its ~5% recall.
+## Blocked / not done
 
-Blocked / not done:
-
-- **Two independent human annotators.** The audit requires them; only single-annotator validation was performed, so no agreement/adjudication statistic exists. Any writeup must say so.
-- No full extractor, no ProcGrep change, no BPE, no application prose — all still correctly not started.
+- **Two independent annotators.** Manual validation is single-reviewer; it refuted 4 of the
+  first 7 automated claims and drove three rule corrections, but **no inter-rater statistic
+  exists**. Never describe it as completed two-reviewer validation.
+- Adversarial experiment **not run**; no recorder built; no classifier built.
+- ProcGrep untouched. No BPE. No application prose.
+- Tier D portability to Wayland unresolved (a real deployment blocker).
+- No privacy-minimisation story for visible-window-set + titles + argv + URLs.

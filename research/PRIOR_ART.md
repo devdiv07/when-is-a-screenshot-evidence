@@ -111,3 +111,113 @@ No work found that models target-vs-substitute visual scene lineage from compute
 ## Status of the narrow novelty claim
 
 HYPOTHESIS, still unfalsified as a *gap*, but the 2026-09-09 audit shows the gap is **not fillable from these traces**: the required lineage edges are absent from the recorded data, not merely unparsed. Any future claim must be framed as a limits/instrumentation result, not as a working instrument.
+
+---
+
+# Post-gate prior-art sweep — 2026-09-09 (Phase G)
+
+Run before any novelty statement in `THREAT_MODEL.md`, `CAPTURE_PROVENANCE_CONTRACT.md`
+or `ADVERSARIAL_SUFFICIENCY_EXPERIMENT.md`.
+
+## Agent Flight Recorder — arXiv:2609.01931
+
+Tamper-evident audit trails for long-horizon tool-using agents: each action is a
+canonically serialised event binding eight semantic fields, with hash chaining, Merkle
+batching and on-chain anchoring.
+
+Fetched and read (2026-09-09). The eight fields are: intent, policy evaluation, human
+approval, execution, effects, context provenance, code provenance, delegation provenance.
+
+Relevance — **this is direct prior art for Tier F of our contract**:
+- record integrity, tamper evidence and hash-chained event logs for agents are **occupied**;
+- we must not claim any novelty for signed/hash-chained agent event records.
+
+Boundaries, verified in the text:
+- it records **no display or screen state** — no screenshots, window identity, active
+  window, z-order or capture region. It states the recorder captures the proposed action,
+  not the surrounding state;
+- its threat model is **log tampering after compromise**; it presumes the recorder
+  faithfully observes actions during normal operation.
+
+That second point is precisely our gap. AFR protects the *integrity of the record*. Our
+question is the *integrity of the claim the record describes* — an adversary who never
+tampers with the log and instead arranges the world the log truthfully reports. Our
+threat model's "tier fallacy" section (§3) is the explicit statement of that difference.
+
+## OpenAdapt Capture
+
+GUI-interaction recording for desktop automation: captures screenshots plus input events
+for replay/training.
+
+Relevance:
+- **screenshot + window/process telemetry capture is not novel**; tooling exists;
+- it is a data-collection substrate, not an adjudication mechanism, and carries no
+  adversarial model — it assumes the recorded user is cooperative.
+
+## C2PA / Content Credentials
+
+Cryptographically signed content provenance manifests binding assertions to media, with
+a hardware/software attestation chain.
+
+Relevance:
+- **content provenance and signed media manifests are not novel**;
+- C2PA binds *who produced a file and how it was edited*. It authenticates the capture
+  pipeline, not the truthfulness of the depicted scene. A C2PA-signed screenshot of an
+  agent-authored fake window is a valid C2PA manifest of a fabrication;
+- this is the same artifact-vs-scene distinction as §4 of `OBSERVABILITY_BOUNDARY.md`,
+  arriving from the media-forensics direction.
+
+## Trusted path / trusted display literature
+
+Long-established (Orange Book trusted path; secure attention key; spoof-resistant screen
+regions; trusted UI for browsers and immersive web).
+
+Relevance:
+- **trusted display and anti-spoofing mechanisms are decades old and not novel**;
+- the classical problem is *inverted* relative to ours: it protects a **human** from a
+  program spoofing the UI. We need to protect an **automated evaluator** from an agent
+  that legitimately operates the machine and is entitled to create windows;
+- the classical defence (a trusted region the untrusted program cannot draw to) may
+  transfer, and must be cited if the project reaches trusted-display escalation.
+
+## Re-checked from the existing board
+
+- **WeaveBench v3** (2606.09426v3) — judge does LLM/VLM fabrication detection with a
+  zeroing rule; the benchmark's own graders call `vlm_score_rubric` to confirm target UI
+  visibility (E026). Fabricated-visual-evidence *detection* is occupied; deterministic
+  capture-time *attribution* is what we are asking about.
+- **AgentTrails** (2607.18816) — Activity/Entity graph, `generatedBy`/`usedBy`/`informedBy`,
+  tool-calling traces; no scene, window or process-identity modelling (E027).
+- **PROV-AGENT** (2508.02866) — W3C PROV for agentic workflows.
+- **CHIEF** (2602.23701) — hierarchical causal graphs for failure attribution.
+- **ProcGrep** (2606.16988) — procedural fingerprinting. Not modified, per instruction.
+- **LongHorizon-Harness** (2608.01964), **RILA** (2609.02088) — verification/rendering
+  interventions, a different lane.
+- **From Agent Traces to Trust** (2606.04990) — survey of execution provenance; no visual
+  or GUI-state modelling.
+
+## Explicit non-claims
+
+We do **not** claim novelty for any of:
+- provenance graphs over agent traces;
+- PID / process telemetry for agents;
+- window or screen recording;
+- tamper-evident or hash-chained logs;
+- content provenance or signed media;
+- trusted display or anti-spoofing UI.
+
+## The candidate gap, restated narrowly
+
+> **What independently observed capture/runtime evidence is sufficient to bind
+> computer-use-agent visual evidence to the intended task state under an adversarial
+> evidence generator?**
+
+Status: **HYPOTHESIS**. The sweep above did not find work that (a) records display
+composition at capture time for a CUA, (b) models the agent as an adversarial evidence
+generator rather than an honest actor, and (c) measures false-accept rates per attestation
+tier. AFR is the closest on integrity, C2PA on media, trusted path on display, WeaveBench
+on detection — none combines the three.
+
+This remains a HYPOTHESIS and not a contribution until the Phase I experiment runs. The
+Phase C/D deficit analysis establishes only that these fields were *missing*, never that
+they would be *sufficient*.
