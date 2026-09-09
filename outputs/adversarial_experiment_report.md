@@ -1,3 +1,24 @@
+> # ⚠ SUPERSEDED BY THE EMPIRICAL ARM — READ THIS FIRST
+>
+> **This document records the ANALYTIC arm only** (contract logic over analyst-derived
+> field vectors). It is frozen at tag `phase1-analytic-v1` and its body below is
+> **deliberately unaltered**.
+>
+> **Its headline conclusion was falsified in the UNSAFE direction.** The empirical arm, run
+> on a real X11 display with real processes and real pixels, found that the predeclared
+> **kill criterion FIRED**: case `13b` is a **false accept** (`AUTHENTIC_TARGET`), not an
+> abstention. The two arms agree on 127/169 pairs (75.1%); all 5 unsafe
+> `UNKNOWN → AUTHENTIC_TARGET` transitions are 13b.
+>
+> Every statement below of the form "the kill criterion did not fire", "13b abstains", or
+> "empirical arm NOT run" is **true of the analytic arm at the time of writing and false as
+> current project status**.
+>
+> Current status: `outputs/phase1_final_summary.md` ·
+> `research/PHASE1_EMPIRICAL_CONCLUSIONS.md` · `outputs/phase1_final_metrics.json`
+
+---
+
 # White-Box Adversarial Case Evaluation — Report
 
 Executes `specs/ADVERSARIAL_SUFFICIENCY_EXPERIMENT.md` against

@@ -1,11 +1,21 @@
 # White-Box Adversarial Case Evaluation
 
-> **EXECUTED 2026-09-09 — contract-logic arm only.**
-> Results: `outputs/adversarial_experiment_report.md`. Kill criterion **did not fire**
-> (0 false accepts everywhere), but `13b` (A13-evasive) is **undetected at every
-> configuration** by abstention. **Empirical arm NOT run**: no X11/compositor/recorder on
-> the analysis host. Cases S1 (atomicity race) and S2 (nested compositor) **BLOCKED**, and
-> the Wayland portability arm **unrun**.
+> # STATUS: EXECUTED IN BOTH ARMS. PHASE I CLOSED.
+>
+> **ANALYTIC arm** (derived field vectors) — `outputs/adversarial_experiment_report.md`,
+> tag `phase1-analytic-v1`. Kill criterion did **not** fire there. **Superseded.**
+>
+> **EMPIRICAL arm** (real Xvfb X11, real windows, real pixels, unprivileged attacker,
+> independent privileged recorder) — `outputs/phase1_empirical_report.md`, tag
+> `phase1-empirical-v1`. **The predeclared kill criterion FIRED.** Case `13b` produced a
+> **false accept** at the full ladder with no recorder/kernel/compositor compromise.
+>
+> **Still unrun:** the **Wayland** portability arm; **adaptive red-teaming**; the **A9**
+> application-state attack.
+>
+> Frozen conclusions: `research/PHASE1_EMPIRICAL_CONCLUSIONS.md` ·
+> `outputs/phase1_final_summary.md`. The contract branch is **CLOSED / INSUFFICIENT**;
+> this spec is retained as the predeclaration of record, not as an open work item.
 
 **Naming.** This is a *white-box adversarial case evaluation*, not an adaptive red-team.
 The adversary has full knowledge of the contract, but the attacks are **constructed and
