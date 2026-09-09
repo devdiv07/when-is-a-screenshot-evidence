@@ -1,0 +1,130 @@
+{
+  "schema_version": 1,
+  "current_gate": "provenance-recoverability",
+  "gate_status": "RESOLVED_NEGATIVE_FOR_GENERAL_CONSTRUCT",
+  "gate_resolved_date": "2026-09-09",
+  "corpus": {
+    "source": "huggingface:wanlilll/weavebench-traj gpt-5.4 deliver_low_run1.zip, deliver_low_run2.zip",
+    "task_specs": "huggingface:wanlilll/WeaveBench tasks/",
+    "score_records": 228,
+    "traces_fetched": 117,
+    "delivered_visual_artifacts": 453,
+    "judge_quotes": 257,
+    "negative_control_traces": 46
+  },
+  "tests": [
+    {
+      "id": "G0-source-integrity",
+      "status": "pass",
+      "description": "Source/member provenance and hashes recorded",
+      "result": "outputs/source_manifest.csv: 697 records with archive URL, member path, uncompressed/compressed length, SHA-256, ZIP CRC-32, fetch timestamp. All members CRC-verified on extraction; 6/6 random re-hash of on-disk files matched.",
+      "evidence": [
+        "E012",
+        "E013",
+        "E014"
+      ]
+    },
+    {
+      "id": "G1-quote-localization",
+      "status": "pass",
+      "description": "Judge evidence quotes deterministically localized",
+      "result": "181/257 = 70.4% localized (L0 exact 49.4%). Documented L0-L6 ladder, no semantic matching. >=10 of 51 failures are unlocalizable in principle (judge hashed/byte-read delivered files). Not the binding constraint on the gate.",
+      "evidence": [
+        "E015",
+        "E016"
+      ]
+    },
+    {
+      "id": "G2-producer-recovery",
+      "status": "pass",
+      "description": "Producer/action recovered with measured coverage",
+      "result": "40/40 = 100% of visual-linked quotes. Scoping caveat: only 40/181 = 22.1% of localized quotes concern visual evidence at all.",
+      "evidence": [
+        "E017"
+      ]
+    },
+    {
+      "id": "G3-artifact-link",
+      "status": "pass",
+      "description": "Producer linked to delivered artifact with measured coverage",
+      "result": "453/453 delivered visual artifacts linked; 444 by literal path (EXACT), 9 by templated filename (STRONG). Linkage uses task-spec deliverables and results_manifest.txt, not judge fields.",
+      "evidence": [
+        "E022"
+      ]
+    },
+    {
+      "id": "G4-capture-source",
+      "status": "fail",
+      "description": "Capture source process/window/scene recoverable",
+      "result": "394 capture-based artifacts: EXACT 0 (0.0%), STRONG 26 (6.6%), WEAK 96 (24.4%), UNKNOWN 272 (69.0%). The runtime has no window-identity channel: wmctrl/xdotool absent, xwininfo in 12/117 traces, focus control in 4/117, 125/145 captures full-screen. Coverage above STRONG is a function of the lookback parameter (4.8% at 2 events to 54.9% unbounded, n=455), not of the data; the EXACT/STRONG sub-curve stays nearly flat (2.4% to 11.9%).",
+      "evidence": [
+        "E018",
+        "E019",
+        "E020",
+        "E021"
+      ]
+    },
+    {
+      "id": "G5-scene-lineage",
+      "status": "fail",
+      "description": "Target vs substitute scene classification validated",
+      "result": "81/453 = 17.9% classified; R5 38/453 = 8.4%. Split by channel: direct-write 98.3%, shell-routed capture 5.9%, browser 0%. Target-vs-substitute specifically: 19 TARGET_SCENE + 4 AGENT_SUBSTITUTE_SCENE = 23/453 = 5.1%. Audit kill criteria 2, 3 and 5 triggered.",
+      "evidence": [
+        "E021",
+        "E022",
+        "E028"
+      ]
+    },
+    {
+      "id": "G6-negative-controls",
+      "status": "pass",
+      "description": "False attribution quantified on negative controls",
+      "result": "0/99 violation claims on NC-A (clean, no fake signal); 0/73 on NC-B (clean verdict, artifact fake_signal); 5/281 on the quote-bearing pool. High precision, very low recall.",
+      "evidence": [
+        "E023"
+      ]
+    },
+    {
+      "id": "G7-manual-validation",
+      "status": "incomplete",
+      "description": "Two independent reviewers classify a stratified sample; report agreement and adjudication",
+      "result": "Single annotator only. The pass refuted 4 of the first 7 automated claims and drove three rule corrections (GUI-capability test, process-exit invalidation, composite-scene demotion); corrected numbers are the reported ones. No inter-annotator agreement statistic exists. One documented false negative: run2/DOC_task_3_okular_annotate_fact/proof.png.",
+      "evidence": [
+        "E024",
+        "E025"
+      ]
+    },
+    {
+      "id": "G8-prior-art",
+      "status": "pass",
+      "description": "Prior art checked before any novelty statement",
+      "result": "AgentTrails fetched and read: Activity/Entity nodes with generatedBy/usedBy/informedBy over tool-calling traces; no screenshot, window, process-identity or genuine-vs-substitute modelling. PROV-AGENT, CHIEF, ProcGrep, WeaveBench v3, LongHorizon-Harness, RILA re-checked; newer search covered 2606.04990, 2606.24525, 2608.30724. No work found modelling target-vs-substitute visual scene lineage from CUA traces. The narrow gap remains unoccupied but is NOT shown fillable.",
+      "evidence": [
+        "E026",
+        "E027"
+      ]
+    }
+  ],
+  "rejected_hypotheses": [
+    {
+      "id": "E011",
+      "statement": "Scene provenance can be recovered structurally from WeaveBench traces at useful coverage.",
+      "status": "REJECTED",
+      "date": "2026-09-09",
+      "survives_only_for": "direct-synthesis lineages and bracketed agent-authored substitute renderers (23/453 = 5.1% of delivered visual artifacts)"
+    }
+  ],
+  "parameters": {
+    "LOOKBACK": 16,
+    "BRACKET_GAP": 6,
+    "note": "Any recoverability number is meaningless without the lookback sensitivity curve in the report Sect. 5.2."
+  },
+  "phase_a_reproduction": {
+    "date": "2026-09-09",
+    "headline_figures_reproduced": "10/10 exact from recoverability_cases.csv",
+    "correction": "lookback sweep recomputed against post-correction resolver: 4.8%-54.9% (was 5.5%-72.7%, pre-correction)",
+    "evidence": [
+      "E029"
+    ]
+  }
+}

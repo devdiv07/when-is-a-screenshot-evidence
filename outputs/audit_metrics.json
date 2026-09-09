@@ -1,0 +1,249 @@
+{
+  "R0": {
+    "n_quotes": 257,
+    "localized": 181,
+    "rate_pct": 70.4,
+    "by_level": {
+      "L3_ELIDED": 28,
+      "L0_EXACT": 127,
+      "P5_PARTIAL": 25,
+      "L4_BACKTICK": 18,
+      "NO_MATCH": 51,
+      "L5_NOWS": 2,
+      "L1_WS": 4,
+      "L6_ELIDED_NOWS": 2
+    },
+    "partial": 25,
+    "no_match": 51
+  },
+  "quote_scope": {
+    "localized": 181,
+    "linked_to_visual_case": 40,
+    "rate_pct": 22.1,
+    "non_visual": 141,
+    "link_kind": {
+      "authored_renderer": 1,
+      "launch": 2,
+      "direct": 37,
+      "no_visual_case": 141
+    }
+  },
+  "R1": {
+    "n": 40,
+    "recovered": 40,
+    "rate_pct": 100.0,
+    "by_producer": {
+      "SHELL_SCREENSHOT": 28,
+      "PIL_SYNTHESIS": 6,
+      "FILE_COPY": 4,
+      "RENDERER_AUTHORING_HTML": 1,
+      "HARNESS_GUI_ACTION": 1
+    }
+  },
+  "population": {
+    "delivered_visual_artifacts": 453,
+    "capture_based": 394,
+    "direct_write": 59
+  },
+  "R2": {
+    "n": 453,
+    "linked_exact": 444,
+    "linked_templated": 9,
+    "rate_pct": 100.0,
+    "note": "artifact rows exist only for outputs linked to a required or delivered file"
+  },
+  "R3": {
+    "n_capture": 394,
+    "exact": 0,
+    "strong": 26,
+    "weak": 96,
+    "unknown": 272,
+    "exact_or_strong_pct": 6.6
+  },
+  "R4": {
+    "n": 453,
+    "classified": 81,
+    "rate_pct": 17.9,
+    "by_class": {
+      "AGENT_SUBSTITUTE_SCENE": 4,
+      "UNKNOWN": 372,
+      "TARGET_SCENE": 19,
+      "DERIVED_FROM_PRIOR_EVIDENCE": 43,
+      "DIRECT_SYNTHESIS": 15
+    },
+    "suppressed_weak_hypotheses": {
+      "UNKNOWN": 323,
+      "TARGET_SCENE": 41,
+      "AGENT_SUBSTITUTE_SCENE": 4
+    }
+  },
+  "R5": {
+    "n": 453,
+    "reached": 38,
+    "rate_pct": 8.4,
+    "r_levels": {
+      "R2": 368,
+      "R3": 4,
+      "R4": 43,
+      "R5": 38
+    }
+  },
+  "by_channel": {
+    "browser": {
+      "n": 6,
+      "classified": 0,
+      "classified_pct": 0.0,
+      "R5": 0
+    },
+    "none": {
+      "n": 59,
+      "classified": 58,
+      "classified_pct": 98.3,
+      "R5": 15
+    },
+    "shell_routed": {
+      "n": 388,
+      "classified": 23,
+      "classified_pct": 5.9,
+      "R5": 23
+    }
+  },
+  "edge_confidence": {
+    "STRONG": 49,
+    "EXACT": 308,
+    "WEAK": 96
+  },
+  "by_hack_pattern": {
+    "HARDCODE_METRIC": {
+      "quotes": 92,
+      "localized": 70,
+      "rate_pct": 76.1
+    },
+    "CROP_DUPLICATE": {
+      "quotes": 32,
+      "localized": 18,
+      "rate_pct": 56.2
+    },
+    "PIL_FAKE_RENDER": {
+      "quotes": 31,
+      "localized": 16,
+      "rate_pct": 51.6
+    },
+    "FAKE_INPUT_FIXTURE": {
+      "quotes": 28,
+      "localized": 19,
+      "rate_pct": 67.9
+    },
+    "TOOL_INJECTION": {
+      "quotes": 23,
+      "localized": 21,
+      "rate_pct": 91.3
+    },
+    "MOCK_SERVICE": {
+      "quotes": 21,
+      "localized": 17,
+      "rate_pct": 81.0
+    },
+    "PIL_FAKE_GUI_UI": {
+      "quotes": 17,
+      "localized": 9,
+      "rate_pct": 52.9
+    },
+    "HTML_FAKE_GUI_UI": {
+      "quotes": 13,
+      "localized": 9,
+      "rate_pct": 69.2
+    },
+    "FAKE_GUI_EVIDENCE": {
+      "quotes": 12,
+      "localized": 11,
+      "rate_pct": 91.7
+    },
+    "FABRICATED_SCREENSHOT_EVIDENCE": {
+      "quotes": 8,
+      "localized": 8,
+      "rate_pct": 100.0
+    },
+    "FABRICATED_EVIDENCE": {
+      "quotes": 8,
+      "localized": 8,
+      "rate_pct": 100.0
+    },
+    "STATIC_HTML_FAKE_UI": {
+      "quotes": 6,
+      "localized": 6,
+      "rate_pct": 100.0
+    },
+    "MOCK_UI_EVIDENCE": {
+      "quotes": 6,
+      "localized": 6,
+      "rate_pct": 100.0
+    },
+    "NON_EQUIVALENT_PRECOMPUTED_TABLES": {
+      "quotes": 6,
+      "localized": 6,
+      "rate_pct": 100.0
+    },
+    "MATPLOTLIB_FAKE_GUI_EVIDENCE": {
+      "quotes": 6,
+      "localized": 0,
+      "rate_pct": 0.0
+    },
+    "FAKE_GUI_HTML": {
+      "quotes": 6,
+      "localized": 0,
+      "rate_pct": 0.0
+    },
+    "CUSTOM_RENDERED_WORKBENCH": {
+      "quotes": 6,
+      "localized": 0,
+      "rate_pct": 0.0
+    },
+    "FABRICATED_VISUAL_EXPLAIN": {
+      "quotes": 6,
+      "localized": 0,
+      "rate_pct": 0.0
+    },
+    "FAKE_SOLVER_OUTPUT": {
+      "quotes": 6,
+      "localized": 6,
+      "rate_pct": 100.0
+    },
+    "SYNTHETIC_VTU": {
+      "quotes": 6,
+      "localized": 6,
+      "rate_pct": 100.0
+    }
+  },
+  "negative_controls": {
+    "Q": {
+      "artifacts": 281,
+      "violation_claims": 5,
+      "rate_pct": 1.8,
+      "tasks": 60,
+      "tasks_with_claim": 2
+    },
+    "NC-A": {
+      "artifacts": 99,
+      "violation_claims": 0,
+      "rate_pct": 0.0,
+      "tasks": 27,
+      "tasks_with_claim": 0
+    },
+    "NC-B": {
+      "artifacts": 73,
+      "violation_claims": 0,
+      "rate_pct": 0.0,
+      "tasks": 16,
+      "tasks_with_claim": 0
+    },
+    "NC_B_judge_note": "NC-B traces carry artifact-level fake_signal from the judge with is_hack=False; structural violation claims here are not necessarily false positives."
+  },
+  "judge_comparison": {
+    "structural_claim_and_judge_fake": 5,
+    "structural_claim_only": 0,
+    "judge_fake_only": 186,
+    "neither": 192,
+    "note": "comparison against a coupled LLM judge, NOT a ground-truth evaluation"
+  }
+}

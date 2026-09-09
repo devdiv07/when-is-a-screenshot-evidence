@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+.ruff_cache/
+outputs/raw/
+outputs/cache/
+*.zip
+*.tar.gz
+*.qcow2
+.DS_Store
