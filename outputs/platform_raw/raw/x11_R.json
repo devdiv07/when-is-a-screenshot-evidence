@@ -1,0 +1,111 @@
+{
+  "recorder_version": "platform-recorder/2.0.0",
+  "platform": "x11",
+  "case_id": "R",
+  "capture_timestamp": 1789048157.608548,
+  "metadata_capture_skew_ms": 137.35,
+  "declared_target_resource": "/lab/work/quarterly_report.png",
+  "image_path": "/lab/out/shots/x11_R.png",
+  "capture": {
+    "capture_mechanism": "X11 root-window pixel grab (ImageMagick import)",
+    "requested_source_type": "root window / full screen",
+    "capture_path_trusted_by_platform": false,
+    "note": "any X client with display access can perform this grab",
+    "capture_bytes_sha256": "c4d0da448283da94fabd1d4e48012f13a49c5fc9a59f55d4d2461601e987756c",
+    "capture_bytes": 26233,
+    "capture_geometry": "1280x1024"
+  },
+  "display_state_pre": {
+    "active_surface_id": "0x00800004",
+    "active_surface_title": "quarterly_report.png",
+    "active_pid": 224,
+    "surfaces": [
+      {
+        "surface_id": "0x00800004",
+        "identity_reported_by_platform": "Eog",
+        "title": "quarterly_report.png",
+        "pid": 224,
+        "pid_source": "X-Resource XResQueryClientIds",
+        "netwmpid_reported": 224,
+        "geometry": "1131x686+74+169",
+        "native": "x11"
+      }
+    ],
+    "z_order_bottom_to_top": [
+      "0x800001",
+      "0x400001",
+      "0x20020b",
+      "0x20025f",
+      "0x20025d",
+      "0x20025a",
+      "0x200256",
+      "0x200253",
+      "0x200252",
+      "0x200251",
+      "0x200250",
+      "0x20024f",
+      "0x20025c",
+      "0x200330"
+    ],
+    "surface_identity_observer": "COMPOSITOR/DISPLAY_SERVER (X server)",
+    "surface_identity_mechanism": "wmctrl -lpG + xwininfo -root -children + XResQueryClientIds for the owning pid",
+    "cross_client_enumeration": true
+  },
+  "display_state_post": {
+    "active_surface_id": "0x00800004",
+    "active_surface_title": "quarterly_report.png",
+    "active_pid": 224,
+    "surfaces": [
+      {
+        "surface_id": "0x00800004",
+        "identity_reported_by_platform": "Eog",
+        "title": "quarterly_report.png",
+        "pid": 224,
+        "pid_source": "X-Resource XResQueryClientIds",
+        "netwmpid_reported": 224,
+        "geometry": "1131x686+74+169",
+        "native": "x11"
+      }
+    ],
+    "z_order_bottom_to_top": [
+      "0x800001",
+      "0x400001",
+      "0x20020b",
+      "0x20025f",
+      "0x20025d",
+      "0x20025a",
+      "0x200256",
+      "0x200253",
+      "0x200252",
+      "0x200251",
+      "0x200250",
+      "0x20024f",
+      "0x20025c",
+      "0x200330"
+    ],
+    "surface_identity_observer": "COMPOSITOR/DISPLAY_SERVER (X server)",
+    "surface_identity_mechanism": "wmctrl -lpG + xwininfo -root -children + XResQueryClientIds for the owning pid",
+    "cross_client_enumeration": true
+  },
+  "active_process": {
+    "executable_path": "/usr/bin/eog",
+    "command_line": "eog /lab/work/quarterly_report.png",
+    "process_start_identity": "224@4917",
+    "parent_pid": 1,
+    "process_uid": 1000,
+    "open_regular_files": []
+  },
+  "atomicity_consistent": true,
+  "field_observation_failures": [],
+  "construction": {
+    "stdout": "{\"case_id\": \"R\", \"platform\": \"x11\", \"pids\": [224]}",
+    "stderr": "",
+    "returncode": 0
+  },
+  "stack_status": {
+    "x11": "up",
+    "dbus": "up",
+    "wayland": "up",
+    "portal": "up"
+  }
+}

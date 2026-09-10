@@ -1,0 +1,135 @@
+{
+  "recorder_version": "platform-recorder/2.0.0",
+  "platform": "x11",
+  "case_id": "P",
+  "capture_timestamp": 1789048152.8374481,
+  "metadata_capture_skew_ms": 207.89,
+  "declared_target_resource": "/lab/work/quarterly_report.png",
+  "image_path": "/lab/out/shots/x11_P.png",
+  "capture": {
+    "capture_mechanism": "X11 root-window pixel grab (ImageMagick import)",
+    "requested_source_type": "root window / full screen",
+    "capture_path_trusted_by_platform": false,
+    "note": "any X client with display access can perform this grab",
+    "capture_bytes_sha256": "314f00e1c77cfc840242f0753a4031f12f36fe700d003db9017997c1ed10119b",
+    "capture_bytes": 18321,
+    "capture_geometry": "1280x1024"
+  },
+  "display_state_pre": {
+    "active_surface_id": "0x00a00003",
+    "active_surface_title": "quarterly_report.png",
+    "active_pid": 180,
+    "surfaces": [
+      {
+        "surface_id": "0x00800004",
+        "identity_reported_by_platform": "Eog",
+        "title": "quarterly_report.png",
+        "pid": 131,
+        "pid_source": "X-Resource XResQueryClientIds",
+        "netwmpid_reported": 131,
+        "geometry": "1131x686+74+169",
+        "native": "x11"
+      },
+      {
+        "surface_id": "0x00a00003",
+        "identity_reported_by_platform": "eog",
+        "title": "quarterly_report.png",
+        "pid": 180,
+        "pid_source": "X-Resource XResQueryClientIds",
+        "netwmpid_reported": 180,
+        "geometry": "900x620+380+40",
+        "native": "x11"
+      }
+    ],
+    "z_order_bottom_to_top": [
+      "0xa00001",
+      "0x800001",
+      "0x400001",
+      "0x20020b",
+      "0x20025f",
+      "0x20025d",
+      "0x20025a",
+      "0x200256",
+      "0x200253",
+      "0x200252",
+      "0x200251",
+      "0x200250",
+      "0x20024f",
+      "0x20025c",
+      "0x2002ae",
+      "0x200261"
+    ],
+    "surface_identity_observer": "COMPOSITOR/DISPLAY_SERVER (X server)",
+    "surface_identity_mechanism": "wmctrl -lpG + xwininfo -root -children + XResQueryClientIds for the owning pid",
+    "cross_client_enumeration": true
+  },
+  "display_state_post": {
+    "active_surface_id": "0x00a00003",
+    "active_surface_title": "quarterly_report.png",
+    "active_pid": 180,
+    "surfaces": [
+      {
+        "surface_id": "0x00800004",
+        "identity_reported_by_platform": "Eog",
+        "title": "quarterly_report.png",
+        "pid": 131,
+        "pid_source": "X-Resource XResQueryClientIds",
+        "netwmpid_reported": 131,
+        "geometry": "1131x686+74+169",
+        "native": "x11"
+      },
+      {
+        "surface_id": "0x00a00003",
+        "identity_reported_by_platform": "eog",
+        "title": "quarterly_report.png",
+        "pid": 180,
+        "pid_source": "X-Resource XResQueryClientIds",
+        "netwmpid_reported": 180,
+        "geometry": "900x620+380+40",
+        "native": "x11"
+      }
+    ],
+    "z_order_bottom_to_top": [
+      "0xa00001",
+      "0x800001",
+      "0x400001",
+      "0x20020b",
+      "0x20025f",
+      "0x20025d",
+      "0x20025a",
+      "0x200256",
+      "0x200253",
+      "0x200252",
+      "0x200251",
+      "0x200250",
+      "0x20024f",
+      "0x20025c",
+      "0x2002ae",
+      "0x200261"
+    ],
+    "surface_identity_observer": "COMPOSITOR/DISPLAY_SERVER (X server)",
+    "surface_identity_mechanism": "wmctrl -lpG + xwininfo -root -children + XResQueryClientIds for the owning pid",
+    "cross_client_enumeration": true
+  },
+  "active_process": {
+    "executable_path": "/usr/bin/python3.11",
+    "command_line": "python3 /lab/work/substitute_surface.py eog quarterly_report.png",
+    "process_start_identity": "180@4360",
+    "parent_pid": 1,
+    "process_uid": 1000,
+    "open_regular_files": []
+  },
+  "atomicity_consistent": true,
+  "field_observation_failures": [],
+  "construction": {
+    "stdout": "{\"case_id\": \"P\", \"platform\": \"x11\", \"pids\": [131, 180]}",
+    "stderr": "",
+    "returncode": 0
+  },
+  "stack_status": {
+    "x11": "up",
+    "dbus": "up",
+    "wayland": "up",
+    "portal": "up"
+  }
+}

@@ -1,0 +1,256 @@
+{
+  "_README": "X11 vs Wayland provenance binding comparison. Two predeclared cases. Constructed suite, NOT a population estimate.",
+  "lab": {
+    "image": "sceneprov-wl:1.2 (infra/wayland_lab/Dockerfile)",
+    "x11_stack": "Xvfb + Openbox (matches the frozen Phase I lab)",
+    "wayland_stack": "sway 1.7 (wlroots) headless, WLR_RENDERER=pixman, XWayland enabled, xdg-desktop-portal + xdg-desktop-portal-wlr, PipeWire",
+    "trust_domains": {
+      "compositor_session": "uid 1001",
+      "attacker": "uid 1000",
+      "recorder": "root + CAP_SYS_PTRACE"
+    },
+    "capture_x11": "ImageMagick import, X11 root-window grab",
+    "capture_wayland": "grim via wlr-screencopy-unstable-v1 (compositor-mediated)"
+  },
+  "app_nativeness": {
+    "x11_P": "x11",
+    "wayland_P": "wayland",
+    "x11_R": "x11",
+    "wayland_R": "wayland"
+  },
+  "app_nativeness_note": "eog started as a NATIVE Wayland client (sway reports shell=xdg_shell, app_id=eog) and as a native X11 client, so the two arms compare the SAME application. No result here rests on an XWayland surface being presented as native Wayland.",
+  "net_wm_pid_corroboration": {
+    "observed": {
+      "x11_P": [
+        131,
+        180
+      ],
+      "x11_R": [
+        224
+      ]
+    },
+    "reading": "In THIS lab GTK/eog and GTK/python DID set _NET_WM_PID, whereas in the frozen Phase I lab (Tk, ImageMagick display, Openbox) it was absent on every window and wmctrl reported pid=0. This corroborates E070's scoping: _NET_WM_PID cannot be RELIED upon either way, and is client-asserted whenever it is present. X-Resource was used regardless, per IC-1/IC-3."
+  },
+  "portal": {
+    "reachable_on_session_bus": true,
+    "backend": "org.freedesktop.impl.portal.desktop.wlr",
+    "screencast_version": 4,
+    "available_source_types_bitmask": 1,
+    "available_source_types": {
+      "MONITOR": true,
+      "WINDOW": false,
+      "VIRTUAL": false
+    },
+    "screenshot_interface_present": false,
+    "create_session": "SUCCEEDED (response_code 0)",
+    "select_sources": "SUCCEEDED (response_code 0) with types=MONITOR|WINDOW requested; the WINDOW bit was accepted but the backend only ever enumerates outputs",
+    "start": "FAILED (response_code 2)",
+    "start_failure_cause": "xdg-desktop-portal-wlr TRACE: 'wlroots: unable to receive a valid format from wlr_screencopy' - PipeWire buffer format negotiation failed on a headless pixman/no-DRM container (drmGetDevices2 failed). This is an ENVIRONMENT limitation, not a portal API limitation.",
+    "stream_metadata": "BLOCKED - not observed, and NOT inferred from documentation",
+    "requester_app_id_seen_by_portal": "'' (empty) - and it identifies the CALLER, never the captured content",
+    "evidence": "outputs/platform_raw/portal_probe.json, outputs/platform_raw/portal_start_diagnostic.log"
+  },
+  "identity_spoofing": {
+    "_what": "Case P's substitute is a GTK3 app run by the unprivileged attacker that calls GLib.set_prgname('eog'). The platform identity string it obtains is recorded on both arms.",
+    "x11_WM_CLASS_of_substitute": "eog",
+    "wayland_app_id_of_substitute": "eog",
+    "x11_WM_CLASS_of_genuine_eog": "Eog",
+    "wayland_app_id_of_genuine_eog": "eog",
+    "titles_identical_on_both_arms": true,
+    "finding": "Wayland's app_id is CLIENT-ASSERTED and spoofable in exactly the way X11's WM_CLASS is. On Wayland the substitute's app_id and the genuine viewer's app_id are byte-identical ('eog').",
+    "honest_caveat": "On X11 the genuine GTK app happened to report 'Eog' while the substitute reported 'eog', because GTK derives the X11 class name differently from prgname. That case difference is an accident of toolkit convention, NOT a defence: the attacker can set either string. It is recorded so the asymmetry in the raw data is not mistaken for a security property."
+  },
+  "binding_deltas_x11_to_wayland": {
+    "caseP:1_artifact_to_capture": {
+      "x11": "EXACT",
+      "wayland": "EXACT",
+      "changed": false,
+      "direction": "same"
+    },
+    "caseP:2_capture_to_surface": {
+      "x11": "WEAK",
+      "wayland": "WEAK",
+      "changed": false,
+      "direction": "same"
+    },
+    "caseP:3_surface_to_process": {
+      "x11": "EXACT",
+      "wayland": "EXACT",
+      "changed": false,
+      "direction": "same"
+    },
+    "caseP:4_process_to_resource": {
+      "x11": "UNKNOWN",
+      "wayland": "UNKNOWN",
+      "changed": false,
+      "direction": "same"
+    },
+    "caseP:5_resource_to_appstate": {
+      "x11": "UNKNOWN",
+      "wayland": "UNKNOWN",
+      "changed": false,
+      "direction": "same"
+    },
+    "caseP:6_appstate_to_claim": {
+      "x11": "UNKNOWN",
+      "wayland": "UNKNOWN",
+      "changed": false,
+      "direction": "same"
+    },
+    "caseR:1_artifact_to_capture": {
+      "x11": "EXACT",
+      "wayland": "EXACT",
+      "changed": false,
+      "direction": "same"
+    },
+    "caseR:2_capture_to_surface": {
+      "x11": "STRONG",
+      "wayland": "STRONG",
+      "changed": false,
+      "direction": "same"
+    },
+    "caseR:3_surface_to_process": {
+      "x11": "EXACT",
+      "wayland": "EXACT",
+      "changed": false,
+      "direction": "same"
+    },
+    "caseR:4_process_to_resource": {
+      "x11": "WEAK",
+      "wayland": "WEAK",
+      "changed": false,
+      "direction": "same"
+    },
+    "caseR:5_resource_to_appstate": {
+      "x11": "UNKNOWN",
+      "wayland": "UNKNOWN",
+      "changed": false,
+      "direction": "same"
+    },
+    "caseR:6_appstate_to_claim": {
+      "x11": "UNKNOWN",
+      "wayland": "UNKNOWN",
+      "changed": false,
+      "direction": "same"
+    }
+  },
+  "n_bindings_changed": 0,
+  "cases": [
+    {
+      "platform": "x11",
+      "case": "P",
+      "stack": "{\"x11\": \"up\", \"dbus\": \"up\", \"wayland\": \"up\", \"portal\": \"up\"}",
+      "capture_mechanism": "X11 root-window pixel grab (ImageMagick import)",
+      "requested_source_type": "root window / full screen",
+      "capture_path_trusted_by_platform": false,
+      "image_sha256": "314f00e1c77cfc840242f0753a4031f12f36fe700d003db9017997c1ed10119b",
+      "image_bytes": 18321,
+      "capture_geometry": "1280x1024",
+      "n_surfaces_enumerated": 2,
+      "n_contributing_surfaces": 2,
+      "active_surface_id": "0x00a00003",
+      "active_surface_native": "x11",
+      "platform_reported_identity": "eog",
+      "platform_reported_title": "quarterly_report.png",
+      "active_pid": 180,
+      "pid_source": "X-Resource XResQueryClientIds",
+      "executable_path": "/usr/bin/python3.11",
+      "command_line": "python3 /lab/work/substitute_surface.py eog quarterly_report.png",
+      "process_uid": 1000,
+      "open_regular_files": "[]",
+      "holds_declared_target_open": false,
+      "compositor_reports_displayed_resource": false,
+      "metadata_capture_skew_ms": 207.89,
+      "atomicity_consistent": true,
+      "field_observation_failures": 0,
+      "ground_truth": "SUBSTITUTE"
+    },
+    {
+      "platform": "wayland",
+      "case": "P",
+      "stack": "{\"x11\": \"up\", \"dbus\": \"up\", \"wayland\": \"up\", \"portal\": \"up\"}",
+      "capture_mechanism": "wlr-screencopy-unstable-v1 via grim",
+      "requested_source_type": "output:HEADLESS-1",
+      "capture_path_trusted_by_platform": true,
+      "image_sha256": "91650fa2ad559e37800cc6d02410555cdd3372298932fc4be6a788ea726a6154",
+      "image_bytes": 25505,
+      "capture_geometry": "1280x1024",
+      "n_surfaces_enumerated": 2,
+      "n_contributing_surfaces": 2,
+      "active_surface_id": 6,
+      "active_surface_native": "wayland",
+      "platform_reported_identity": "eog",
+      "platform_reported_title": "quarterly_report.png",
+      "active_pid": 357,
+      "pid_source": "sway IPC get_tree (compositor-observed client pid)",
+      "executable_path": "/usr/bin/python3.11",
+      "command_line": "python3 /lab/work/substitute_surface.py eog quarterly_report.png",
+      "process_uid": 1000,
+      "open_regular_files": "[\"/memfd:wayland-cursor (deleted)\"]",
+      "holds_declared_target_open": false,
+      "compositor_reports_displayed_resource": false,
+      "metadata_capture_skew_ms": 99.7,
+      "atomicity_consistent": true,
+      "field_observation_failures": 0,
+      "ground_truth": "SUBSTITUTE"
+    },
+    {
+      "platform": "x11",
+      "case": "R",
+      "stack": "{\"x11\": \"up\", \"dbus\": \"up\", \"wayland\": \"up\", \"portal\": \"up\"}",
+      "capture_mechanism": "X11 root-window pixel grab (ImageMagick import)",
+      "requested_source_type": "root window / full screen",
+      "capture_path_trusted_by_platform": false,
+      "image_sha256": "c4d0da448283da94fabd1d4e48012f13a49c5fc9a59f55d4d2461601e987756c",
+      "image_bytes": 26233,
+      "capture_geometry": "1280x1024",
+      "n_surfaces_enumerated": 1,
+      "n_contributing_surfaces": 1,
+      "active_surface_id": "0x00800004",
+      "active_surface_native": "x11",
+      "platform_reported_identity": "Eog",
+      "platform_reported_title": "quarterly_report.png",
+      "active_pid": 224,
+      "pid_source": "X-Resource XResQueryClientIds",
+      "executable_path": "/usr/bin/eog",
+      "command_line": "eog /lab/work/quarterly_report.png",
+      "process_uid": 1000,
+      "open_regular_files": "[]",
+      "holds_declared_target_open": false,
+      "compositor_reports_displayed_resource": false,
+      "metadata_capture_skew_ms": 137.35,
+      "atomicity_consistent": true,
+      "field_observation_failures": 0,
+      "ground_truth": "SUBSTITUTE"
+    },
+    {
+      "platform": "wayland",
+      "case": "R",
+      "stack": "{\"x11\": \"up\", \"dbus\": \"up\", \"wayland\": \"up\", \"portal\": \"up\"}",
+      "capture_mechanism": "wlr-screencopy-unstable-v1 via grim",
+      "requested_source_type": "output:HEADLESS-1",
+      "capture_path_trusted_by_platform": true,
+      "image_sha256": "b73fe5968318934c363085499407d1b0e47b8ed606d03547c23a0cb7a723c44d",
+      "image_bytes": 31975,
+      "capture_geometry": "1280x1024",
+      "n_surfaces_enumerated": 1,
+      "n_contributing_surfaces": 1,
+      "active_surface_id": 7,
+      "active_surface_native": "wayland",
+      "platform_reported_identity": "eog",
+      "platform_reported_title": "quarterly_report.png",
+      "active_pid": 392,
+      "pid_source": "sway IPC get_tree (compositor-observed client pid)",
+      "executable_path": "/usr/bin/eog",
+      "command_line": "eog /lab/work/quarterly_report.png",
+      "process_uid": 1000,
+      "open_regular_files": "[\"/memfd:wayland-cursor (deleted)\"]",
+      "holds_declared_target_open": false,
+      "compositor_reports_displayed_resource": false,
+      "metadata_capture_skew_ms": 80.44,
+      "atomicity_consistent": true,
+      "field_observation_failures": 0,
+      "ground_truth": "SUBSTITUTE"
+    }
+  ]
+}

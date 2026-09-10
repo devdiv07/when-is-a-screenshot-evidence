@@ -1,0 +1,33 @@
+Openbox-Message: Unable to find a valid menu file "/var/lib/openbox/debian-menu.xml"
+[boot] X11 up:   dimensions:    1280x1024 pixels (325x260 millimeters)
+[boot] session bus up
+00:00:00.001 [ERROR] [wlr] [render/wlr_renderer.c:322] drmGetDevices2 failed: No such file or directory
+00:00:00.001 [ERROR] [wlr] [types/wlr_drm_lease_v1.c:705] No DRM backend supplied, failed to create wlr_drm_lease_v1_manager
+[boot] sway up: {
+  "human_readable": "1.7",
+  "variant": "sway",
+  "major": 1,
+  "minor": 7,
+  "patch": 0,
+  "loaded_config_file_name": "\/lab\/sway.conf"
+}
+[W][00037.818946] mod.rt       | [     module-rt.c:  274 pw_rtkit_check_xdg_portal()] Can't find org.freedesktop.portal.Desktop. Is xdg-desktop-portal running?
+[W][00037.818967] mod.rt       | [     module-rt.c: 1035 pipewire__module_init()] found session bus but no portal
+[E][00037.819043] mod.rt       | [     module-rt.c:  254 pw_rtkit_bus_get()] Failed to connect to system bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[W][00037.819049] mod.rt       | [     module-rt.c: 1049 pipewire__module_init()] could not get system bus: Connection refused
+M 13:49:02.584847             mod.rt ../src/modules/module-rt.c:274:pw_rtkit_check_xdg_portal: Can't find org.freedesktop.portal.Desktop. Is xdg-desktop-portal running?
+M 13:49:02.584911             mod.rt ../src/modules/module-rt.c:1035:pipewire__module_init: found session bus but no portal
+W 13:49:02.584966             mod.rt ../src/modules/module-rt.c:254:pw_rtkit_bus_get: Failed to connect to system bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+M 13:49:02.584972             mod.rt ../src/modules/module-rt.c:1049:pipewire__module_init: could not get system bus: Connection refused
+M 13:49:02.586047            default ../src/pipewire/thread.c:121:impl_acquire_rt: acquire_rt thread:0x74f90ace26c0 prio:-1 not implemented
+[W][00037.822759] default      | [        thread.c:  121 impl_acquire_rt()] acquire_rt thread:0x7ae9376ba6c0 prio:-1 not implemented
+M 13:49:02.601280          wp-device ../lib/wp/device.c:619:wp_spa_device_new_from_spa_factory: SPA handle 'api.libcamera.enum.manager' could not be loaded; is it installed?
+M 13:49:02.601298   script/libcamera libcamera.lua:168:chunk: PipeWire's libcamera SPA missing or broken. libcamera not supported.
+
+(/usr/libexec/xdg-desktop-portal:91): xdg-desktop-portal-WARNING **: 13:49:03.616: Failed to create RealtimeKit proxy: Could not connect: No such file or directory
+
+(/usr/libexec/xdg-desktop-portal:91): xdg-desktop-portal-WARNING **: 13:49:03.616: No skeleton to export
+[boot] xdg-desktop-portal present on the session bus
+[boot] stack status: x11=up dbus=up wayland=up portal=up 
+
+(/usr/libexec/xdg-desktop-portal:91): xdg-desktop-portal-WARNING **: 13:49:30.109: A backend call failed: Operation not permitted

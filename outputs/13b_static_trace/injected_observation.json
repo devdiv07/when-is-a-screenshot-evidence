@@ -1,0 +1,11 @@
+{
+  "injected_journal_entry": {
+    "path": "/lab/work/pre_existing_report.png",
+    "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+    "ts": 1788947471.3439264,
+    "bytes": 0,
+    "_synthetic": "PART 1B counterfactual: the write the frozen write-API-keyed journal did not observe"
+  },
+  "frozen_journal_contained_target_path": false,
+  "note": "The ONLY difference between original_record.json and counterfactual_record.json is the Tier C lineage value derived from this one journal entry by frozen recorder code."
+}

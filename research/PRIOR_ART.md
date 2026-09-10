@@ -226,3 +226,105 @@ on detection — none combines the three.
 This remains a HYPOTHESIS and not a contribution until the Phase I experiment runs. The
 Phase C/D deficit analysis establishes only that these fields were *missing*, never that
 they would be *sufficient*.
+
+---
+
+# Phase J prior-art sweep — 2026-09-10 (platform comparison)
+
+Scope: only what the 13b classification and the X11/Wayland comparison actually touch.
+
+## AgentProvenance — runtime/process/file provenance for agents
+
+**Citation status: UNVERIFIED.** Named by the research director as demonstrating strong
+process/file/runtime provenance for agents, and adopted here as prior art for the runtime
+layer. No primary source has been pinned in this repository, so per `CLAUDE.md` it is
+recorded as a **user report**, not a VERIFIED FACT. A pinned source must be added before it
+appears in any writeup.
+
+Boundary as adopted:
+
+- process, file and runtime provenance for agent episodes is **occupied**. This project must
+  not claim it.
+- It does **not** address the edge this project measured to be failing:
+  `process/client → displayed resource`. Knowing which process wrote which file, and which
+  process owns which surface, does not establish which resource a legitimate renderer had on
+  screen — that is exactly what case 13b and Case R demonstrate.
+
+**Consequence, already acted on:** the J0→J1→J2 filesystem-telemetry ladder was **not
+built** in this run. The unresolved question is not whether process/file telemetry exists.
+
+## Wayland protocol architecture — MEASURED, not cited
+
+Recorded as a measurement of this project rather than a literature claim.
+
+- **No Wayland protocol lets one client enumerate another client's surfaces.** Cross-client
+  enumeration in the Wayland arm was available **only** through sway's private IPC
+  (`swaymsg -t get_tree`). A recorder built on it is a *sway* recorder, not a *Wayland*
+  recorder.
+- The compositor observes the owning client pid as a **first-class field**, with no
+  `_NET_WM_PID` equivalent to fall through. This is a genuine improvement in *directness*
+  over X11's X-Resource correlation, at the cost of standardisation.
+- **`app_id` is client-asserted.** Measured: an attacker-run GTK3 process obtained
+  `app_id = "eog"`, byte-identical to the genuine viewer's. Wayland's identity string is not
+  a higher trust plane than X11's `WM_CLASS`.
+
+**Non-claim:** Wayland's screen-capture mediation is **not new** and is not claimed as a
+contribution. What is reported is a measurement of what it does and does not bind.
+
+## xdg-desktop-portal ScreenCast / Screenshot — MEASURED
+
+Against `xdg-desktop-portal` + `xdg-desktop-portal-wlr`, ScreenCast **version 4**:
+
+- `AvailableSourceTypes = 1` → **MONITOR only; WINDOW not offered; VIRTUAL not offered.**
+- `org.freedesktop.portal.Screenshot` — **interface absent** on this backend.
+- `SelectSources` accepted `types = MONITOR|WINDOW` and returned success while the backend
+  enumerated **outputs**; the WINDOW bit was silently ineffective.
+- The only identity the portal logs is the **requesting** app's id (empty for an
+  unsandboxed caller). The API's identity concept describes the *caller*, never the
+  *captured content*.
+
+**Scope:** one backend. **GNOME and KDE portals implement window capture and were not
+tested.** No claim is made about them.
+
+## PipeWire capture flow — BLOCKED
+
+The `ScreenCast` session reached `Start` and failed with `wlroots: unable to receive a valid
+format from wlr_screencopy` — PipeWire buffer-format negotiation on a headless, software
+-rendered container with no DRM device. **Stream property contents were never observed and
+are not inferred from documentation.** Recorded BLOCKED.
+
+## Re-checked, unchanged
+
+- **Agent Flight Recorder** (arXiv:2609.01931) — hash-chained tamper-evident agent event
+  logs. Still occupied; still assumes the recorder faithfully observes honest actions. The
+  13b classification sharpens *why* that assumption is load-bearing: AFR protects the record,
+  and 13b failed because a **write was never observed**, not because a record was altered.
+- **C2PA / Content Credentials** — unchanged. Authenticates the capture pipeline, not the
+  depicted scene. Case R is a direct illustration: a genuine viewer, a genuine compositor
+  frame, and attacker-authored bytes.
+- **Trusted path / trusted display** — unchanged and decades old. The Wayland result is a
+  *measurement* of one such architecture, not a new mechanism. Must be cited if the project
+  ever escalates to trusted display.
+
+## Explicit non-claims, extended
+
+Added to the existing list, we do **not** claim novelty for:
+
+- eBPF or kernel-level provenance;
+- runtime provenance graphs;
+- Wayland's screen-capture mediation or compositor isolation;
+- content provenance or signed media;
+- portal-based capture permission models.
+
+## The candidate contribution, restated after Phase J
+
+> **Measurement of which visual-evidence provenance bindings survive or fail under different
+> observation policies, inference policies, and desktop trust architectures.**
+
+Status: **INFERENCE supported by three measured witnesses**, not a theorem.
+
+What is new is not a mechanism. It is that the six bindings were separated, and each was
+measured against (a) a stated observation policy, (b) a stated inference policy, and
+(c) two desktop trust architectures — producing the specific negative result that the
+`process/client → displayed resource` edge fails identically on both, and that changing the
+platform's trust architecture moved **zero of twelve** binding evidence levels.

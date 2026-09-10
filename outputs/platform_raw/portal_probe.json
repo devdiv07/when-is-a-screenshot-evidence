@@ -1,0 +1,67 @@
+{
+  "probe_version": "portal-probe/1.0.0",
+  "steps": [
+    {
+      "step": "list_names",
+      "portal_present": true,
+      "portal_related": [
+        "org.freedesktop.portal.Desktop",
+        "org.freedesktop.impl.portal.PermissionStore",
+        "org.freedesktop.impl.portal.desktop.wlr"
+      ]
+    },
+    {
+      "step": "read_properties",
+      "interface": "org.freedesktop.portal.ScreenCast",
+      "values": {
+        "version": 4,
+        "AvailableSourceTypes": 1,
+        "AvailableCursorModes": 3
+      }
+    },
+    {
+      "step": "read_properties",
+      "interface": "org.freedesktop.portal.Screenshot",
+      "values": {
+        "version": "ERROR: org.freedesktop.DBus.Error.InvalidArgs: No such interface \u201corg.freedesktop.portal.Screenshot\u201d"
+      }
+    },
+    {
+      "step": "CreateSession",
+      "response": {
+        "response_code": 0,
+        "results": {
+          "session_handle": "/org/freedesktop/portal/desktop/session/1_9/sprobe1789048170"
+        }
+      }
+    },
+    {
+      "step": "SelectSources",
+      "requested_types_bitmask": 3,
+      "requested_types": "MONITOR|WINDOW",
+      "response": {
+        "response_code": 0,
+        "results": {}
+      }
+    },
+    {
+      "step": "Start",
+      "response": {
+        "response_code": 2,
+        "results": {}
+      }
+    }
+  ],
+  "blocked": true,
+  "portal_on_bus": true,
+  "available_source_types_bitmask": 1,
+  "available_source_types": {
+    "MONITOR": true,
+    "WINDOW": false,
+    "VIRTUAL": false
+  },
+  "session_handle": "/org/freedesktop/portal/desktop/session/1_9/sprobe1789048170",
+  "session_completed": false,
+  "session_error": "Start did not succeed: {'response_code': 2, 'results': {}}",
+  "blocked_reason": "could not complete a ScreenCast session in this environment: Start did not succeed: {'response_code': 2, 'results': {}}"
+}

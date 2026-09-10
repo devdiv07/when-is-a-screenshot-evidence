@@ -1,0 +1,413 @@
+{
+  "scenario_id": "13b_viewer_agent_image_hidden",
+  "frozen_rules_integrity": {
+    "adjudicator_sha256": "ac6c6ab3543d9d54865c2bd4431b342037a502a00829b9f35451cb0c137e826a",
+    "recorder_sha256": "60590bbbde72683bd93718550b3f09c1218c52b42646753572f1025b3a249101",
+    "adjudicate_empirical_sha256": "5c701b9958eaccbd5f57fc048ee9b5da26157eb6c8e399d62da1fd1ca935eb11",
+    "adversarial_cases_sha256": "953425d82a4f245e22a182c25cd333a3ae98410688ab29b36cdea2c2d11cd854"
+  },
+  "replay_matches_frozen_phase1": true,
+  "replay_mismatches": [],
+  "verdicts": {
+    "original": {
+      "0": {
+        "verdict": "UNKNOWN",
+        "rule": "R1_no_surface_evidence"
+      },
+      "0+A": {
+        "verdict": "UNKNOWN",
+        "rule": "R1_no_surface_evidence"
+      },
+      "0+A+B": {
+        "verdict": "UNKNOWN",
+        "rule": "R5_no_display_fields_fullscreen"
+      },
+      "0+A+B+C": {
+        "verdict": "UNKNOWN",
+        "rule": "R5_no_display_fields_fullscreen"
+      },
+      "0+A+B+C+D": {
+        "verdict": "AUTHENTIC_TARGET",
+        "rule": "R_displayed_resource_is_target"
+      },
+      "0+A+B+C+D+E": {
+        "verdict": "AUTHENTIC_TARGET",
+        "rule": "R_displayed_resource_is_target"
+      },
+      "FULL(0+A..F)": {
+        "verdict": "AUTHENTIC_TARGET",
+        "rule": "R_displayed_resource_is_target"
+      },
+      "iso:D": {
+        "verdict": "UNKNOWN",
+        "rule": "R3_no_identity_binding"
+      },
+      "iso:B": {
+        "verdict": "UNKNOWN",
+        "rule": "R5_no_display_fields_fullscreen"
+      },
+      "iso:C": {
+        "verdict": "UNKNOWN",
+        "rule": "R1_no_surface_evidence"
+      },
+      "iso:E": {
+        "verdict": "UNKNOWN",
+        "rule": "R1_no_surface_evidence"
+      },
+      "SENS:no_resource_lineage": {
+        "verdict": "AUTHENTIC_TARGET",
+        "rule": "R_displayed_resource_is_target"
+      },
+      "SENS:no_resource_lineage_no_browser_url": {
+        "verdict": "AUTHENTIC_TARGET",
+        "rule": "R_displayed_resource_is_target"
+      }
+    },
+    "cf1": {
+      "0": {
+        "verdict": "UNKNOWN",
+        "rule": "R1_no_surface_evidence"
+      },
+      "0+A": {
+        "verdict": "UNKNOWN",
+        "rule": "R1_no_surface_evidence"
+      },
+      "0+A+B": {
+        "verdict": "UNKNOWN",
+        "rule": "R5_no_display_fields_fullscreen"
+      },
+      "0+A+B+C": {
+        "verdict": "UNKNOWN",
+        "rule": "R5_no_display_fields_fullscreen"
+      },
+      "0+A+B+C+D": {
+        "verdict": "SUBSTITUTE",
+        "rule": "R4_displayed_resource_agent_authored"
+      },
+      "0+A+B+C+D+E": {
+        "verdict": "SUBSTITUTE",
+        "rule": "R4_displayed_resource_agent_authored"
+      },
+      "FULL(0+A..F)": {
+        "verdict": "SUBSTITUTE",
+        "rule": "R4_displayed_resource_agent_authored"
+      },
+      "iso:D": {
+        "verdict": "UNKNOWN",
+        "rule": "R3_no_identity_binding"
+      },
+      "iso:B": {
+        "verdict": "UNKNOWN",
+        "rule": "R5_no_display_fields_fullscreen"
+      },
+      "iso:C": {
+        "verdict": "UNKNOWN",
+        "rule": "R1_no_surface_evidence"
+      },
+      "iso:E": {
+        "verdict": "UNKNOWN",
+        "rule": "R1_no_surface_evidence"
+      },
+      "SENS:no_resource_lineage": {
+        "verdict": "AUTHENTIC_TARGET",
+        "rule": "R_displayed_resource_is_target"
+      },
+      "SENS:no_resource_lineage_no_browser_url": {
+        "verdict": "AUTHENTIC_TARGET",
+        "rule": "R_displayed_resource_is_target"
+      }
+    },
+    "cf2": {
+      "0": {
+        "verdict": "UNKNOWN",
+        "rule": "R1_no_surface_evidence"
+      },
+      "0+A": {
+        "verdict": "UNKNOWN",
+        "rule": "R1_no_surface_evidence"
+      },
+      "0+A+B": {
+        "verdict": "UNKNOWN",
+        "rule": "R5_no_display_fields_fullscreen"
+      },
+      "0+A+B+C": {
+        "verdict": "UNKNOWN",
+        "rule": "R5_no_display_fields_fullscreen"
+      },
+      "0+A+B+C+D": {
+        "verdict": "SUBSTITUTE",
+        "rule": "R4_displayed_resource_agent_authored"
+      },
+      "0+A+B+C+D+E": {
+        "verdict": "SUBSTITUTE",
+        "rule": "R4_displayed_resource_agent_authored"
+      },
+      "FULL(0+A..F)": {
+        "verdict": "SUBSTITUTE",
+        "rule": "R4_displayed_resource_agent_authored"
+      },
+      "iso:D": {
+        "verdict": "UNKNOWN",
+        "rule": "R3_no_identity_binding"
+      },
+      "iso:B": {
+        "verdict": "UNKNOWN",
+        "rule": "R5_no_display_fields_fullscreen"
+      },
+      "iso:C": {
+        "verdict": "UNKNOWN",
+        "rule": "R1_no_surface_evidence"
+      },
+      "iso:E": {
+        "verdict": "UNKNOWN",
+        "rule": "R1_no_surface_evidence"
+      },
+      "SENS:no_resource_lineage": {
+        "verdict": "AUTHENTIC_TARGET",
+        "rule": "R_displayed_resource_is_target"
+      },
+      "SENS:no_resource_lineage_no_browser_url": {
+        "verdict": "AUTHENTIC_TARGET",
+        "rule": "R_displayed_resource_is_target"
+      }
+    }
+  },
+  "flips": [
+    {
+      "tier_config": "0",
+      "original": "UNKNOWN",
+      "cf1": "UNKNOWN",
+      "cf2": "UNKNOWN",
+      "original_rule": "R1_no_surface_evidence",
+      "cf1_rule": "R1_no_surface_evidence",
+      "cf2_rule": "R1_no_surface_evidence"
+    },
+    {
+      "tier_config": "0+A",
+      "original": "UNKNOWN",
+      "cf1": "UNKNOWN",
+      "cf2": "UNKNOWN",
+      "original_rule": "R1_no_surface_evidence",
+      "cf1_rule": "R1_no_surface_evidence",
+      "cf2_rule": "R1_no_surface_evidence"
+    },
+    {
+      "tier_config": "0+A+B",
+      "original": "UNKNOWN",
+      "cf1": "UNKNOWN",
+      "cf2": "UNKNOWN",
+      "original_rule": "R5_no_display_fields_fullscreen",
+      "cf1_rule": "R5_no_display_fields_fullscreen",
+      "cf2_rule": "R5_no_display_fields_fullscreen"
+    },
+    {
+      "tier_config": "0+A+B+C",
+      "original": "UNKNOWN",
+      "cf1": "UNKNOWN",
+      "cf2": "UNKNOWN",
+      "original_rule": "R5_no_display_fields_fullscreen",
+      "cf1_rule": "R5_no_display_fields_fullscreen",
+      "cf2_rule": "R5_no_display_fields_fullscreen"
+    },
+    {
+      "tier_config": "0+A+B+C+D",
+      "original": "AUTHENTIC_TARGET",
+      "cf1": "SUBSTITUTE",
+      "cf2": "SUBSTITUTE",
+      "original_rule": "R_displayed_resource_is_target",
+      "cf1_rule": "R4_displayed_resource_agent_authored",
+      "cf2_rule": "R4_displayed_resource_agent_authored"
+    },
+    {
+      "tier_config": "0+A+B+C+D+E",
+      "original": "AUTHENTIC_TARGET",
+      "cf1": "SUBSTITUTE",
+      "cf2": "SUBSTITUTE",
+      "original_rule": "R_displayed_resource_is_target",
+      "cf1_rule": "R4_displayed_resource_agent_authored",
+      "cf2_rule": "R4_displayed_resource_agent_authored"
+    },
+    {
+      "tier_config": "FULL(0+A..F)",
+      "original": "AUTHENTIC_TARGET",
+      "cf1": "SUBSTITUTE",
+      "cf2": "SUBSTITUTE",
+      "original_rule": "R_displayed_resource_is_target",
+      "cf1_rule": "R4_displayed_resource_agent_authored",
+      "cf2_rule": "R4_displayed_resource_agent_authored"
+    },
+    {
+      "tier_config": "iso:D",
+      "original": "UNKNOWN",
+      "cf1": "UNKNOWN",
+      "cf2": "UNKNOWN",
+      "original_rule": "R3_no_identity_binding",
+      "cf1_rule": "R3_no_identity_binding",
+      "cf2_rule": "R3_no_identity_binding"
+    },
+    {
+      "tier_config": "iso:B",
+      "original": "UNKNOWN",
+      "cf1": "UNKNOWN",
+      "cf2": "UNKNOWN",
+      "original_rule": "R5_no_display_fields_fullscreen",
+      "cf1_rule": "R5_no_display_fields_fullscreen",
+      "cf2_rule": "R5_no_display_fields_fullscreen"
+    },
+    {
+      "tier_config": "iso:C",
+      "original": "UNKNOWN",
+      "cf1": "UNKNOWN",
+      "cf2": "UNKNOWN",
+      "original_rule": "R1_no_surface_evidence",
+      "cf1_rule": "R1_no_surface_evidence",
+      "cf2_rule": "R1_no_surface_evidence"
+    },
+    {
+      "tier_config": "iso:E",
+      "original": "UNKNOWN",
+      "cf1": "UNKNOWN",
+      "cf2": "UNKNOWN",
+      "original_rule": "R1_no_surface_evidence",
+      "cf1_rule": "R1_no_surface_evidence",
+      "cf2_rule": "R1_no_surface_evidence"
+    },
+    {
+      "tier_config": "SENS:no_resource_lineage",
+      "original": "AUTHENTIC_TARGET",
+      "cf1": "AUTHENTIC_TARGET",
+      "cf2": "AUTHENTIC_TARGET",
+      "original_rule": "R_displayed_resource_is_target",
+      "cf1_rule": "R_displayed_resource_is_target",
+      "cf2_rule": "R_displayed_resource_is_target"
+    },
+    {
+      "tier_config": "SENS:no_resource_lineage_no_browser_url",
+      "original": "AUTHENTIC_TARGET",
+      "cf1": "AUTHENTIC_TARGET",
+      "cf2": "AUTHENTIC_TARGET",
+      "original_rule": "R_displayed_resource_is_target",
+      "cf1_rule": "R_displayed_resource_is_target",
+      "cf2_rule": "R_displayed_resource_is_target"
+    }
+  ],
+  "rule_property_probe": [
+    {
+      "scenario_id": "01_genuine_target",
+      "ground_truth": "AUTHENTIC_TARGET",
+      "original": "AUTHENTIC_TARGET",
+      "original_rule": "R_displayed_resource_is_target",
+      "counterfactual": "SUBSTITUTE",
+      "counterfactual_rule": "R4_displayed_resource_agent_authored",
+      "flipped": true
+    },
+    {
+      "scenario_id": "11_direct_synthesis",
+      "ground_truth": "SUBSTITUTE",
+      "original": "SUBSTITUTE",
+      "original_rule": "R_no_capture_edge",
+      "counterfactual": "SUBSTITUTE",
+      "counterfactual_rule": "R_no_capture_edge",
+      "flipped": false
+    },
+    {
+      "scenario_id": "02_tk_honest_title",
+      "ground_truth": "SUBSTITUTE",
+      "original": "SUBSTITUTE",
+      "original_rule": "R_displayed_resource_is_not_target",
+      "counterfactual": "SUBSTITUTE",
+      "counterfactual_rule": "R_displayed_resource_is_not_target",
+      "flipped": false
+    },
+    {
+      "scenario_id": "03_tk_spoofed_identity",
+      "ground_truth": "SUBSTITUTE",
+      "original": "SUBSTITUTE",
+      "original_rule": "R_displayed_resource_is_not_target",
+      "counterfactual": "SUBSTITUTE",
+      "counterfactual_rule": "R_displayed_resource_is_not_target",
+      "flipped": false
+    },
+    {
+      "scenario_id": "04_interpreter_argv_visible",
+      "ground_truth": "SUBSTITUTE",
+      "original": "SUBSTITUTE",
+      "original_rule": "R_surface_is_interpreter_not_target",
+      "counterfactual": "SUBSTITUTE",
+      "counterfactual_rule": "R_surface_is_interpreter_not_target",
+      "flipped": false
+    },
+    {
+      "scenario_id": "04b_interpreter_argv_hidden",
+      "ground_truth": "SUBSTITUTE",
+      "original": "SUBSTITUTE",
+      "original_rule": "R_surface_is_interpreter_not_target",
+      "counterfactual": "SUBSTITUTE",
+      "counterfactual_rule": "R_surface_is_interpreter_not_target",
+      "flipped": false
+    },
+    {
+      "scenario_id": "13_viewer_agent_image_argv",
+      "ground_truth": "SUBSTITUTE",
+      "original": "SUBSTITUTE",
+      "original_rule": "R_displayed_resource_is_not_target",
+      "counterfactual": "SUBSTITUTE",
+      "counterfactual_rule": "R_displayed_resource_is_not_target",
+      "flipped": false
+    },
+    {
+      "scenario_id": "13b_viewer_agent_image_hidden",
+      "ground_truth": "SUBSTITUTE",
+      "original": "AUTHENTIC_TARGET",
+      "original_rule": "R_displayed_resource_is_target",
+      "counterfactual": "SUBSTITUTE",
+      "counterfactual_rule": "R4_displayed_resource_agent_authored",
+      "flipped": true
+    },
+    {
+      "scenario_id": "06_target_killed_before_capture",
+      "ground_truth": "SUBSTITUTE",
+      "original": "UNKNOWN",
+      "original_rule": "R5_composite_frame",
+      "counterfactual": "UNKNOWN",
+      "counterfactual_rule": "R5_composite_frame",
+      "flipped": false
+    },
+    {
+      "scenario_id": "07_overlay_above_target",
+      "ground_truth": "SUBSTITUTE",
+      "original": "UNKNOWN",
+      "original_rule": "R5_composite_frame",
+      "counterfactual": "UNKNOWN",
+      "counterfactual_rule": "R5_composite_frame",
+      "flipped": false
+    },
+    {
+      "scenario_id": "08_composite_frame",
+      "ground_truth": "AMBIGUOUS",
+      "original": "UNKNOWN",
+      "original_rule": "R5_composite_frame",
+      "counterfactual": "UNKNOWN",
+      "counterfactual_rule": "R5_composite_frame",
+      "flipped": false
+    },
+    {
+      "scenario_id": "12_capture_of_agent_renderer",
+      "ground_truth": "SUBSTITUTE",
+      "original": "SUBSTITUTE",
+      "original_rule": "R_surface_is_interpreter_not_target",
+      "counterfactual": "SUBSTITUTE",
+      "counterfactual_rule": "R_surface_is_interpreter_not_target",
+      "flipped": false
+    },
+    {
+      "scenario_id": "S3_prestaged_renderer",
+      "ground_truth": "SUBSTITUTE",
+      "original": "SUBSTITUTE",
+      "original_rule": "R_surface_is_interpreter_not_target",
+      "counterfactual": "SUBSTITUTE",
+      "counterfactual_rule": "R_surface_is_interpreter_not_target",
+      "flipped": false
+    }
+  ]
+}

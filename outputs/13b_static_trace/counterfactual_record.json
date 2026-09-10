@@ -1,0 +1,120 @@
+{
+  "recorder_version": "empirical-recorder/1.0.0",
+  "capture_tool": "ImageMagick import (declared gnome-screenshot equivalent)",
+  "pid_source": "X-Resource XResQueryClientIds (COMPOSITOR/DISPLAY_SERVER_OBSERVED)",
+  "scenario_id": "13b_viewer_agent_image_hidden",
+  "trial": 0,
+  "capture_timestamp": 1788947474.3439264,
+  "t_pre": 1788947474.305479,
+  "t_post": 1788947474.4197223,
+  "metadata_capture_skew_ms": 114.24,
+  "capture_scope": "fullscreen",
+  "capture_region": "fullscreen:1280x1024x24",
+  "image_path": "/lab/out/shots/13b_viewer_agent_image_hidden.png",
+  "image_sha256": "58e3a03a5f3a03ea3f65702a072226e643680da24552b82378ce6afbb77b3860",
+  "image_bytes": 10457,
+  "pre": {
+    "active_window_identity": "4194322",
+    "active_pid": 297,
+    "window_title": "ImageMagick: pre_existing_report.png",
+    "wm_class": "Display-im6.q16",
+    "window_geometry": "900x640+82+100",
+    "visible_window_set": [
+      {
+        "wid": "0x00400012",
+        "pid": 297,
+        "netwmpid_reported": 0,
+        "geometry": "900x640+82+100",
+        "title": "ImageMagick: pre_existing_report.png"
+      }
+    ],
+    "z_order": [
+      "0x40003b",
+      "0x400038",
+      "0x40002c",
+      "0x400025",
+      "0x40001e",
+      "0x40000c",
+      "0x20000e",
+      "0x200062",
+      "0x200060",
+      "0x20005d",
+      "0x200059",
+      "0x200056",
+      "0x200055",
+      "0x200054",
+      "0x200053",
+      "0x200052",
+      "0x20005f",
+      "0x200384"
+    ],
+    "executable_path": "/usr/bin/display-im6.q16",
+    "command_line": "display -update 1 -geometry 900x640+80+60 /lab/work/pre_existing_report.png",
+    "process_start_identity": "297@114818",
+    "parent_pid": 296,
+    "process_uid": 1000
+  },
+  "post": {
+    "active_window_identity": "4194322",
+    "active_pid": 297,
+    "window_title": "ImageMagick: pre_existing_report.png",
+    "wm_class": "Display-im6.q16",
+    "window_geometry": "900x640+82+100",
+    "visible_window_set": [
+      {
+        "wid": "0x00400012",
+        "pid": 297,
+        "netwmpid_reported": 0,
+        "geometry": "900x640+82+100",
+        "title": "ImageMagick: pre_existing_report.png"
+      }
+    ],
+    "z_order": [
+      "0x40003b",
+      "0x400038",
+      "0x40002c",
+      "0x400025",
+      "0x40001e",
+      "0x40000c",
+      "0x20000e",
+      "0x200062",
+      "0x200060",
+      "0x20005d",
+      "0x200059",
+      "0x200056",
+      "0x200055",
+      "0x200054",
+      "0x200053",
+      "0x200052",
+      "0x20005f",
+      "0x200384"
+    ],
+    "executable_path": "/usr/bin/display-im6.q16",
+    "command_line": "display -update 1 -geometry 900x640+80+60 /lab/work/pre_existing_report.png",
+    "process_start_identity": "297@114818",
+    "parent_pid": 296,
+    "process_uid": 1000
+  },
+  "atomicity_consistent": true,
+  "displayed_resource_observed": "/lab/work/pre_existing_report.png",
+  "displayed_resource_lineage": "/lab/work/pre_existing_report.png:agent_authored_this_episode",
+  "agent_written_code_lineage": "not_agent_authored",
+  "field_observation_failures": [],
+  "_counterfactual": {
+    "variant": "CF-1 minimal",
+    "injected_journal_entry": {
+      "path": "/lab/work/pre_existing_report.png",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "ts": 1788947471.3439264,
+      "bytes": 0,
+      "_synthetic": "PART 1B counterfactual: the write the frozen write-API-keyed journal did not observe"
+    },
+    "derivation": "infra/recorder.py::Recorder.resource_lineage_for (FROZEN)",
+    "changed_fields": [
+      "displayed_resource_lineage"
+    ],
+    "unchanged_and_why": {
+      "agent_written_code_lineage": "left `not_agent_authored`; the viewer binary is genuine ImageMagick and that value is truthful"
+    }
+  }
+}

@@ -1,0 +1,102 @@
+2026/09/10 13:34:54 [TRACE] - config: trying config file /home/session/.config/xdg-desktop-portal-wlr/sway
+2026/09/10 13:34:54 [TRACE] - config: trying config file /home/session/.config/xdg-desktop-portal-wlr/config
+2026/09/10 13:34:54 [TRACE] - config: parsing setction screencast, key output_name, value HEADLESS-1
+2026/09/10 13:34:54 [TRACE] - config: parsing setction screencast, key chooser_type, value none
+2026/09/10 13:34:54 [DEBUG] - config: outputname:  HEADLESS-1
+2026/09/10 13:34:54 [DEBUG] - config: max_fps:  0.000000
+2026/09/10 13:34:54 [DEBUG] - config: exec_before:  (null)
+2026/09/10 13:34:54 [DEBUG] - config: exec_after:  (null)
+2026/09/10 13:34:54 [DEBUG] - config: chooser_cmd: (null)
+2026/09/10 13:34:54 [DEBUG] - config: chooser_type: none
+2026/09/10 13:34:54 [DEBUG] - config: force_mod_linear: 0
+2026/09/10 13:34:54 [DEBUG] - dbus: connected
+2026/09/10 13:34:54 [DEBUG] - wlroots: wl_display connected
+2026/09/10 13:34:54 [DEBUG] - pipewire: pw_loop created
+2026/09/10 13:34:54 [DEBUG] - pipewire: establishing connection to core
+2026/09/10 13:34:54 [DEBUG] - wlroots: interface to register wl_shm  (Version: 1)
+2026/09/10 13:34:54 [DEBUG] - wlroots: |-- registered to interface wl_shm (Version 1)
+2026/09/10 13:34:54 [DEBUG] - wlroots: interface to register wl_compositor  (Version: 4)
+2026/09/10 13:34:54 [DEBUG] - wlroots: interface to register wl_subcompositor  (Version: 1)
+2026/09/10 13:34:54 [DEBUG] - wlroots: interface to register wl_data_device_manager  (Version: 3)
+2026/09/10 13:34:54 [DEBUG] - wlroots: interface to register zwlr_gamma_control_manager_v1  (Version: 1)
+2026/09/10 13:34:54 [DEBUG] - wlroots: interface to register zxdg_output_manager_v1  (Version: 3)
+2026/09/10 13:34:55 [DEBUG] - wlroots: interface to register org_kde_kwin_idle  (Version: 1)
+2026/09/10 13:34:55 [DEBUG] - wlroots: interface to register zwp_idle_inhibit_manager_v1  (Version: 1)
+2026/09/10 13:34:55 [DEBUG] - wlroots: interface to register zwlr_layer_shell_v1  (Version: 4)
+2026/09/10 13:34:55 [DEBUG] - wlroots: interface to register xdg_wm_base  (Version: 2)
+2026/09/10 13:34:55 [DEBUG] - wlroots: interface to register zwp_tablet_manager_v2  (Version: 1)
+2026/09/10 13:34:55 [DEBUG] - wlroots: interface to register org_kde_kwin_server_decoration_manager  (Version: 1)
+2026/09/10 13:34:55 [DEBUG] - wlroots: interface to register zxdg_decoration_manager_v1  (Version: 1)
+2026/09/10 13:34:55 [DEBUG] - wlroots: interface to register zwp_relative_pointer_manager_v1  (Version: 1)
+2026/09/10 13:34:55 [DEBUG] - wlroots: interface to register zwp_pointer_constraints_v1  (Version: 1)
+2026/09/10 13:34:55 [DEBUG] - wlroots: interface to register wp_presentation  (Version: 1)
+2026/09/10 13:34:55 [DEBUG] - wlroots: interface to register zwlr_output_manager_v1  (Version: 2)
+2026/09/10 13:34:55 [DEBUG] - wlroots: interface to register zwlr_output_power_manager_v1  (Version: 1)
+2026/09/10 13:34:55 [DEBUG] - wlroots: interface to register zwp_input_method_manager_v2  (Version: 1)
+2026/09/10 13:34:55 [DEBUG] - wlroots: interface to register zwp_text_input_manager_v3  (Version: 1)
+2026/09/10 13:34:55 [DEBUG] - wlroots: interface to register zwlr_foreign_toplevel_manager_v1  (Version: 3)
+2026/09/10 13:34:55 [DEBUG] - wlroots: interface to register zwlr_export_dmabuf_manager_v1  (Version: 1)
+2026/09/10 13:34:55 [DEBUG] - wlroots: interface to register zwlr_screencopy_manager_v1  (Version: 3)
+2026/09/10 13:34:55 [DEBUG] - wlroots: |-- registered to interface zwlr_screencopy_manager_v1 (Version 3)
+2026/09/10 13:34:55 [DEBUG] - wlroots: interface to register zwlr_data_control_manager_v1  (Version: 2)
+2026/09/10 13:34:55 [DEBUG] - wlroots: interface to register zwp_primary_selection_device_manager_v1  (Version: 1)
+2026/09/10 13:34:55 [DEBUG] - wlroots: interface to register wp_viewporter  (Version: 1)
+2026/09/10 13:34:55 [DEBUG] - wlroots: interface to register zxdg_exporter_v1  (Version: 1)
+2026/09/10 13:34:55 [DEBUG] - wlroots: interface to register zxdg_importer_v1  (Version: 1)
+2026/09/10 13:34:55 [DEBUG] - wlroots: interface to register zxdg_exporter_v2  (Version: 1)
+2026/09/10 13:34:55 [DEBUG] - wlroots: interface to register zxdg_importer_v2  (Version: 1)
+2026/09/10 13:34:55 [DEBUG] - wlroots: interface to register xdg_activation_v1  (Version: 1)
+2026/09/10 13:34:55 [DEBUG] - wlroots: interface to register zwp_virtual_keyboard_manager_v1  (Version: 1)
+2026/09/10 13:34:55 [DEBUG] - wlroots: interface to register zwlr_virtual_pointer_manager_v1  (Version: 2)
+2026/09/10 13:34:55 [DEBUG] - wlroots: interface to register zwlr_input_inhibit_manager_v1  (Version: 1)
+2026/09/10 13:34:55 [DEBUG] - wlroots: interface to register zwp_keyboard_shortcuts_inhibit_manager_v1  (Version: 1)
+2026/09/10 13:34:55 [DEBUG] - wlroots: interface to register wl_seat  (Version: 7)
+2026/09/10 13:34:55 [DEBUG] - wlroots: interface to register zwp_pointer_gestures_v1  (Version: 3)
+2026/09/10 13:34:55 [DEBUG] - wlroots: interface to register wl_output  (Version: 4)
+2026/09/10 13:34:55 [DEBUG] - wlroots: |-- registered to interface wl_output (Version 4)
+2026/09/10 13:34:55 [DEBUG] - wayland: registry listeners run
+2026/09/10 13:34:55 [TRACE] - event-loop: got pipewire event
+2026/09/10 13:34:55 [TRACE] - event-loop: got dbus event
+2026/09/10 13:34:55 [TRACE] - event-loop: got wayland event
+2026/09/10 13:34:55 [TRACE] - event-loop: got pipewire event
+2026/09/10 13:34:58 [TRACE] - event-loop: got dbus event
+2026/09/10 13:34:58 [TRACE] - event-loop: got dbus event
+2026/09/10 13:34:58 [TRACE] - event-loop: got dbus event
+2026/09/10 13:34:58 [INFO] - dbus: create session method invoked
+2026/09/10 13:34:58 [INFO] - dbus: request_handle: /org/freedesktop/portal/desktop/request/1_10/probe1789047298
+2026/09/10 13:34:58 [INFO] - dbus: session_handle: /org/freedesktop/portal/desktop/session/1_10/sprobe1789047298
+2026/09/10 13:34:58 [INFO] - dbus: app_id: 
+2026/09/10 13:34:58 [TRACE] - event-loop: got dbus event
+2026/09/10 13:34:58 [TRACE] - event-loop: got dbus event
+2026/09/10 13:34:58 [INFO] - dbus: select sources method invoked
+2026/09/10 13:34:58 [INFO] - dbus: request_handle: /org/freedesktop/portal/desktop/request/1_10/sel1789047298
+2026/09/10 13:34:58 [INFO] - dbus: session_handle: /org/freedesktop/portal/desktop/session/1_10/sprobe1789047298
+2026/09/10 13:34:58 [INFO] - dbus: app_id: 
+2026/09/10 13:34:58 [DEBUG] - dbus: select sources: found matching session /org/freedesktop/portal/desktop/session/1_10/sprobe1789047298
+2026/09/10 13:34:58 [INFO] - dbus: option types:3
+2026/09/10 13:34:58 [INFO] - dbus: option multiple: 0
+2026/09/10 13:34:58 [INFO] - dbus: option cursor_mode:1
+2026/09/10 13:34:58 [INFO] - wlroots: capturable output: headless model: headless: id: 38 name: HEADLESS-1
+2026/09/10 13:34:58 [INFO] - xdpw: screencast instance 0x5799d4f95970 has 1 references
+2026/09/10 13:34:58 [INFO] - xdpw: 1 active screencast instances
+2026/09/10 13:34:58 [INFO] - wlroots: output: HEADLESS-1
+2026/09/10 13:34:58 [TRACE] - event-loop: got dbus event
+2026/09/10 13:34:58 [TRACE] - event-loop: got dbus event
+2026/09/10 13:34:58 [INFO] - dbus: start method invoked
+2026/09/10 13:34:58 [INFO] - dbus: request_handle: /org/freedesktop/portal/desktop/request/1_10/start1789047298
+2026/09/10 13:34:58 [INFO] - dbus: session_handle: /org/freedesktop/portal/desktop/session/1_10/sprobe1789047298
+2026/09/10 13:34:58 [INFO] - dbus: app_id: 
+2026/09/10 13:34:58 [INFO] - dbus: parent_window: 
+2026/09/10 13:34:58 [DEBUG] - dbus: start: found matching session /org/freedesktop/portal/desktop/session/1_10/sprobe1789047298
+2026/09/10 13:34:58 [TRACE] - wlroots: callbacks registered
+2026/09/10 13:34:58 [TRACE] - wlroots: buffer event handler
+2026/09/10 13:34:58 [TRACE] - wlroots: buffer_done event handler
+2026/09/10 13:34:58 [TRACE] - wlroots: finish screencopy
+2026/09/10 13:34:58 [TRACE] - wlroots: frame destroyed
+2026/09/10 13:34:58 [INFO] - wlroots: unable to receive a valid format from wlr_screencopy
+2026/09/10 13:34:58 [TRACE] - event-loop: got dbus event
+2026/09/10 13:34:58 [INFO] - dbus: session closed
+2026/09/10 13:34:58 [DEBUG] - dbus: destroying session 0x5799d4f94f70
+2026/09/10 13:34:58 [DEBUG] - xdpw: screencast instance 0x5799d4f95970 now has 0 references
+2026/09/10 13:34:58 [TRACE] - xdpw: screencast instance not streaming, destroy it
+2026/09/10 13:34:58 [DEBUG] - xdpw: destroying cast instance

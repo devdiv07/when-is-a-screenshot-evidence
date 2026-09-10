@@ -1,6 +1,9 @@
 # Progress
 
-## Current status — 2026-09-09
+## Current status — 2026-09-09 — SUPERSEDED by the 2026-09-10 section at the end of this file
+
+> **This section is retained unrewritten for provenance. Phase I's conclusions stand;
+> its "next step" list at the end of this section does NOT — see Phase J.**
 
 **PHASE I CLOSED AND FROZEN. Kill criterion FIRED. Contract branch CLOSED / INSUFFICIENT.**
 
@@ -247,4 +250,126 @@ closure is committed and a successor contract is predeclared.
   unmet).
 - ProcGrep untouched. No BPE. No application prose.
 - Tier D portability to Wayland unresolved (a real deployment blocker).
+- No privacy-minimisation story for visible-window-set + titles + argv + URLs.
+
+---
+
+# Current status — 2026-09-10 (supersedes the 2026-09-09 "next step" list above)
+
+**PHASE J COMPLETE. TECHNICAL EXPANSION STOPPED. THE PROJECT IS IN PACKAGING.**
+
+**Read first: `research/FROZEN_FINDINGS.md`** — the seven frozen findings, each with its
+evidence class, evidence IDs, scope and explicit non-claims. That file is the research
+package. Then `outputs/final_research_board.md`, `research/13B_STATIC_CLASSIFICATION.md`,
+`research/EPISTEMIC_POLICY.md`, `outputs/x11_wayland_comparison.md`.
+
+**H-RB is NOT opened**, and its naive form is already bounded by E082.
+
+Phase J had exactly two objectives. Both resolved, and both in the same direction.
+
+## 1. 13b is classified — CONTRACT_UNDERSPECIFICATION
+
+Resolved **statically**, over the frozen adjudicator, with nothing frozen modified. The
+replay reproduces the Phase I verdicts at all 13 configurations rule-for-rule (E072).
+
+- Injecting the single missed write flips 13b to `SUBSTITUTE` at every Tier-D-inclusive
+  configuration (E073) — so the adjudicator already had a correct rule and the recorder
+  simply did not observe the fact.
+- But that fact has **exactly one consumer**, and it is the contract's own least-deployable
+  field. In the default deployment the fact is unrepresentable and changes nothing (E074).
+- And the same fact turns the **honest control into a false reject** (E075), because the
+  contract has no field distinguishing a task-mandated write from an adversarial one.
+- The decisive defect: the contract defines lineage as a **binary** predicate, so absence of
+  observation is emitted as the positive claim `pre_existing`, and abstain-by-default
+  **cannot fire** because the field is never missing (E076).
+
+Secondary findings recorded, not discarded: **B′** (within the optimistic configuration it
+is a recorder observation gap) and **C′** (identity and provenance are fused into one field;
+the adjudicator sources identity from argv and silently drops the provenance requirement —
+E077).
+
+**The Phase I kill criterion still fired on its own predeclared terms. Nothing was
+reinterpreted, and the frozen contract was not touched.**
+
+## 2. Wayland changes who observes, not what can be bound
+
+Two predeclared cases, both platforms, zero field observation failures, capture hashes
+reproducible byte-identically across container runs.
+
+> **Zero of twelve comparable bindings changed evidence level between X11 and Wayland**
+> (E079).
+
+- The standard portal offers **no window source at all**: `AvailableSourceTypes = 1`
+  (MONITOR only), and the `Screenshot` interface is absent on that backend (E080). The
+  predeclared expectation that Wayland would strengthen `capture → surface` is **REFUTED**
+  for the standard path.
+- `app_id` is client-asserted and spoofable exactly as `WM_CLASS` is (E081).
+- Open file descriptors at the capture instant reveal **nothing** about the displayed
+  resource — `eog` had already closed the file (E082).
+- Wayland *does* improve capture-path integrity and the directness of `surface → process`,
+  and it *worsens* standardisation: cross-client enumeration exists only through
+  compositor-private IPC (E083).
+- Portal **stream metadata is BLOCKED**, not negative — PipeWire format negotiation failed
+  on a headless no-DRM container. Not inferred from documentation (E084).
+
+## Implementation corrections in the Phase J lab
+
+**IC-5** and **IC-6**, documented before re-running affected cases
+(`infra/wayland_lab/IMPLEMENTATION_CORRECTIONS.md`). IC-5 was a defect in the
+**construction-time ground truth**, not in the measurement: `shell=True` forked the client so
+the Wayland surface check matched the shell's pid, recording `viewer_binary: null` while the
+recorder independently observed genuine `/usr/bin/eog` running. It was caught only because
+the recorder observes independently of the constructor.
+
+**The result is stable across both corrections** — all four capture sha256 values identical
+before and after, binding matrix unchanged at 0/12 (E086, E087). The frozen Phase I
+corrections file was not edited.
+
+## The assurance chain, after Phase J
+
+```
+artifact ─► capture ─► process/surface ─► displayed resource ─► app state ─► claim
+   ✅         ✅             ✅                   ❌               untested    untested
+                                          SAME EDGE ON BOTH
+                                          X11 AND WAYLAND
+```
+
+Links 1–3 hold on both platforms. **Link 4 fails identically on both.** Links 5–6 were never
+reached, and nothing in Phase J is progress on them.
+
+## What Phase J deliberately did NOT do
+
+- **No filesystem telemetry ladder** (J0/J1/J2). No eBPF recorder, no fanotify framework, no
+  inotify study. Process/file/runtime provenance is occupied prior art, and E082 measured
+  that even fd inspection at the capture instant does not reach the displayed resource.
+- **No contract modification.** The frozen contract, adjudicator and recorder are untouched;
+  their sha256 values are recorded with the trace.
+- **No new phase opened.** H-RB remains registered and unexecuted.
+
+## STOP RULE — in force
+
+Per the predeclared stop rule, technical expansion **stops here**. Do not open H-RB,
+application-state attestation, adaptive red-teaming, more operating systems, more
+compositors, more benchmark tasks, ProcGrep modifications, or another provenance framework.
+
+The single result that would justify reopening is specific and cheap to check:
+
+> a compositor whose portal implements **window-source** capture **and** reports the
+> selected source's client identity to the caller — i.e. GNOME's or KDE's portal backend,
+> which were **not tested**.
+
+That would change the Case P cell and only that cell. It does not change link 4.
+
+## Blocked / not done — carried forward, still true
+
+- Two independent annotators: still single-reviewer; **no inter-rater statistic exists**.
+- Portal ScreenCast stream metadata: **BLOCKED** (E084).
+- Nested-compositor analogue of S2 on Wayland: **not tested**.
+- GNOME/KDE portal backends: **not tested**.
+- A9 application-state attack: never exercised.
+- Adaptive red-teaming: never run; the suite is not saturated.
+- Atomicity remains a recorder-architecture question, not a platform property. The lower
+  Wayland skew (75–78 ms vs 133–159 ms) is one implementation on one substrate and is **not**
+  a security claim.
+- ProcGrep untouched. No BPE. No application prose.
 - No privacy-minimisation story for visible-window-set + titles + argv + URLs.
