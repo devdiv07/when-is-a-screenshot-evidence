@@ -2,8 +2,8 @@
 
 Complete inventory, pinned sources, regeneration commands and SHA-256 digests.
 
-**Repository state:** tag `phaseJ-epistemic-boundary-v1`, commit `58f0eeb`
-(the package itself is uncommitted at time of writing — see §7).
+**Repository state:** research frozen at tag `phaseJ-epistemic-boundary-v1`, commit
+`58f0eeb`. Package released at tag `package-ready-v1`, commit `61374e9` — see §7.
 
 Regenerate every digest below with:
 
@@ -150,16 +150,33 @@ git status --porcelain                 # expect no unexpected diffs
 
 Container-based arms and blocked experiments: [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md) §5–6.
 
-## 7. Commit status
+## 7. Release checkpoint
 
-The package is **not committed automatically**. At time of writing, `package/` is untracked
-and the working tree carries modifications to `research/PRIOR_ART.md`,
+**Package committed at `61374e9`, tag `package-ready-v1`.**
+
+The research package and its four supporting ledger/prior-art files were committed **together**
+in a single checkpoint — `package/` (21 files) plus `research/PRIOR_ART.md`,
 `research/EVIDENCE_LEDGER.md`, `research/PROGRESS.md` and
-`outputs/x11_wayland_comparison.md` (the AgentProvenance pin, ledger entries E089–E091, and
-the withdrawn skew claim).
+`outputs/x11_wayland_comparison.md`, carrying the AgentProvenance pin, ledger entries
+E089–E091, and the withdrawn skew claim. Staging was explicit, never `git add -A`, so that
+artifact isolation held at the checkpoint. 25 files, +4264 / −24. **The working tree was clean
+immediately after the checkpoint.**
 
-Committing is the operator's decision. If the package is committed, the digests in §1 remain
-valid only while the files are unmodified — re-run `manifest_hashes.py` after any edit.
+Splitting those files across two commits would have produced a checkpoint whose public package
+cited evidence rows and a pinned citation that the committed ledger did not yet contain.
+
+| Tag | Commit | Contents |
+|---|---|---|
+| `package-ready-v1` | `61374e9` | the package exactly as generated and hostile-reviewed |
+| `package-ready-v1.1` | *this commit* | identical scientific content; corrected release-state metadata in this file only |
+
+`package-ready-v1` is **immutable** and is the checkpoint the verification in §8 was run
+against. `v1.1` differs from it by one metadata-only file and changes no result, figure,
+digest of any other file, or claim.
+
+The digests in §1 and §2 remain valid only while those files are unmodified — re-run
+`manifest_hashes.py` after any edit. This file's own digest is not listed there (§1) and
+changes with every edit to it, including this one.
 
 ## 8. Verification checklist
 
