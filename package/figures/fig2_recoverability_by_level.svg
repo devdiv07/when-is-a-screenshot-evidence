@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="400" viewBox="0 0 900 400">
+<rect x="0.0" y="0.0" width="900.0" height="400.0" fill="#ffffff"/>
+<text x="20.0" y="26.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="15" fill="#1a1a1a" text-anchor="start" font-weight="600">Figure 2 — Retrospective recoverability by level</text>
+<text x="20.0" y="44.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="11" fill="#6b6b6b" text-anchor="start" font-weight="normal">The instrument recovers artifact provenance almost perfectly and scene provenance almost not at all.</text>
+<line x1="268.0" y1="72.0" x2="268.0" y2="332.0" stroke="#d8d8d8" stroke-width="1"/>
+<text x="268.0" y="66.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="10" fill="#6b6b6b" text-anchor="middle" font-weight="normal">0%</text>
+<line x1="398.0" y1="72.0" x2="398.0" y2="332.0" stroke="#d8d8d8" stroke-width="1"/>
+<text x="398.0" y="66.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="10" fill="#6b6b6b" text-anchor="middle" font-weight="normal">25%</text>
+<line x1="528.0" y1="72.0" x2="528.0" y2="332.0" stroke="#d8d8d8" stroke-width="1"/>
+<text x="528.0" y="66.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="10" fill="#6b6b6b" text-anchor="middle" font-weight="normal">50%</text>
+<line x1="658.0" y1="72.0" x2="658.0" y2="332.0" stroke="#d8d8d8" stroke-width="1"/>
+<text x="658.0" y="66.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="10" fill="#6b6b6b" text-anchor="middle" font-weight="normal">75%</text>
+<line x1="788.0" y1="72.0" x2="788.0" y2="332.0" stroke="#d8d8d8" stroke-width="1"/>
+<text x="788.0" y="66.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="10" fill="#6b6b6b" text-anchor="middle" font-weight="normal">100%</text>
+<text x="256.0" y="97.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="11.5" fill="#1a1a1a" text-anchor="end" font-weight="normal">R0 judge-quote localization</text>
+<rect x="268.0" y="78.0" width="520.0" height="30.0" fill="#f2f2f2" rx="3"/>
+<rect x="268.0" y="78.0" width="366.1" height="30.0" fill="#2e7d32" rx="3"/>
+<text x="642.1" y="97.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="11" fill="#1a1a1a" text-anchor="start" font-weight="600">70.4%   (181/257)</text>
+<text x="256.0" y="141.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="11.5" fill="#1a1a1a" text-anchor="end" font-weight="normal">R1 producer recovery</text>
+<rect x="268.0" y="122.0" width="520.0" height="30.0" fill="#f2f2f2" rx="3"/>
+<rect x="268.0" y="122.0" width="520.0" height="30.0" fill="#2e7d32" rx="3"/>
+<text x="796.0" y="141.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="11" fill="#1a1a1a" text-anchor="start" font-weight="600">100.0%   (40/40)</text>
+<text x="256.0" y="185.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="11.5" fill="#1a1a1a" text-anchor="end" font-weight="normal">R2 artifact provenance</text>
+<rect x="268.0" y="166.0" width="520.0" height="30.0" fill="#f2f2f2" rx="3"/>
+<rect x="268.0" y="166.0" width="520.0" height="30.0" fill="#2e7d32" rx="3"/>
+<text x="796.0" y="185.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="11" fill="#1a1a1a" text-anchor="start" font-weight="600">100.0%   (453/453)</text>
+<text x="256.0" y="229.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="11.5" fill="#1a1a1a" text-anchor="end" font-weight="normal">R3 scene source (EXACT|STRONG)</text>
+<rect x="268.0" y="210.0" width="520.0" height="30.0" fill="#f2f2f2" rx="3"/>
+<rect x="268.0" y="210.0" width="34.3" height="30.0" fill="#c62828" rx="3"/>
+<text x="310.3" y="229.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="11" fill="#1a1a1a" text-anchor="start" font-weight="600">6.6%   (26/394)</text>
+<text x="256.0" y="273.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="11.5" fill="#1a1a1a" text-anchor="end" font-weight="normal">R4 scene classification</text>
+<rect x="268.0" y="254.0" width="520.0" height="30.0" fill="#f2f2f2" rx="3"/>
+<rect x="268.0" y="254.0" width="93.1" height="30.0" fill="#ef6c00" rx="3"/>
+<text x="369.1" y="273.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="11" fill="#1a1a1a" text-anchor="start" font-weight="600">17.9%   (81/453)</text>
+<text x="256.0" y="317.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="11.5" fill="#1a1a1a" text-anchor="end" font-weight="normal">R5 target adjudication</text>
+<rect x="268.0" y="298.0" width="520.0" height="30.0" fill="#f2f2f2" rx="3"/>
+<rect x="268.0" y="298.0" width="43.7" height="30.0" fill="#c62828" rx="3"/>
+<text x="319.7" y="317.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="11" fill="#1a1a1a" text-anchor="start" font-weight="600">8.4%   (38/453)</text>
+<rect x="20.0" y="350.0" width="860.0" height="46.0" fill="#f7f7f7" rx="5"/>
+<text x="36.0" y="370.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="11" fill="#1a1a1a" text-anchor="start" font-weight="600">R3 EXACT = 0. Not one delivered capture in the corpus had its scene source established at EXACT confidence.</text>
+<text x="36.0" y="387.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="10.5" fill="#6b6b6b" text-anchor="start" font-weight="normal">R4's 17.9% is dominated by DERIVED (43) and DIRECT_SYNTHESIS (15) classes, not by resolved capture scenes.</text>
+<text x="20.0" y="370.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="10.5" fill="#6b6b6b" text-anchor="start" font-weight="normal">Source: outputs/audit_metrics.json (frozen audit, tag recoverability-audit-v1).</text>
+<text x="20.0" y="382.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="10.5" fill="#6b6b6b" text-anchor="start" font-weight="normal">SCOPE: one benchmark corpus (WeaveBench GPT-5.4 low), 453 delivered visual artifacts, 394 capture-based. Not a population estimate.</text>
+</svg>

@@ -233,25 +233,92 @@ they would be *sufficient*.
 
 Scope: only what the 13b classification and the X11/Wayland comparison actually touch.
 
-## AgentProvenance — runtime/process/file provenance for agents
+## AgentProvenance — runtime/process/file/network provenance for agents
 
-**Citation status: UNVERIFIED.** Named by the research director as demonstrating strong
-process/file/runtime provenance for agents, and adopted here as prior art for the runtime
-layer. No primary source has been pinned in this repository, so per `CLAUDE.md` it is
-recorded as a **user report**, not a VERIFIED FACT. A pinned source must be added before it
-appears in any writeup.
+**Citation status: PINNED AND VERIFIED (2026-09-10).**
 
-Boundary as adopted:
+| | |
+|---|---|
+| Repository | `ByteYellow/AgentProvenance` (github.com) |
+| Pinned revision | `fc2e62647dc64b6d23144b88e0e0ac101b4f2793` |
+| Commit date / subject | 2026-08-18 · "chore: declare copyright owner and unify git identity" |
+| State at inspection | this SHA was `HEAD` of `refs/heads/main` |
+| Surface inspected | 379 tracked files (228 Go, 36 sh, 32 md, 18 png, 10 jsonl, 8 json, 7 svg, 7 py) |
+| Method | clone at SHA, `git grep` over tracked files, direct reading of the files listed below |
 
-- process, file and runtime provenance for agent episodes is **occupied**. This project must
-  not claim it.
-- It does **not** address the edge this project measured to be failing:
-  `process/client → displayed resource`. Knowing which process wrote which file, and which
-  process owns which surface, does not establish which resource a legitimate renderer had on
-  screen — that is exactly what case 13b and Case R demonstrate.
+**Files read directly** (sha256 prefix at the pinned revision):
 
-**Consequence, already acted on:** the J0→J1→J2 filesystem-telemetry ladder was **not
-built** in this run. The unresolved question is not whether process/file telemetry exists.
+| File | sha256 (first 16) |
+|---|---|
+| `README.md` | `b1d5477bc6c094e3` |
+| `docs/telemetry-schema.md` | `3287874f948bbfce` |
+| `docs/ebpf-sensor-plan.md` | `3ef8364ad9bba3c9` |
+| `internal/attest/attest.go` | `83346abf2ee105b7` |
+| `docs/img/README.md` | `34db9a1baad435fb` |
+| `internal/provenance/outbound_surface.go` | `627d28967f5329ad` |
+
+### Claims checked at the pinned revision
+
+| # | Claim | Status | Evidence at this revision |
+|---|---|---|---|
+| 1 | model intent + application context + runtime telemetry | **SUPPORTED** | `README.md`: "Three-axis execution observability for sandboxed agents: model intent, application context, and runtime telemetry in one verifiable evidence graph." |
+| 2 | process / file / network / runtime provenance | **SUPPORTED** | `docs/telemetry-schema.md` event families: `execve`, `file_open`/`file_write`, `network_connect`/`metadata_ip`/`private_cidr`, `process_exit`, `setuid`/`setgid`, `ptrace`, `file_rename`, `file_unlink`, `tls_write`/`tls_read`, `dns_query` |
+| 3 | native eBPF telemetry | **SUPPORTED** | `docs/ebpf-sensor-plan.md` status "**IMPLEMENTED** … validated live on an arm64 lab VM"; `internal/sensor/` (`exec.c`, `sensor_linux.go`, compiled `sensorbpf_bpfel.o`/`sensorbpf_bpfeb.o`), `cmd/agentprov-sensor` |
+| 4 | process-tree / PID / cgroup correlation | **SUPPORTED** | schema `Runtime identity` = `container_id`, `cgroup_id`, `pid`, `tgid`, `ppid`; `correlation_method` ∈ {`process_id`, `cgroup_time_window`, `container_time_window`, `pid_time_window`} with stated confidences 0.98 / 0.92 / 0.85; an `abnormal_process_tree` signal exists |
+| 5 | content-addressed / hash-verifiable provenance graph | **SUPPORTED** | `internal/attest/attest.go`: `DigestSHA256`, in-toto-style `Statement`/`Subject` carrying `{"sha256": …}`; `sha256` appears in 44 tracked source files |
+| 6 | distinction between runtime facts and application/AI-asserted context | **SUPPORTED, and explicit** | `docs/telemetry-schema.md`: "These fields must stay separated so eBPF/Falco/Tetragon/LoongCollector-style events can be ingested **without pretending the kernel knows agent-level identifiers**", enforced at ingest — raw payload must not carry `run_id`, `trajectory_id`, `tool_call_id`, `process_id`, `artifact_state_id`, `correlation` |
+
+### Display / scene surface — the narrow negative
+
+Required repository-wide term search at the pinned revision. Counts are over **all** tracked
+files; the "source+docs" column excludes `demo/`, `examples/` and `*.jsonl` capture data.
+
+| Term | files (repo-wide) | source + docs finding |
+|---|---|---|
+| `screenshot` | 1 | 2 lines, both in `docs/img/README.md`, describing **the project's own dashboard screenshots** as documentation images |
+| `screen` | 3 | remaining hits are inside `demo/**/*.jsonl` agent-transcript capture data (a `curses` Snake game), unrelated to any capability |
+| `display` | 11 | no display-server or capture sense observed in the files reviewed |
+| `window` | 72 | time-window correlation (`cgroup_time_window`, `pid_time_window`), not GUI windows |
+| `compositor` | **0** | — |
+| `wayland` | **0** | — |
+| `x11` | 4 | all false positives: 3 binary PNG matches and one hex literal in `internal/telemetry/tlsmeta_test.go` |
+| `gui` | 17 | no GUI capture subsystem observed in the files reviewed |
+| `visual` | 1 | `internal/provenance/outbound_surface.go:83`, a comment about dashboard card layout |
+
+`screen capture`, `display server` and `window manager` as phrases: **0 hits** in source + docs.
+
+**Conclusion, stated narrowly and deliberately:**
+
+> **No generic visual-display/scene provenance mechanism was found in the inspected pinned
+> repository surface.**
+
+**This is NOT a claim that AgentProvenance cannot capture screenshots**, and must never be
+written that way. It is a statement about what a term-based search plus targeted reading
+found at one revision.
+
+**Limitations of this search — material, and must travel with the claim:**
+
+1. Text search over tracked files at **one** commit. Binary assets (PNG, SVG, `.o`) were not
+   decoded; `git grep` reports them as "binary file matches", which is not textual evidence.
+2. The software was **not executed**. All claims rest on source and documentation.
+3. Term-based: a display capability implemented without any searched term would not be found.
+4. Not all 379 files were read; six were read in full and the rest were covered by search.
+5. Downstream/private forks, issues, PRs and roadmap items outside the pinned tree were not
+   considered.
+
+### Relation to this work
+
+- The runtime layer — process/file/network provenance, eBPF collection, content-addressed
+  evidence — is **occupied**. This project claims no novelty there and does not rebuild it.
+- **Convergent, and worth stating plainly:** AgentProvenance independently enforces the same
+  trust-plane discipline this project arrived at (runtime identity must not be conflated with
+  application-asserted context) and the same graded-confidence discipline (correlation methods
+  carry explicit confidences rather than a single boolean). That convergence *strengthens* the
+  plane/evidence-tier argument and *reduces* this project's claim to novelty on it.
+- It does not address the edge measured to fail here: `process/client → displayed resource`.
+  Knowing which process wrote which file, and which process owns which surface, does not
+  establish which resource a legitimate renderer had on screen. That is the gap case 13b and
+  platform Case R occupy.
 
 ## Wayland protocol architecture — MEASURED, not cited
 

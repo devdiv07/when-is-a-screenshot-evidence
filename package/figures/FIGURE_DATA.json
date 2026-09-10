@@ -1,0 +1,265 @@
+{
+  "figure_1": {
+    "inputs": [
+      "research/FROZEN_FINDINGS.md",
+      "outputs/platform_binding_matrix.csv"
+    ],
+    "links": [
+      {
+        "link": "artifact \u2192 capture",
+        "status": "TESTED"
+      },
+      {
+        "link": "capture \u2192 process/surface",
+        "status": "TESTED"
+      },
+      {
+        "link": "process/surface \u2192 identity",
+        "status": "TESTED"
+      },
+      {
+        "link": "\u2192 displayed resource",
+        "status": "FAILS"
+      },
+      {
+        "link": "\u2192 application state",
+        "status": "NOT TESTED"
+      },
+      {
+        "link": "\u2192 claim",
+        "status": "NOT TESTED"
+      }
+    ]
+  },
+  "figure_2": {
+    "input": "outputs/audit_metrics.json",
+    "bars": [
+      {
+        "level": "R0 judge-quote localization",
+        "pct": 70.4,
+        "n": 181,
+        "total": 257
+      },
+      {
+        "level": "R1 producer recovery",
+        "pct": 100.0,
+        "n": 40,
+        "total": 40
+      },
+      {
+        "level": "R2 artifact provenance",
+        "pct": 100.0,
+        "n": 453,
+        "total": 453
+      },
+      {
+        "level": "R3 scene source (EXACT|STRONG)",
+        "pct": 6.6,
+        "n": 26,
+        "total": 394
+      },
+      {
+        "level": "R4 scene classification",
+        "pct": 17.9,
+        "n": 81,
+        "total": 453
+      },
+      {
+        "level": "R5 target adjudication",
+        "pct": 8.4,
+        "n": 38,
+        "total": 453
+      }
+    ],
+    "R3_exact": 0,
+    "R4_by_class": {
+      "AGENT_SUBSTITUTE_SCENE": 4,
+      "UNKNOWN": 372,
+      "TARGET_SCENE": 19,
+      "DERIVED_FROM_PRIOR_EVIDENCE": 43,
+      "DIRECT_SYNTHESIS": 15
+    }
+  },
+  "figure_3": {
+    "input": "outputs/recoverability_report.md \u00a75.2 (parsed)",
+    "n_cases": 455,
+    "rows": [
+      {
+        "lookback": "2",
+        "resolved_pct": 4.8,
+        "exact_strong_pct": 2.4
+      },
+      {
+        "lookback": "4",
+        "resolved_pct": 10.3,
+        "exact_strong_pct": 4.6
+      },
+      {
+        "lookback": "8",
+        "resolved_pct": 22.0,
+        "exact_strong_pct": 6.6
+      },
+      {
+        "lookback": "16",
+        "resolved_pct": 30.8,
+        "exact_strong_pct": 7.5
+      },
+      {
+        "lookback": "32",
+        "resolved_pct": 42.0,
+        "exact_strong_pct": 10.1
+      },
+      {
+        "lookback": "64",
+        "resolved_pct": 51.0,
+        "exact_strong_pct": 11.2
+      },
+      {
+        "lookback": "unbounded",
+        "resolved_pct": 54.9,
+        "exact_strong_pct": 11.9
+      }
+    ]
+  },
+  "figure_4": {
+    "input": "outputs/field_coverage.csv; D4 adjudication verified directly from outputs/information_deficits.csv (832 D4 rows, 208 unique cases, enables_target_substitute_adjudication='no' on all)",
+    "resolution_D4": [
+      70.6,
+      272,
+      385
+    ],
+    "adjudication_D4": [
+      0.0,
+      0,
+      287
+    ],
+    "adjudication_6field": [
+      83.6,
+      240,
+      287
+    ],
+    "adjudication_7field": [
+      93.0,
+      267,
+      287
+    ],
+    "note": "An earlier draft's '83.6% resolved by four fields' was WITHDRAWN (outputs/field_set_analysis.md \u00a71). 83.6% is the SIX-field adjudication figure over universe 287."
+  },
+  "figure_5": {
+    "input": "outputs/analytic_vs_empirical.csv",
+    "n_pairs": 169,
+    "agreements": 127,
+    "agreement_pct": 75.1,
+    "matrix": {
+      "AUTHENTIC_TARGET": {
+        "AUTHENTIC_TARGET": 5,
+        "SUBSTITUTE": 0,
+        "UNKNOWN": 3
+      },
+      "SUBSTITUTE": {
+        "AUTHENTIC_TARGET": 0,
+        "SUBSTITUTE": 41,
+        "UNKNOWN": 34
+      },
+      "UNKNOWN": {
+        "AUTHENTIC_TARGET": 5,
+        "SUBSTITUTE": 0,
+        "UNKNOWN": 81
+      }
+    }
+  },
+  "figure_6": {
+    "input": "outputs/empirical_risk_coverage.csv",
+    "rows": [
+      {
+        "tier_config": "0",
+        "MODE1_permissive_exposure_pct": 100.0,
+        "MODE2_failclosed_exposure_pct": 0.0,
+        "defeated_by": ""
+      },
+      {
+        "tier_config": "0+A",
+        "MODE1_permissive_exposure_pct": 100.0,
+        "MODE2_failclosed_exposure_pct": 0.0,
+        "defeated_by": ""
+      },
+      {
+        "tier_config": "0+A+B",
+        "MODE1_permissive_exposure_pct": 100.0,
+        "MODE2_failclosed_exposure_pct": 0.0,
+        "defeated_by": ""
+      },
+      {
+        "tier_config": "0+A+B+C",
+        "MODE1_permissive_exposure_pct": 100.0,
+        "MODE2_failclosed_exposure_pct": 0.0,
+        "defeated_by": ""
+      },
+      {
+        "tier_config": "0+A+B+C+D",
+        "MODE1_permissive_exposure_pct": 27.3,
+        "MODE2_failclosed_exposure_pct": 9.1,
+        "defeated_by": "13b_viewer_agent_image_hidden"
+      },
+      {
+        "tier_config": "0+A+B+C+D+E",
+        "MODE1_permissive_exposure_pct": 27.3,
+        "MODE2_failclosed_exposure_pct": 9.1,
+        "defeated_by": "13b_viewer_agent_image_hidden"
+      },
+      {
+        "tier_config": "FULL(0+A..F)",
+        "MODE1_permissive_exposure_pct": 27.3,
+        "MODE2_failclosed_exposure_pct": 9.1,
+        "defeated_by": "13b_viewer_agent_image_hidden"
+      }
+    ]
+  },
+  "figure_7": {
+    "input": "outputs/platform_binding_matrix.csv",
+    "matrix": {
+      "x11_P": {
+        "1_artifact_to_capture": "EXACT",
+        "2_capture_to_surface": "WEAK",
+        "3_surface_to_process": "EXACT",
+        "4_process_to_resource": "UNKNOWN",
+        "5_resource_to_appstate": "UNKNOWN",
+        "6_appstate_to_claim": "UNKNOWN"
+      },
+      "wayland_P": {
+        "1_artifact_to_capture": "EXACT",
+        "2_capture_to_surface": "WEAK",
+        "3_surface_to_process": "EXACT",
+        "4_process_to_resource": "UNKNOWN",
+        "5_resource_to_appstate": "UNKNOWN",
+        "6_appstate_to_claim": "UNKNOWN"
+      },
+      "x11_R": {
+        "1_artifact_to_capture": "EXACT",
+        "2_capture_to_surface": "STRONG",
+        "3_surface_to_process": "EXACT",
+        "4_process_to_resource": "WEAK",
+        "5_resource_to_appstate": "UNKNOWN",
+        "6_appstate_to_claim": "UNKNOWN"
+      },
+      "wayland_R": {
+        "1_artifact_to_capture": "EXACT",
+        "2_capture_to_surface": "STRONG",
+        "3_surface_to_process": "EXACT",
+        "4_process_to_resource": "WEAK",
+        "5_resource_to_appstate": "UNKNOWN",
+        "6_appstate_to_claim": "UNKNOWN"
+      }
+    },
+    "bindings_changed": 0
+  },
+  "_sha256": {
+    "fig1_assurance_chain.svg": "7ca9e25b4112e152351d67a3af509da6ffd95fa32a07fdc36fbe7cb3ac8a4b56",
+    "fig2_recoverability_by_level.svg": "a7c8d0d26c3736242a4f65e7a751a4d226e020d33af929bd50d968084030244f",
+    "fig3_lookback_vs_evidence.svg": "bd94e4b864db7142341dfc2de3062a7756de12951c203f9ed9f487edd41c4623",
+    "fig4_field_set_outcomes.svg": "4ce34244834ededcaf2dd68d96773433f50e92629bcfed35caed4965fe499f26",
+    "fig5_analytic_vs_empirical.svg": "e7b2da20b4f73b65c8d5fc29de7db06ea4c7c55f2bbe44c339957734fef35833",
+    "fig6_unknown_policy_exposure.svg": "952548abea522c829c64de46fe540b56a531d50e147c65b1908e22a3737b0e7d",
+    "fig7_platform_binding_matrix.svg": "08c02cf510b26c1a93288004148812cd8e634b3290f2eaf4e27baa6c11439b96"
+  }
+}

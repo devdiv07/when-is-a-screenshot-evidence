@@ -249,9 +249,11 @@ problem.
    first-class field, with no `_NET_WM_PID` trap. (Corroborating E070's scoping: in *this*
    lab GTK/eog **did** set `_NET_WM_PID`, unlike the Tk/ImageMagick windows of the frozen
    lab. It cannot be relied on either way, and is client-asserted whenever present.)
-3. Recorder skew was lower on the Wayland arm (75–78 ms vs 133–159 ms). **Not a security
-   claim** — it is one recorder implementation on one substrate, and atomicity remains a
-   property of recorder architecture, not of the platform.
+3. Recorder skew was observed lower on the Wayland arm, but the **comparative claim is
+   WITHDRAWN as not reproducible**: the ranges moved materially between re-runs of the same
+   image (X11 137–208 ms, Wayland 80–100 ms in the final run). Skew here is a property of
+   recorder architecture and machine load, not of the platform, and no platform claim rests
+   on it.
 
 **Not improved (measured):**
 1. `capture → surface` — output-scoped on both; the standard portal offers **no** window

@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="430" viewBox="0 0 880 430">
+<rect x="0.0" y="0.0" width="880.0" height="430.0" fill="#ffffff"/>
+<text x="20.0" y="26.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="15" fill="#1a1a1a" text-anchor="start" font-weight="600">Figure 4 — Closing a display-composition deficit is not adjudication</text>
+<text x="20.0" y="44.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="11" fill="#6b6b6b" text-anchor="start" font-weight="normal">The four display-composition fields determine which surfaces contributed pixels, then stop.</text>
+<text x="40.0" y="76.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="11.5" fill="#1a1a1a" text-anchor="start" font-weight="600">scene-source resolution  (universe 385)</text>
+<line x1="40.0" y1="286.0" x2="400.0" y2="286.0" stroke="#6b6b6b" stroke-width="1.3"/>
+<line x1="40.0" y1="286.0" x2="400.0" y2="286.0" stroke="#d8d8d8" stroke-width="1" stroke-dasharray="3,3"/>
+<text x="32.0" y="290.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="9.5" fill="#6b6b6b" text-anchor="end" font-weight="normal">0%</text>
+<line x1="40.0" y1="238.5" x2="400.0" y2="238.5" stroke="#d8d8d8" stroke-width="1" stroke-dasharray="3,3"/>
+<text x="32.0" y="242.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="9.5" fill="#6b6b6b" text-anchor="end" font-weight="normal">25%</text>
+<line x1="40.0" y1="191.0" x2="400.0" y2="191.0" stroke="#d8d8d8" stroke-width="1" stroke-dasharray="3,3"/>
+<text x="32.0" y="195.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="9.5" fill="#6b6b6b" text-anchor="end" font-weight="normal">50%</text>
+<line x1="40.0" y1="143.5" x2="400.0" y2="143.5" stroke="#d8d8d8" stroke-width="1" stroke-dasharray="3,3"/>
+<text x="32.0" y="147.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="9.5" fill="#6b6b6b" text-anchor="end" font-weight="normal">75%</text>
+<line x1="40.0" y1="96.0" x2="400.0" y2="96.0" stroke="#d8d8d8" stroke-width="1" stroke-dasharray="3,3"/>
+<text x="32.0" y="100.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="9.5" fill="#6b6b6b" text-anchor="end" font-weight="normal">100%</text>
+<rect x="111.2" y="151.9" width="217.6" height="134.1" fill="#7ba7cc" rx="3"/>
+<text x="220.0" y="131.9" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="13" fill="#7ba7cc" text-anchor="middle" font-weight="700">70.6%</text>
+<text x="220.0" y="144.9" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="9.5" fill="#6b6b6b" text-anchor="middle" font-weight="normal">272/385</text>
+<text x="220.0" y="302.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="9.5" fill="#1a1a1a" text-anchor="middle" font-weight="normal">display-composition</text>
+<text x="220.0" y="314.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="9.5" fill="#1a1a1a" text-anchor="middle" font-weight="normal">4 fields</text>
+<text x="460.0" y="76.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="11.5" fill="#1a1a1a" text-anchor="start" font-weight="600">target/substitute adjudication  (universe 287)</text>
+<line x1="460.0" y1="286.0" x2="820.0" y2="286.0" stroke="#6b6b6b" stroke-width="1.3"/>
+<line x1="460.0" y1="286.0" x2="820.0" y2="286.0" stroke="#d8d8d8" stroke-width="1" stroke-dasharray="3,3"/>
+<line x1="460.0" y1="238.5" x2="820.0" y2="238.5" stroke="#d8d8d8" stroke-width="1" stroke-dasharray="3,3"/>
+<line x1="460.0" y1="191.0" x2="820.0" y2="191.0" stroke="#d8d8d8" stroke-width="1" stroke-dasharray="3,3"/>
+<line x1="460.0" y1="143.5" x2="820.0" y2="143.5" stroke="#d8d8d8" stroke-width="1" stroke-dasharray="3,3"/>
+<line x1="460.0" y1="96.0" x2="820.0" y2="96.0" stroke="#d8d8d8" stroke-width="1" stroke-dasharray="3,3"/>
+<rect x="490.4" y="286.0" width="72.5" height="2.0" fill="#c62828" rx="3"/>
+<text x="526.7" y="266.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="13" fill="#c62828" text-anchor="middle" font-weight="700">0.0%</text>
+<text x="526.7" y="279.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="9.5" fill="#6b6b6b" text-anchor="middle" font-weight="normal">0/287</text>
+<text x="526.7" y="302.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="9.5" fill="#1a1a1a" text-anchor="middle" font-weight="normal">display-composition</text>
+<text x="526.7" y="314.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="9.5" fill="#1a1a1a" text-anchor="middle" font-weight="normal">4 fields</text>
+<rect x="603.7" y="127.2" width="72.5" height="158.8" fill="#1f4e79" rx="3"/>
+<text x="640.0" y="107.2" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="13" fill="#1f4e79" text-anchor="middle" font-weight="700">83.6%</text>
+<text x="640.0" y="120.2" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="9.5" fill="#6b6b6b" text-anchor="middle" font-weight="normal">240/287</text>
+<text x="640.0" y="302.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="9.5" fill="#1a1a1a" text-anchor="middle" font-weight="normal">+ active window</text>
+<text x="640.0" y="314.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="9.5" fill="#1a1a1a" text-anchor="middle" font-weight="normal">+ active pid  (6)</text>
+<rect x="717.1" y="109.3" width="72.5" height="176.7" fill="#1f4e79" rx="3"/>
+<text x="753.3" y="89.3" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="13" fill="#1f4e79" text-anchor="middle" font-weight="700">93.0%</text>
+<text x="753.3" y="102.3" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="9.5" fill="#6b6b6b" text-anchor="middle" font-weight="normal">267/287</text>
+<text x="753.3" y="302.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="9.5" fill="#1a1a1a" text-anchor="middle" font-weight="normal">+ lifecycle</text>
+<text x="753.3" y="314.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="9.5" fill="#1a1a1a" text-anchor="middle" font-weight="normal">at capture  (7)</text>
+<rect x="20.0" y="330.0" width="840.0" height="62.0" fill="#fff5f5" rx="5" stroke="#c62828" stroke-width="1.2"/>
+<text x="36.0" y="351.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="12" fill="#c62828" text-anchor="start" font-weight="700">The four display-composition fields adjudicate 0 of 287 cases.</text>
+<text x="36.0" y="369.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="10.5" fill="#6b6b6b" text-anchor="start" font-weight="normal">They resolve which surfaces contributed pixels; nothing binds a contributing surface to an identity</text>
+<text x="36.0" y="383.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="10.5" fill="#6b6b6b" text-anchor="start" font-weight="normal">comparable with a declared target. Adjudication needs process identity on top of the display fields.</text>
+<text x="20.0" y="400.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="10.5" fill="#6b6b6b" text-anchor="start" font-weight="normal">Source: outputs/field_coverage.csv; outputs/field_set_analysis.md §4. Denominators differ (385 vs 287) and are NOT interchangeable.</text>
+<text x="20.0" y="412.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="10.5" fill="#6b6b6b" text-anchor="start" font-weight="normal">SCOPE: HISTORICAL analysis of benign traces. Says nothing about whether a field survives a contract-aware adversary.</text>
+</svg>

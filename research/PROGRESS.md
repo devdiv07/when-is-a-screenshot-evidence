@@ -369,7 +369,8 @@ That would change the Case P cell and only that cell. It does not change link 4.
 - A9 application-state attack: never exercised.
 - Adaptive red-teaming: never run; the suite is not saturated.
 - Atomicity remains a recorder-architecture question, not a platform property. The lower
-  Wayland skew (75–78 ms vs 133–159 ms) is one implementation on one substrate and is **not**
-  a security claim.
+  Wayland skew comparison is **WITHDRAWN as not reproducible** — the ranges moved materially
+  between re-runs of the same image. Skew is a property of recorder architecture and machine
+  load, not of the platform.
 - ProcGrep untouched. No BPE. No application prose.
 - No privacy-minimisation story for visible-window-set + titles + argv + URLs.

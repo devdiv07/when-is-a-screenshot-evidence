@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="780" height="470" viewBox="0 0 780 470">
+<rect x="0.0" y="0.0" width="780.0" height="470.0" fill="#ffffff"/>
+<text x="20.0" y="26.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="15" fill="#1a1a1a" text-anchor="start" font-weight="600">Figure 5 — Analytic field vectors vs real recorder observations</text>
+<text x="20.0" y="44.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="11" fill="#6b6b6b" text-anchor="start" font-weight="normal">169 comparable (scenario, tier) pairs. 127 agree (75.1%).</text>
+<text x="475.0" y="76.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="11.5" fill="#1a1a1a" text-anchor="middle" font-weight="600">EMPIRICAL verdict (real X11 lab)</text>
+<text x="325.0" y="98.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="10" fill="#6b6b6b" text-anchor="middle" font-weight="normal">AUTHENTIC_TARGET</text>
+<text x="475.0" y="98.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="10" fill="#6b6b6b" text-anchor="middle" font-weight="normal">SUBSTITUTE</text>
+<text x="625.0" y="98.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="10" fill="#6b6b6b" text-anchor="middle" font-weight="normal">UNKNOWN</text>
+<text x="60.0" y="203.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="11.5" fill="#1a1a1a" text-anchor="middle" font-weight="600">ANALYTIC</text>
+<text x="60.0" y="219.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="11.5" fill="#1a1a1a" text-anchor="middle" font-weight="600">verdict</text>
+<text x="238.0" y="145.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="10" fill="#6b6b6b" text-anchor="end" font-weight="normal">AUTHENTIC_TARGET</text>
+<rect x="250.0" y="110.0" width="146.0" height="58.0" fill="#eef5ee" rx="4" stroke="#d8d8d8" stroke-width="1"/>
+<text x="323.0" y="147.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="19" fill="#2e7d32" text-anchor="middle" font-weight="600">5</text>
+<rect x="400.0" y="110.0" width="146.0" height="58.0" fill="#fafafa" rx="4" stroke="#d8d8d8" stroke-width="1"/>
+<text x="473.0" y="147.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="19" fill="#bdbdbd" text-anchor="middle" font-weight="normal">0</text>
+<rect x="550.0" y="110.0" width="146.0" height="58.0" fill="#fff8e1" rx="4" stroke="#d8d8d8" stroke-width="1"/>
+<text x="623.0" y="147.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="19" fill="#ef6c00" text-anchor="middle" font-weight="600">3</text>
+<text x="238.0" y="207.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="10" fill="#6b6b6b" text-anchor="end" font-weight="normal">SUBSTITUTE</text>
+<rect x="250.0" y="172.0" width="146.0" height="58.0" fill="#fafafa" rx="4" stroke="#d8d8d8" stroke-width="1"/>
+<text x="323.0" y="209.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="19" fill="#bdbdbd" text-anchor="middle" font-weight="normal">0</text>
+<rect x="400.0" y="172.0" width="146.0" height="58.0" fill="#eef5ee" rx="4" stroke="#d8d8d8" stroke-width="1"/>
+<text x="473.0" y="209.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="19" fill="#2e7d32" text-anchor="middle" font-weight="600">41</text>
+<rect x="550.0" y="172.0" width="146.0" height="58.0" fill="#fff8e1" rx="4" stroke="#d8d8d8" stroke-width="1"/>
+<text x="623.0" y="209.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="19" fill="#ef6c00" text-anchor="middle" font-weight="600">34</text>
+<text x="238.0" y="269.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="10" fill="#6b6b6b" text-anchor="end" font-weight="normal">UNKNOWN</text>
+<rect x="250.0" y="234.0" width="146.0" height="58.0" fill="#fdecea" rx="4" stroke="#c62828" stroke-width="2"/>
+<text x="323.0" y="271.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="19" fill="#c62828" text-anchor="middle" font-weight="700">5</text>
+<rect x="400.0" y="234.0" width="146.0" height="58.0" fill="#fafafa" rx="4" stroke="#d8d8d8" stroke-width="1"/>
+<text x="473.0" y="271.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="19" fill="#bdbdbd" text-anchor="middle" font-weight="normal">0</text>
+<rect x="550.0" y="234.0" width="146.0" height="58.0" fill="#eef5ee" rx="4" stroke="#d8d8d8" stroke-width="1"/>
+<text x="623.0" y="271.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="19" fill="#2e7d32" text-anchor="middle" font-weight="600">81</text>
+<rect x="20.0" y="318.0" width="740.0" height="96.0" fill="#fff5f5" rx="5" stroke="#c62828" stroke-width="1.2"/>
+<text x="36.0" y="340.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="12" fill="#c62828" text-anchor="start" font-weight="700">5 pairs moved UNKNOWN → AUTHENTIC_TARGET — the UNSAFE direction. All five are case 13b.</text>
+<text x="36.0" y="360.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="10.5" fill="#6b6b6b" text-anchor="start" font-weight="normal">In this experiment, analytic field-vector evaluation was overconfident relative to real recorder</text>
+<text x="36.0" y="374.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="10.5" fill="#6b6b6b" text-anchor="start" font-weight="normal">observations in several safety-relevant cases. The analytic arm's headline — 'zero false accepts at</text>
+<text x="36.0" y="388.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="10.5" fill="#6b6b6b" text-anchor="start" font-weight="normal">every tier' — did not survive contact with a real display.</text>
+<text x="36.0" y="406.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="10" fill="#1a1a1a" text-anchor="start" font-weight="600">This is ONE measured instance. It is not a general claim about analytic security evaluation.</text>
+<text x="20.0" y="440.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="10.5" fill="#6b6b6b" text-anchor="start" font-weight="normal">Source: outputs/analytic_vs_empirical.csv (13 scenarios x 13 tier configurations).</text>
+<text x="20.0" y="452.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="10.5" fill="#6b6b6b" text-anchor="start" font-weight="normal">SCOPE: one experiment, one contract, a constructed 13-scenario suite. Not a general result about analytic evaluation.</text>
+</svg>

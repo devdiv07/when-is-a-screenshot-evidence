@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="430" viewBox="0 0 880 430">
+<rect x="0.0" y="0.0" width="880.0" height="430.0" fill="#ffffff"/>
+<text x="20.0" y="26.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="15" fill="#1a1a1a" text-anchor="start" font-weight="600">Figure 6 — Fail-closed UNKNOWN is the largest single measured effect</text>
+<text x="20.0" y="44.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="11" fill="#6b6b6b" text-anchor="start" font-weight="normal">Effective exposure to fabricated evidence, by tier configuration and downstream policy.</text>
+<line x1="70.0" y1="292.0" x2="800.0" y2="292.0" stroke="#6b6b6b" stroke-width="1.3"/>
+<line x1="70.0" y1="292.0" x2="800.0" y2="292.0" stroke="#d8d8d8" stroke-width="1" stroke-dasharray="3,3"/>
+<text x="60.0" y="296.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="10" fill="#6b6b6b" text-anchor="end" font-weight="normal">0%</text>
+<line x1="70.0" y1="242.0" x2="800.0" y2="242.0" stroke="#d8d8d8" stroke-width="1" stroke-dasharray="3,3"/>
+<text x="60.0" y="246.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="10" fill="#6b6b6b" text-anchor="end" font-weight="normal">25%</text>
+<line x1="70.0" y1="192.0" x2="800.0" y2="192.0" stroke="#d8d8d8" stroke-width="1" stroke-dasharray="3,3"/>
+<text x="60.0" y="196.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="10" fill="#6b6b6b" text-anchor="end" font-weight="normal">50%</text>
+<line x1="70.0" y1="142.0" x2="800.0" y2="142.0" stroke="#d8d8d8" stroke-width="1" stroke-dasharray="3,3"/>
+<text x="60.0" y="146.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="10" fill="#6b6b6b" text-anchor="end" font-weight="normal">75%</text>
+<line x1="70.0" y1="92.0" x2="800.0" y2="92.0" stroke="#d8d8d8" stroke-width="1" stroke-dasharray="3,3"/>
+<text x="60.0" y="96.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="10" fill="#6b6b6b" text-anchor="end" font-weight="normal">100%</text>
+<rect x="90.9" y="92.0" width="27.1" height="200.0" fill="#ef6c00" rx="3"/>
+<text x="104.4" y="85.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="10" fill="#ef6c00" text-anchor="middle" font-weight="700">100.0%</text>
+<rect x="122.1" y="292.0" width="27.1" height="2.0" fill="#2e7d32" rx="3"/>
+<text x="135.7" y="285.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="10" fill="#2e7d32" text-anchor="middle" font-weight="700">0.0%</text>
+<text x="122.1" y="308.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="9.5" fill="#1a1a1a" text-anchor="middle" font-weight="normal">0</text>
+<rect x="195.1" y="92.0" width="27.1" height="200.0" fill="#ef6c00" rx="3"/>
+<text x="208.7" y="85.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="10" fill="#ef6c00" text-anchor="middle" font-weight="700">100.0%</text>
+<rect x="226.4" y="292.0" width="27.1" height="2.0" fill="#2e7d32" rx="3"/>
+<text x="240.0" y="285.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="10" fill="#2e7d32" text-anchor="middle" font-weight="700">0.0%</text>
+<text x="226.4" y="308.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="9.5" fill="#1a1a1a" text-anchor="middle" font-weight="normal">0+A</text>
+<rect x="299.4" y="92.0" width="27.1" height="200.0" fill="#ef6c00" rx="3"/>
+<text x="313.0" y="85.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="10" fill="#ef6c00" text-anchor="middle" font-weight="700">100.0%</text>
+<rect x="330.7" y="292.0" width="27.1" height="2.0" fill="#2e7d32" rx="3"/>
+<text x="344.3" y="285.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="10" fill="#2e7d32" text-anchor="middle" font-weight="700">0.0%</text>
+<text x="330.7" y="308.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="9.5" fill="#1a1a1a" text-anchor="middle" font-weight="normal">0+A+B</text>
+<rect x="403.7" y="92.0" width="27.1" height="200.0" fill="#ef6c00" rx="3"/>
+<text x="417.3" y="85.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="10" fill="#ef6c00" text-anchor="middle" font-weight="700">100.0%</text>
+<rect x="435.0" y="292.0" width="27.1" height="2.0" fill="#2e7d32" rx="3"/>
+<text x="448.6" y="285.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="10" fill="#2e7d32" text-anchor="middle" font-weight="700">0.0%</text>
+<text x="435.0" y="308.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="9.5" fill="#1a1a1a" text-anchor="middle" font-weight="normal">0+A+B+C</text>
+<rect x="508.0" y="237.4" width="27.1" height="54.6" fill="#ef6c00" rx="3"/>
+<text x="521.6" y="230.4" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="10" fill="#ef6c00" text-anchor="middle" font-weight="700">27.3%</text>
+<rect x="539.3" y="273.8" width="27.1" height="18.2" fill="#2e7d32" rx="3"/>
+<text x="552.8" y="266.8" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="10" fill="#2e7d32" text-anchor="middle" font-weight="700">9.1%</text>
+<text x="539.3" y="308.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="9.5" fill="#1a1a1a" text-anchor="middle" font-weight="normal">0+A+B+C+D</text>
+<text x="539.3" y="322.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="8.5" fill="#c62828" text-anchor="middle" font-weight="700">13b accepted</text>
+<rect x="612.3" y="237.4" width="27.1" height="54.6" fill="#ef6c00" rx="3"/>
+<text x="625.8" y="230.4" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="10" fill="#ef6c00" text-anchor="middle" font-weight="700">27.3%</text>
+<rect x="643.6" y="273.8" width="27.1" height="18.2" fill="#2e7d32" rx="3"/>
+<text x="657.1" y="266.8" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="10" fill="#2e7d32" text-anchor="middle" font-weight="700">9.1%</text>
+<text x="643.6" y="308.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="9.5" fill="#1a1a1a" text-anchor="middle" font-weight="normal">0+A+B+C+D+E</text>
+<text x="643.6" y="322.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="8.5" fill="#c62828" text-anchor="middle" font-weight="700">13b accepted</text>
+<rect x="716.6" y="237.4" width="27.1" height="54.6" fill="#ef6c00" rx="3"/>
+<text x="730.1" y="230.4" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="10" fill="#ef6c00" text-anchor="middle" font-weight="700">27.3%</text>
+<rect x="747.9" y="273.8" width="27.1" height="18.2" fill="#2e7d32" rx="3"/>
+<text x="761.4" y="266.8" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="10" fill="#2e7d32" text-anchor="middle" font-weight="700">9.1%</text>
+<text x="747.9" y="308.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="9.5" fill="#1a1a1a" text-anchor="middle" font-weight="normal">FULL</text>
+<text x="747.9" y="322.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="8.5" fill="#c62828" text-anchor="middle" font-weight="700">13b accepted</text>
+<rect x="70.0" y="338.0" width="22.0" height="10.0" fill="#ef6c00" rx="2"/>
+<text x="100.0" y="347.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="10.5" fill="#1a1a1a" text-anchor="start" font-weight="normal">MODE 1 permissive — UNKNOWN still credited</text>
+<rect x="400.0" y="338.0" width="22.0" height="10.0" fill="#2e7d32" rx="2"/>
+<text x="430.0" y="347.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="10.5" fill="#1a1a1a" text-anchor="start" font-weight="normal">MODE 2 fail-closed — UNKNOWN gets no credit</text>
+<rect x="20.0" y="364.0" width="840.0" height="60.0" fill="#fff5f5" rx="5" stroke="#c62828" stroke-width="1.2"/>
+<text x="36.0" y="385.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="12" fill="#c62828" text-anchor="start" font-weight="700">Fail-closed UNKNOWN cannot repair a false AUTHENTIC_TARGET.</text>
+<text x="36.0" y="403.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="10.5" fill="#6b6b6b" text-anchor="start" font-weight="normal">Case 13b survives fail-closed UNKNOWN because it was never UNKNOWN — it was ACCEPTED. The residual</text>
+<text x="36.0" y="417.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="10.5" fill="#6b6b6b" text-anchor="start" font-weight="normal">9.1% at Tier D and above is exactly that one accepted fabrication.</text>
+<text x="20.0" y="400.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="10.5" fill="#6b6b6b" text-anchor="start" font-weight="normal">Source: outputs/empirical_risk_coverage.csv. Exposure = fraction of the 11 substitute cases that receive automatic credit under each downstream policy.</text>
+<text x="20.0" y="412.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="10.5" fill="#6b6b6b" text-anchor="start" font-weight="normal">SCOPE: constructed suite of 13 scenarios (11 substitutes). NOT a population estimate.</text>
+</svg>
