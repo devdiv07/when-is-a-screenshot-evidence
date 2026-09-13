@@ -68,7 +68,7 @@
       "id": "G5-scene-lineage",
       "status": "fail",
       "description": "Target vs substitute scene classification validated",
-      "result": "81/453 = 17.9% classified; R5 38/453 = 8.4%. Split by channel: direct-write 98.3%, shell-routed capture 5.9%, browser 0%. Target-vs-substitute specifically: 19 TARGET_SCENE + 4 AGENT_SUBSTITUTE_SCENE = 23/453 = 5.1%. Audit kill criteria 2, 3 and 5 triggered.",
+      "result": "81/453 = 17.9% classified; R5 38/453 = 8.4%. Split by channel: direct-write 58/59 = 98.3%, shell-routed capture 23/388 = 5.9% (23/394 = 5.8% of all captures), browser 0/6. Target-vs-substitute specifically: 19 TARGET_SCENE plus 4 delivered AGENT_SUBSTITUTE_SCENE artifacts from one episode = 23/453 = 5.1%. Audit kill criteria 2, 3 and 5 triggered.",
       "evidence": [
         "E021",
         "E022",

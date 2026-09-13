@@ -76,6 +76,14 @@ else is the frozen research repository at tag `phaseJ-epistemic-boundary-v1` (`5
 
 ## 6. Prospective arm — Phase I
 
+**Arm labels for historical filenames:** `outputs/tier_results.csv`,
+`outputs/risk_coverage.csv`, `outputs/adversarial_metrics.json`, and
+`outputs/adversarial_experiment_report.md` are the **ANALYTIC ARM**. Files prefixed
+`empirical_` and `outputs/phase1_final_*` report or synthesize the **EMPIRICAL ARM**. The
+analytic identifier `13b_viewer_agent_image_gui_open` maps to the corrected empirical
+successor `13b_viewer_agent_image_hidden`; IC-4 changed the construction, so this is not a
+simple rename. See `package/RESULTS.md` §7.1.
+
 | File | Authoritative for |
 |---|---|
 | `outputs/phase1_final_metrics.json` | closure metrics; the three evidence classes; discarded runs |

@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you use this research artifact, please cite it using these metadata."
+title: "When Is a Screenshot Evidence? Visual Evidence Provenance for Computer-Using Agents"
+authors:
+  - family-names: "Shukla"
+    given-names: "Divyansh"
+abstract: >-
+  A measurement study of visual-evidence provenance in computer-using agents,
+  examining scene-source recoverability, observation and inference policy,
+  and assurance boundaries across retrospective traces and constructed
+  graphical-environment experiments.
+version: "package-ready-v1.2"
+date-released: "2026-09-13"
+license: "Apache-2.0"
+repository-code: "https://github.com/devdiv07/when-is-a-screenshot-evidence"
+keywords:
+  - "computer-using agents"
+  - "agent evaluation"
+  - "visual evidence"
+  - "provenance"
+  - "GUI agents"
+  - "agent verification"

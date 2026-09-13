@@ -224,7 +224,11 @@ def fig2_recoverability():
     RECORD["figure_2"] = {"input": "outputs/audit_metrics.json",
                           "bars": [{"level": b[0], "pct": b[1], "n": b[2], "total": b[3]}
                                    for b in bars],
-                          "R3_exact": m["R3"]["exact"], "R4_by_class": m["R4"]["by_class"]}
+                          "R3_exact": m["R3"]["exact"], "R4_by_class": m["R4"]["by_class"],
+                          "AGENT_SUBSTITUTE_SCENE_scope": (
+                              "4 delivered artifacts from 1 episode "
+                              "(DAV_task_0_spyder_step_debug, run1); existence result, "
+                              "not independent cases or prevalence")}
     return s.save("fig2_recoverability_by_level.svg", [
         "Source: outputs/audit_metrics.json (frozen audit, tag recoverability-audit-v1).",
         "SCOPE: one benchmark corpus (WeaveBench GPT-5.4 low), 453 delivered visual "
@@ -346,8 +350,10 @@ def fig4_field_sets():
     s.text(36, ny + 53, "comparable with a declared target. Adjudication needs process "
                         "identity on top of the display fields.", 10.5, MUTED)
     RECORD["figure_4"] = {
-        "input": "outputs/field_coverage.csv; D4 adjudication verified directly from "
-                 "outputs/information_deficits.csv (832 D4 rows, 208 unique cases, "
+        "input": "outputs/field_coverage.csv; display-composition-only adjudication "
+                 "verified directly from outputs/information_deficits.csv with "
+                 "bundle_fields='VISIBLE_WINDOW_SET+Z_ORDER+CAPTURE_REGION+WINDOW_GEOMETRY' "
+                 "and eligible='yes' (832 rows, 208 unique cases, "
                  "enables_target_substitute_adjudication='no' on all)",
         "resolution_D4": res_d4, "adjudication_D4": adj_d4,
         "adjudication_6field": adj_s6, "adjudication_7field": adj_s7,

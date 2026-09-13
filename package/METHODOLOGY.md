@@ -82,6 +82,12 @@ none should exist:
 judge with `is_hack = False`, so a structural claim there would not necessarily have been a
 false positive. NC-A is the cleaner control.
 
+The controls were not vacuous: NC-A contained 86 capture-based artifacts, including 12 with
+STRONG scene-source attribution; NC-B contained 67 capture-based artifacts, including 3 with
+STRONG attribution. The zero substitute classifications therefore did not arise because the
+control pools contained no attributable capture evidence. This is a non-vacuity check, not a
+broad precision estimate.
+
 The surviving narrow instrument (direct-synthesis-where-capture-required; bracketed substitute
 renderer) gives a verdict on **23/453 = 5.1%** of artifacts with **0/99 and 0/73** false
 attributions on controls — high precision, and **~5% recall**. It is real, narrow, and useless
@@ -168,6 +174,11 @@ synthesised because a scenario "should" produce it.
 
 That rule is what makes `field_observation_failures: []` on case 13b meaningful: the recorder
 reported complete success while being blind to the only event that mattered.
+
+By contrast, the six observation-failure entries for `11_direct_synthesis` are expected
+absence: that control deliberately creates no GUI surface, so title, class, and geometry are
+unavailable in each of the recorder's pre/post snapshots. They are structurally inapplicable,
+not evidence that instrumentation missed an existing surface.
 
 ### 5.3 Pixel-level construction verification
 

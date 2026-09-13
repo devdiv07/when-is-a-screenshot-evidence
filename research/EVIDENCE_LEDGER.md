@@ -2,6 +2,19 @@
 
 Update this file whenever a material claim is added or changes status.
 
+`Type` is an **epistemic class**: it says how a claim is known. `Disposition` is a separate
+**lifecycle axis**: it says whether an item remains active. Only dispositions already explicit
+in frozen artifacts are listed here; an omitted disposition means no lifecycle change is
+asserted.
+
+| ID | Disposition | Frozen basis |
+|---|---|---|
+| E011 | REFUTED / SUPERSEDED | recoverability gate rejected; superseded by E021–E023 and E028 |
+| E038 | UNTESTED | adaptive adversarial evaluation was designed but not run |
+| E046 | SUPERSEDED | S1/S2 were blocked in the analytic arm and later run empirically (E058–E059) |
+| E071 | UNTESTED | H-RB registered and explicitly not executed |
+| E084 | INCOMPLETE / BLOCKED | portal stream metadata arm reached `Start` but did not produce a stream |
+
 | ID | Claim | Type | Source / command | Date | Counter-evidence / caveat | Confidence | Safe to use? |
 |---|---|---|---|---|---|---|---|
 | E001 | WeaveBench has 114 hybrid GUI+CLI tasks across 8 domains. | VERIFIED FACT | WeaveBench v3 / official repo | 2026-09-08 | None material. | High | Yes |
@@ -24,8 +37,8 @@ Update this file whenever a material claim is added or changes status.
 | E019 | 125/145 sampled `gnome-screenshot` invocations capture the full screen (`-f` only); only 5 use `-w` (window-scoped). | MEASURED FACT | trace scan | 2026-09-09 | Sample is the 26 traces landed at scan time. | Medium-High | Yes |
 | E020 | Capture-source resolution scales with permitted temporal lookback: 4.8% at 2 events to 54.9% unbounded (n=455), so any single recoverability number without the sensitivity curve is uninterpretable. The EXACT/STRONG sub-curve stays nearly flat (2.4% to 11.9%). | MEASURED FACT | lookback sweep re-run against post-correction resolver, report Sect. 5.2 | 2026-09-09 (corrected) | Supersedes the pre-correction figures 5.5%-72.7%; see E029. Demonstrates the metric is parameter-driven, not data-driven, above the STRONG tier. | High | Yes |
 | E021 | For 394 delivered capture-based artifacts: EXACT scene-source identity = 0; STRONG = 26 (6.6%); WEAK = 96; UNKNOWN = 272 (69%). | MEASURED FACT | `outputs/audit_metrics.json` R3 | 2026-09-09 | Post manual-validation correction (see E024). | High | Yes |
-| E022 | Scene lineage classified for 81/453 = 17.9% of delivered visual artifacts; R5 reached for 38/453 = 8.4%. Direct-write artifacts classify at 98.3%, shell-routed captures at 5.9%. | MEASURED FACT | `outputs/audit_metrics.json` R4/R5/by_channel | 2026-09-09 | Corpus-specific to GPT-5.4 low run1/run2. | High | Yes |
-| E023 | Negative-control false attribution: 0/99 (NC-A) and 0/73 (NC-B) violation claims; Q pool 5/281. | MEASURED FACT | `outputs/audit_metrics.json` negative_controls | 2026-09-09 | High precision comes with very low recall; not evidence of correctness on positives. | High | Yes |
+| E022 | Scene lineage classified for 81/453 = 17.9% of delivered visual artifacts; R5 reached for 38/453 = 8.4%. Direct-write artifacts classify at 58/59 = 98.3%; shell-routed captures at 23/388 = 5.9% (23/394 = 5.8% of all capture-based artifacts). | MEASURED FACT | `outputs/audit_metrics.json` R4/R5/by_channel | 2026-09-09 | Corpus-specific to GPT-5.4 low run1/run2. The 388 shell subset and 394 all-capture denominator are not interchangeable. | High | Yes |
+| E023 | Negative-control false attribution: 0/99 (NC-A) and 0/73 (NC-B) violation claims; Q pool 5/281. The controls were non-vacuous: NC-A had 86 capture artifacts including 12 with STRONG source attribution; NC-B had 67 including 3 STRONG. | MEASURED FACT | `outputs/audit_metrics.json` negative_controls; `outputs/recoverability_cases.csv` artifact rows | 2026-09-09 | High precision comes with very low recall; not evidence of correctness on positives or a broad precision estimate. | High | Yes |
 | E024 | Manual validation refuted 4 of the first 7 automated lineage claims (headless CLI scripts and composite full-screen scenes attributed as scene sources); rules were corrected and numbers re-measured. | MEASURED FACT | report Sect. 8 | 2026-09-09 | Single annotator only; the audit's two-reviewer agreement statistic was NOT produced. | Medium-High | Yes, with the annotator caveat |
 | E025 | `run2/DOC_task_3_okular_annotate_fact/proof.png` is a manually confirmed substitute-scene artifact that the corrected pipeline reports UNKNOWN, because 4 GUI processes were live and unclosed. | MEASURED FACT | manual trace inspection; `outputs/recoverability_cases.csv` | 2026-09-09 | Documented false negative; the conservatism cost of the composite-scene rule. | High | Yes |
 | E026 | WeaveBench's own automated check for `DAV_task_0_spyder_step_debug` uses `vlm_score_rubric` to confirm Spyder UI visibility and caps the score when the VLM is unavailable. | VERIFIED FACT | `outputs/raw/tasks/DAV/DAV_task_0_spyder_step_debug.md` | 2026-09-09 | Indicates the benchmark authors also did not treat the structural channel as sufficient. | High | Yes |

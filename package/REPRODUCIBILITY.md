@@ -195,11 +195,14 @@ Process ids, window ids and timestamps differ every run by construction and are 
 ## 9. Verifying the package itself
 
 ```bash
-python package/scripts/make_figures.py          # regenerate figures
 python scripts/static_13b_trace.py              # regenerate the static trace
 python scripts/platform_matrix.py               # regenerate matrix + metrics
-git status --porcelain                          # expect: no unexpected diffs
+python package/scripts/make_figures.py          # regenerate figures
+python package/scripts/manifest_hashes.py --check
+git diff --exit-code                            # expect: no deterministic drift
 ```
 
 A clean `git status` after regeneration is the strongest available check that the numbers in
-this package are the numbers its scripts produce.
+this package are the numbers its scripts produce. The same cheap, standard-library-only checks
+run in `.github/workflows/research-integrity.yml`; no Docker lab, corpus download, network
+retrieval, or timing experiment runs in CI.

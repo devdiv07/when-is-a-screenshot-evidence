@@ -473,15 +473,19 @@ the real lab. Of **169** comparable (scenario, tier) pairs, **127 agreed — 75.
 | `AUTHENTIC_TARGET → UNKNOWN` | 3 | analytic over-confident, safe direction |
 | **`UNKNOWN → AUTHENTIC_TARGET`** | **5** | **analytic wrong in the UNSAFE direction** |
 
-*Figure 5.* All five unsafe transitions are **case 13b** — the headline case. The analytic
-arm's own headline, *"zero false accepts at every tier"*, did not survive contact with a real
-display. `[C16]`
+*Figure 5.* One adversarial scenario that the analytic contract model abstained on was
+accepted by the real implementation across five configurations. All five unsafe rows are
+**case 13b**—an existence result, not a measured failure rate for analytic evaluation.
+`[C16]`
 
 Mechanism: the analyst-derived vectors encoded resource lineage as **content-aware**, which no
 real recorder in the lab could produce.
 
-> **In this experiment, analytic field-vector evaluation was overconfident relative to real
-> recorder observations in several safety-relevant cases.**
+The analytic identifier `13b_viewer_agent_image_gui_open` and empirical identifier
+`13b_viewer_agent_image_hidden` are not simple aliases. The latter is the corrected empirical
+successor after IC-4: the construction changed from a bare viewer/GUI-open vector to a viewer
+on the declared target path whose bytes were replaced and re-rendered. The comparison mapping
+is explicit in `scripts/score_empirical.py`; historical rows retain their original names.
 
 Stated exactly that narrowly. One experiment, one contract, one constructed suite. It is **not**
 a general claim about analytic security evaluation, and most of the disagreement ran the safe

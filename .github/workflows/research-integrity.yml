@@ -1,0 +1,35 @@
+name: Research integrity
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  deterministic-artifacts:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Replay static 13b trace
+        run: python scripts/static_13b_trace.py
+
+      - name: Regenerate platform comparison
+        run: python scripts/platform_matrix.py
+
+      - name: Regenerate package figures
+        run: python package/scripts/make_figures.py
+
+      - name: Verify package manifest digests
+        run: python package/scripts/manifest_hashes.py --check
+
+      - name: Reject deterministic artifact drift
+        run: git diff --exit-code

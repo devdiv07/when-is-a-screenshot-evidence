@@ -247,9 +247,11 @@ The two questions this run existed to answer are answered, and they converge:
 - **13b was epistemically ambiguous because the contract never stated an observation
   policy** — not because the contract was subtly wrong, and not because the recorder was
   merely buggy.
-- **Wayland does not move the assurance boundary.** Changing the desktop trust architecture
-  moved zero of twelve binding evidence levels. The platform closes an attack surface around
-  the *recorder* and leaves the *claim* exactly where it was.
+- **The tested Wayland stack did not move the assurance boundary in these two cases.** Across
+  sway/wlroots headless with `xdg-desktop-portal-wlr`, zero of twelve binding evidence levels
+  changed. This one backend improved the trust architecture around the *recorder* without
+  exporting additional provenance sufficient to move the tested binding matrix; GNOME/KDE
+  were not tested.
 
 The defensible result is a **negative one with a precisely located boundary**, three
 measured witnesses for the renderer-boundary hypothesis, and a methodological finding

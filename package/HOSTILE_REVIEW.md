@@ -34,8 +34,10 @@ mismatch forced a re-read of the source analysis.
 
 **Resolution.** Figure 4 now plots the **adjudication** curve, and the four display-composition
 fields are shown at **0.0%** — which is the actual measured value. Re-verified directly from
-`outputs/information_deficits.csv`: 832 rows whose bundle is exactly those four fields, 208
-unique cases, `enables_target_substitute_adjudication = no` on **all** of them. The withdrawal
+`outputs/information_deficits.csv`: filtering on
+`bundle_fields = VISIBLE_WINDOW_SET+Z_ORDER+CAPTURE_REGION+WINDOW_GEOMETRY` and
+`eligible = yes` gives 832 rows representing 208 unique cases, with
+`enables_target_substitute_adjudication = no` on all of them. The withdrawal
 is stated explicitly in `RESULTS.md` §3, `TECHNICAL_REPORT.md` §4.1 and
 `package/figures/FIGURE_DATA.json`.
 

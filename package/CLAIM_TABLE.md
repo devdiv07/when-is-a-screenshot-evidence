@@ -70,13 +70,13 @@ sentence is not licensed by a row, it does not appear in the package.
 
 | | |
 |---|---|
-| **Claim** | The four display-composition fields (capture region, visible window set, z-order, geometry) achieve 70.6% scene-source resolution (272/385) and **0.0% target/substitute adjudication (0/287)**. Six fields — adding active window and active pid — adjudicate 83.6% (240/287). |
+| **Claim** | The four display-composition fields (capture region, visible window set, z-order, geometry) achieve 70.6% scene-source resolution (272/385) and **0.0% target/substitute adjudication (0/287)**. Within the historical candidate-field universe, optimal subsets of sizes 1–5 adjudicate 0/287; six fields — adding active window and active pid — adjudicate 240/287 (83.6%); seven adjudicate 267/287 (93.0%). |
 | **Class** | MEASURED FACT |
-| **Evidence** | `outputs/field_coverage.csv`; `outputs/field_set_analysis.md` §4; D4 adjudication re-verified directly from `outputs/information_deficits.csv` (832 D4 rows, all `enables_target_substitute_adjudication = no`); Figure 4 |
+| **Evidence** | `outputs/field_coverage.csv`; `outputs/field_set_analysis.md` §4; `outputs/information_deficits.csv` filtered by `bundle_fields = VISIBLE_WINDOW_SET+Z_ORDER+CAPTURE_REGION+WINDOW_GEOMETRY` and `eligible = yes` gives 832 rows / 208 unique cases, all with `enables_target_substitute_adjudication = no`; Figure 4 |
 | **Scope** | HISTORICAL analysis of benign traces. Denominators 385 and 287 are **not** interchangeable. |
 | **Counter-evidence** | An earlier draft reported "83.6% of cases resolved by four fields". **That claim was withdrawn** (`field_set_analysis.md` §1) as an artifact of scoring fields independently. |
-| **Safe wording** | "Closure of a display-composition deficit is not adjudication." "83.6% is the six-field adjudication figure over 287 cases." |
-| **Prohibited** | "Four fields resolve 83.6% of cases." "Tier D adjudicates 83.6%." (Two of the six fields are not Tier D.) |
+| **Safe wording** | "Closure of a display-composition deficit is not adjudication." "Within this historical candidate-field universe, no subset smaller than six fields adjudicated any eligible case." "83.6% is the six-field adjudication figure over 287 cases." |
+| **Prohibited** | "Four fields resolve 83.6% of cases." "Tier D adjudicates 83.6%." "Six fields are necessary for provenance." "Six fields are a minimum secure contract." Historical counterfactual coverage on one benign corpus is not an adversarial sufficiency theorem. |
 
 ## C6 — Truthful facts, adversarially arranged state (F3)
 
@@ -202,12 +202,12 @@ sentence is not licensed by a row, it does not appear in the package.
 
 | | |
 |---|---|
-| **Claim** | Of 169 comparable (scenario, tier) pairs, 127 agreed (75.1%). Five pairs moved `UNKNOWN → AUTHENTIC_TARGET`, the unsafe direction; all five are case 13b. |
+| **Claim** | Of 169 comparable (scenario, tier) pairs, 127 agreed (75.1%). One adversarial scenario that the ANALYTIC ARM classified UNKNOWN was accepted by the EMPIRICAL ARM across five configurations; all five unsafe rows are case 13b. |
 | **Class** | MEASURED FACT |
 | **Evidence** | `outputs/analytic_vs_empirical.csv`; Figure 5; E061 |
 | **Scope** | One experiment, one contract, a constructed 13-scenario suite. |
 | **Counter-evidence** | The majority of disagreements (34) run the *safe* direction (`SUBSTITUTE → UNKNOWN`), i.e. analytic over-confidence that produced abstention rather than acceptance. |
-| **Safe wording** | "In this experiment, analytic field-vector evaluation was overconfident relative to real recorder observations in several safety-relevant cases." |
+| **Safe wording** | "One adversarial scenario that the analytic contract model abstained on was accepted by the real implementation across five configurations, showing that derived field vectors can conceal unsafe implementation behavior." Immediately add: "All five unsafe transitions came from the same scenario; this is an existence result, not a measured failure rate for analytic evaluation." |
 | **Prohibited** | "Analytic security evaluation is unreliable." "Paper evaluations cannot be trusted." One instance does not license a universal claim. |
 
 ## C17 — Opaque rendering boundary (Xephyr)
@@ -303,7 +303,7 @@ sentence is not licensed by a row, it does not appear in the package.
 | **Evidence** | `outputs/empirical_raw/s1_race.json` (run 2); E058, E067 |
 | **Scope** | One naive recorder built as sequential shell-outs. |
 | **Counter-evidence** | Run 1's JSON artifact was **not retained** (run log only). Run 2 is the artifact on disk. |
-| **Safe wording** | "For this recorder, built the obvious way, the atomicity precondition does not hold." |
+| **Safe wording** | "For this recorder, built the obvious way, the atomicity precondition does not hold." The ordinary-case raw field `atomicity_consistent` checks only whether pre/post active-window identity and pid match; `True` is not proof of atomic acquisition. |
 | **Prohibited** | "Atomic provenance is impossible." A server-side grab was never built or measured. |
 
 ## C25 — `_NET_WM_PID`

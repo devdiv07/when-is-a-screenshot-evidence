@@ -107,7 +107,7 @@ Read in this order:
 |---|---|
 | commit | `f8e23a57e37a55306f77280e7cc453d0b64d4be4` |
 | tag | `recoverability-audit-v1` |
-| repo root | `C:/Users/ASUS/Desktop/scene-provenance-lab/scene-provenance-lab` (nested; the parent repo at `Desktop/scene-provenance-lab` was deliberately NOT committed into) |
+| repo root | this repository root (historically nested inside a separate, uncommitted parent workspace) |
 | contents | 35 files, 1.0 MB; `outputs/raw/` (1.7 GB) and `outputs/cache/` gitignored |
 
 Phase-A reproduction before freezing: **10/10 headline figures re-derived exactly** from
@@ -124,7 +124,7 @@ at 2.4%→11.9%. That strengthens the conclusion.
 - R3 capture-source **EXACT 0**, STRONG 26/394 = 6.6%
 - R4 scene lineage 81/453 = 17.9%
 - R5 target reachability 38/453 = 8.4%
-- direct-write 98.3% vs shell-routed capture 5.9%
+- direct-write 58/59 = 98.3% vs shell-routed capture 23/388 = 5.9% (23/394 = 5.8% of all captures)
 - negative-control false attribution 0/99, 0/73
 
 Audit kill criteria **2, 3, 5** triggered. **E011 REJECTED.**
