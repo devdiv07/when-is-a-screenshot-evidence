@@ -9,8 +9,8 @@ abstract: >-
   examining scene-source recoverability, observation and inference policy,
   and assurance boundaries across retrospective traces and constructed
   graphical-environment experiments.
-version: "package-ready-v1.2"
-date-released: "2026-09-13"
+version: "1.2.1"
+date-released: "2026-09-14"
 license: "Apache-2.0"
 repository-code: "https://github.com/devdiv07/when-is-a-screenshot-evidence"
 keywords:

@@ -55,7 +55,11 @@ FAB_SHA = "0" * 64
 
 
 def sha(path):
-    return hashlib.sha256(open(path, "rb").read()).hexdigest()
+    """Hash UTF-8 source with platform-stable CRLF line endings."""
+    with open(path, "rb") as fh:
+        text = fh.read().decode("utf-8")
+    text = text.replace("\r\n", "\n").replace("\r", "\n")
+    return hashlib.sha256(text.replace("\n", "\r\n").encode("utf-8")).hexdigest()
 
 
 def load_frozen_13b():

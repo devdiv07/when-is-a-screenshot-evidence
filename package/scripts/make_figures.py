@@ -43,6 +43,14 @@ MONO = "ui-monospace,SFMono-Regular,Menlo,Consolas,'Liberation Mono',monospace"
 RECORD: dict = {}
 
 
+def text_sha256(path):
+    """Hash UTF-8 figure text with platform-stable CRLF line endings."""
+    with open(path, "rb") as fh:
+        text = fh.read().decode("utf-8")
+    text = text.replace("\r\n", "\n").replace("\r", "\n")
+    return hashlib.sha256(text.replace("\n", "\r\n").encode("utf-8")).hexdigest()
+
+
 # ---------------------------------------------------------------- tiny SVG helper
 def esc(t):
     return (str(t).replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;"))
@@ -557,8 +565,7 @@ def main():
             fig4_field_sets(), fig5_analytic_vs_empirical(), fig6_unknown_policy(),
             fig7_binding_matrix()]
     for p in made:
-        RECORD.setdefault("_sha256", {})[os.path.basename(p)] = hashlib.sha256(
-            open(p, "rb").read()).hexdigest()
+        RECORD.setdefault("_sha256", {})[os.path.basename(p)] = text_sha256(p)
     with open(os.path.join(OUT, "FIGURE_DATA.json"), "w", encoding="utf-8") as fh:
         json.dump(RECORD, fh, indent=2)
     for p in made:

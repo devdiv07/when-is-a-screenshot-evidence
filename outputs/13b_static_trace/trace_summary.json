@@ -3,7 +3,7 @@
   "frozen_rules_integrity": {
     "adjudicator_sha256": "ac6c6ab3543d9d54865c2bd4431b342037a502a00829b9f35451cb0c137e826a",
     "recorder_sha256": "60590bbbde72683bd93718550b3f09c1218c52b42646753572f1025b3a249101",
-    "adjudicate_empirical_sha256": "5c701b9958eaccbd5f57fc048ee9b5da26157eb6c8e399d62da1fd1ca935eb11",
+    "adjudicate_empirical_sha256": "6f8120b74a0dce011823c987381e9f7c3d90cf700a191f112d41babc8796ca34",
     "adversarial_cases_sha256": "953425d82a4f245e22a182c25cd333a3ae98410688ab29b36cdea2c2d11cd854"
   },
   "replay_matches_frozen_phase1": true,

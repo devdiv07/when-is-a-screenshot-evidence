@@ -81,8 +81,9 @@ sound.
 
 Research is technically closed at `phaseJ-epistemic-boundary-v1` (`58f0eeb`). The immutable
 released checkpoints are `package-ready-v1` (`61374e9`) and `package-ready-v1.1` (`2f36db4`).
-Publication hardening is released as `package-ready-v1.2` (2026-09-13); the tag identifies
-the corresponding release commit.
+Publication hardening is released as `package-ready-v1.2`; the immutable
+`package-ready-v1.2.1` release (2026-09-14) adds platform-stable digest verification without
+changing the frozen apparatus, figures, core result artifacts, or scientific conclusions.
 
 ## License
 

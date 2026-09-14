@@ -5,9 +5,10 @@ Complete inventory, pinned sources, regeneration commands and SHA-256 digests.
 **Repository state:** research frozen at tag `phaseJ-epistemic-boundary-v1`, commit
 `58f0eeb`. Immutable package releases: `package-ready-v1` at `61374e9` and
 `package-ready-v1.1` at `2f36db4`. Publication hardening is released as
-`package-ready-v1.2`; the tag identifies this tree — see §7.
+`package-ready-v1.2`; `package-ready-v1.2.1` adds platform-stable digest verification — see §7.
 
-Regenerate every digest below with:
+For platform-stable verification, UTF-8 text is normalized to CRLF before hashing;
+non-UTF-8 artifacts are hashed byte-for-byte. Regenerate every digest below with:
 
 ```bash
 python package/scripts/manifest_hashes.py
@@ -21,16 +22,16 @@ python package/scripts/manifest_hashes.py
 
 | SHA-256 | File |
 |---|---|
-| `3609e8bf414d0a03acc736ab0bb604843f8d8ad2f8c2789468f28e836a63bd1c` | `package/ARTIFACT_INDEX.md` |
-| `f974219e7a845a497d0e4ec556e162a14ddc18f181b7c817bc88e86b9fa3da39` | `package/CLAIM_TABLE.md` |
-| `41440063aab7a64d903f57d9be2abf45b5e3871037ca6652dc62f60869f682a2` | `package/HOSTILE_REVIEW.md` |
-| `c1cc886b3d74dc5bbda5a30e893e5165b67e77bed219624e84e5ca1bc01f5c48` | `package/LIMITATIONS.md` |
-| `a4390aa4d013d0c41c14bc3ad7d77d75ff6bcd159c1c809ddee6da95aefd502b` | `package/METHODOLOGY.md` |
-| `40a431e5f0db4178203c8ccd9ab40de52bbd7fe7925a4b015581bdb3da2008d1` | `package/README.md` |
-| `c501880eb1368106db258113702d931eb96626f111d761b1fca77bf1e9119bcb` | `package/RELATED_WORK.md` |
-| `cbad3262169d2190e280abeaafbd306daa584864ddd4419fa6daf2e034589fbb` | `package/REPRODUCIBILITY.md` |
-| `286bce449fb533a7c39299bebaaccc455124b8ddea8745eec3ee1528791198d7` | `package/RESULTS.md` |
-| `0243068dced6729c3fc3d11fdba257738b89b703c9594bd9e2087818f49d9e6c` | `package/TECHNICAL_REPORT.md` |
+| `ed083e6215b8be76ef84191cb4865ea778a843395500dc64aaafb25153642582` | `package/ARTIFACT_INDEX.md` |
+| `8bdde2ac67eb9ce2f1273b0809ae403c2d4589c7493345566423549db8dde9a8` | `package/CLAIM_TABLE.md` |
+| `7bc6bf19e28cdc50bc1403ba50c0a3919e96537dda4c38a8295ea2965eb88483` | `package/HOSTILE_REVIEW.md` |
+| `87d638d359f4d4cc437a89957790899b84faad14c531be9e9e37a61ab27ef36c` | `package/LIMITATIONS.md` |
+| `b1a6b868c7288925bd8ae930c59d5769b25b343b9f53ede95e4c56eaaaaf4f0c` | `package/METHODOLOGY.md` |
+| `93440250dd492c45c1b9ed39b2c12dcf7e7f6a54bfb595baea3fa3486b336ebe` | `package/README.md` |
+| `bc1604aec4d6c8e36a27d8bad491a9c535924f369da712796445b86d8ef71a70` | `package/RELATED_WORK.md` |
+| `55683c69a0f73c0f97dc4ac0e41964adf2c4f619dbbfe6b421d4971ac031f28a` | `package/REPRODUCIBILITY.md` |
+| `44b331c1575d34d68cae5b716ccd115f433314c049b77edc6d6d8be1cb915f89` | `package/RESULTS.md` |
+| `7098c4ac2a954a4c85841afbb5afb0c2c79f5bc500a78a22da3cd54c7c35e959` | `package/TECHNICAL_REPORT.md` |
 | `f6e944a254e82f632ff1ad4db4cadace56233c43a7cd2b621e1d537151daae9b` | `package/figures/FIGURE_DATA.json` |
 | `7ca9e25b4112e152351d67a3af509da6ffd95fa32a07fdc36fbe7cb3ac8a4b56` | `package/figures/fig1_assurance_chain.svg` |
 | `a7c8d0d26c3736242a4f65e7a751a4d226e020d33af929bd50d968084030244f` | `package/figures/fig2_recoverability_by_level.svg` |
@@ -39,8 +40,8 @@ python package/scripts/manifest_hashes.py
 | `e7b2da20b4f73b65c8d5fc29de7db06ea4c7c55f2bbe44c339957734fef35833` | `package/figures/fig5_analytic_vs_empirical.svg` |
 | `952548abea522c829c64de46fe540b56a531d50e147c65b1908e22a3737b0e7d` | `package/figures/fig6_unknown_policy_exposure.svg` |
 | `08c02cf510b26c1a93288004148812cd8e634b3290f2eaf4e27baa6c11439b96` | `package/figures/fig7_platform_binding_matrix.svg` |
-| `6c71157765cef721e7fecc5f4f0a13ba7827b63d43ffd3b3c5a2b0bdbce5985c` | `package/scripts/make_figures.py` |
-| `570b4fa23b301e1064863782f34a301c71408ed941c505e9ef7419aba3e3d24a` | `package/scripts/manifest_hashes.py` |
+| `71ea852987757868b9142231b617420dd8b79968a5dd76cdd8ac657304cd1031` | `package/scripts/make_figures.py` |
+| `b3a41d6690c127806317aa2e7765853514c13fa7223213723ae4570b19ca68a2` | `package/scripts/manifest_hashes.py` |
 
 `PACKAGE_MANIFEST.md` is **not** listed above: it contains the digests, so it cannot contain
 its own (the script does print it, and that value changes with every edit to this file). Full
@@ -62,10 +63,10 @@ package numbers must be re-verified.
 | `6f06d59e9c918f900c9a91c451792567b211e8af62e073f7b724f62a9be0b255` | `outputs/platform_binding_matrix.csv` | **the main platform output** |
 | `da73b07f2b62705283714b6a239d0fe530f167a191ebf44997e6c1287bb78549` | `outputs/platform_comparison_cases.csv` | per-case observed facts |
 | `7fc86515592313ffd82988a877da33f40599b28ed700e6bc835416ac3a7bda85` | `outputs/platform_comparison_metrics.json` | portal + identity-spoofing blocks |
-| `559a09501a61696537ea0896c4741d93238eb209e515821d384774454ba41014` | `outputs/13b_static_trace/trace_summary.json` | verdicts, flips, replay check |
-| `ac20c2dd3e1145164115fad9be2e815fb73a839528a9e327e13fd3e3e5e29514` | `outputs/platform_raw/portal_probe.json` | `AvailableSourceTypes = 1` |
-| `28412dd73f7399bceb3abbba4cfb205ee3fbefcf2bcdc4bb820aacb6a7db7df7` | `outputs/empirical_raw/empirical_records.json` | raw recorder output incl. 13b |
-| `17aeec4b9621f682f9f21c7591325c9c68cd2b89d9c3f8a2fa82ee589b9d9582` | `research/FROZEN_FINDINGS.md` | the seven frozen findings |
+| `cbc399beea466b8ce2ad7098c7d34abcc677df97c31b857278519dbc4cfb6575` | `outputs/13b_static_trace/trace_summary.json` | verdicts, flips, replay check |
+| `95ab0cdf0fb7fc57db6273568d432d51611d2309ea4589d05db2fe61fa1c26ab` | `outputs/platform_raw/portal_probe.json` | `AvailableSourceTypes = 1` |
+| `b62cca8d8cef6e44b31c6b69e3e2aaa7eee7b6fa45daeaf22af5faa76d0458a0` | `outputs/empirical_raw/empirical_records.json` | raw recorder output incl. 13b |
+| `a17ce89bc44b43a491a171fc21353bd18c0e28edf1ed8e38919270a6ac471fcd` | `research/FROZEN_FINDINGS.md` | the seven frozen findings |
 
 ### 2.1 Frozen apparatus — must not change
 
@@ -172,10 +173,12 @@ cited evidence rows and a pinned citation that the committed ledger did not yet 
 | `package-ready-v1` | `61374e9` | the package exactly as generated and hostile-reviewed |
 | `package-ready-v1.1` | `2f36db4` | identical scientific content; corrected release-state metadata in this file only |
 | `package-ready-v1.2` | tagged release commit | public front door, scope annotations, traceability, full digests, deterministic CI, license and citation metadata |
+| `package-ready-v1.2.1` | tagged release commit | identical scientific conclusions; platform-stable text hashing for deterministic CI |
 
 `package-ready-v1` and `package-ready-v1.1` remain **immutable**. `v1.1` differs from `v1`
 by one metadata-only file. `v1.2` adds publication hardening and scope annotations without
 changing the frozen apparatus, figures, core result artifacts, or scientific conclusions.
+`v1.2.1` fixes cross-platform digest verification without changing those conclusions.
 
 The digests in §1 and §2 remain valid only while those files are unmodified — re-run
 `manifest_hashes.py` after any edit. This file's own digest is not listed there (§1) and

@@ -32,9 +32,25 @@ KEY_FROZEN = [
 ]
 
 
-def sha(path):
+def canonical_bytes(path):
+    """Return platform-stable bytes for hashing.
+
+    Git checkouts and Python text writers can materialize the same UTF-8 text with
+    different line endings.  Canonicalize text to CRLF, which preserves the
+    previously frozen source digests, and leave non-UTF-8 artifacts byte-exact.
+    """
     with open(path, "rb") as fh:
-        return hashlib.sha256(fh.read()).hexdigest()
+        data = fh.read()
+    try:
+        text = data.decode("utf-8")
+    except UnicodeDecodeError:
+        return data
+    text = text.replace("\r\n", "\n").replace("\r", "\n")
+    return text.replace("\n", "\r\n").encode("utf-8")
+
+
+def sha(path):
+    return hashlib.sha256(canonical_bytes(path)).hexdigest()
 
 
 def package_files():
