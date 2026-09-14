@@ -274,13 +274,13 @@ def main():
 
     with open(os.path.join(OUT, "platform_comparison_cases.csv"), "w", newline="",
               encoding="utf-8") as fh:
-        w = csv.DictWriter(fh, fieldnames=list(rows_case[0].keys()))
+        w = csv.DictWriter(fh, fieldnames=list(rows_case[0].keys()), lineterminator="\n")
         w.writeheader()
         w.writerows(rows_case)
 
     with open(os.path.join(OUT, "platform_binding_matrix.csv"), "w", newline="",
               encoding="utf-8") as fh:
-        w = csv.DictWriter(fh, fieldnames=list(rows_matrix[0].keys()))
+        w = csv.DictWriter(fh, fieldnames=list(rows_matrix[0].keys()), lineterminator="\n")
         w.writeheader()
         w.writerows(rows_matrix)
 
