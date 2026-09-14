@@ -89,9 +89,20 @@ control pools contained no attributable capture evidence. This is a non-vacuity 
 broad precision estimate.
 
 The surviving narrow instrument (direct-synthesis-where-capture-required; bracketed substitute
-renderer) gives a verdict on **23/453 = 5.1%** of artifacts with **0/99 and 0/73** false
-attributions on controls — high precision, and **~5% recall**. It is real, narrow, and useless
-if the recall is not stated alongside the precision.
+renderer) gives a target-vs-substitute verdict on **23/453 = 5.1%** of artifacts. The
+instrument emitted no substitute/violation claims in either control pool (**0/99** NC-A,
+**0/73** NC-B), including control pools containing resolvable capture evidence. These controls
+are a non-vacuity/specificity check, not a population precision estimate: the pools are
+selected by judge outputs rather than sampled, artifacts cluster by task, and NC-B is not a
+conventional clean negative. No significance test is attached, for the same reason. The
+instrument is real and narrow, and its 5.1% coverage must be stated alongside any control
+result. `[C26]`
+
+*Wording correction preserved:* this section previously summarised the controls as "high
+precision, and ~5% recall", as do the frozen `outputs/post_gate_summary.md` §3 and
+`outputs/recoverability_report.md` §7. That phrasing invites a statistical reading the
+controls do not support and is superseded by the paragraph above; the frozen reports are not
+edited (see `outputs/README.md` §3).
 
 ## 4. Sensitivity analysis as a first-class method
 

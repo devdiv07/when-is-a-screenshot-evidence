@@ -317,3 +317,27 @@ sentence is not licensed by a row, it does not appear in the package.
 | **Counter-evidence** | The two results contradict each other in the direction of "it depends on the toolkit" — which is the transferable point. |
 | **Safe wording** | "It cannot be relied upon in either direction, and it is application-asserted whenever present." |
 | **Prohibited** | "`_NET_WM_PID` is absent on X11." Falsified by our own Phase J data. |
+
+## C26 — Negative controls: non-vacuous, not a precision estimate
+
+| | |
+|---|---|
+| **Claim** | The instrument emitted no substitute/violation claims in either negative-control pool — NC-A 0/99, NC-B 0/73 — although both pools contained attributable capture evidence (NC-A: 86 capture-based artifacts, 12 at STRONG source confidence; NC-B: 67, 3 at STRONG). |
+| **Class** | MEASURED FACT (counts) + SCOPE STATEMENT (what the controls test) |
+| **Evidence** | `outputs/audit_metrics.json` `negative_controls`; `outputs/recoverability_cases.csv` artifact rows; `scripts/audit_metrics.py` `is_violation_claim`; E023, E092 |
+| **Scope** | One corpus. The pools are selected by judge outputs, not randomly sampled; NC-A spans 27 (run, task) episodes and NC-B 16, so artifacts cluster by task. A non-vacuity/specificity check only. |
+| **Counter-evidence** | NC-B is not a conventional clean negative: 43 of its 73 artifacts carry judge `fake_signal = True` while every trajectory has `is_hack = False`, so a claim there would not necessarily have been a false positive. The instrument's coverage is narrow (23/453 target-vs-substitute verdicts), so few claims were available to be wrong. |
+| **Safe wording** | "The instrument emitted no substitute/violation claims in either control pool, including control pools containing resolvable capture evidence. These controls are a non-vacuity/specificity check, not a population precision estimate." |
+| **Prohibited** | "The instrument has high precision" as a statistical estimate. "0% false-positive rate." Any p-value or confidence interval computed as if artifacts were independent draws. |
+
+## C27 — Structural positives lie inside the judge's `fake_signal` set
+
+| | |
+|---|---|
+| **Claim** | In this corpus every structural violation claim also lay inside the judge's broader artifact-level `fake_signal` set: 5 both, 0 structural-only, 186 judge-only, 192 neither (383 artifacts with a recorded `fake_signal`). The structural method added no incremental artifact-level flagging coverage relative to that judge output in this corpus. |
+| **Class** | MEASURED FACT (counts) + INFERENCE (the coverage reading) |
+| **Evidence** | `outputs/audit_metrics.json` `judge_comparison`, annotated *"comparison against a coupled LLM judge, NOT a ground-truth evaluation"*; `scripts/audit_metrics.py`; `outputs/recoverability_report.md` §7; E093 |
+| **Scope** | One corpus, one artifact-level judge output (`fake_signal`). 70 of 453 artifacts carry no `fake_signal` and are outside the comparison. |
+| **Counter-evidence** | The judge is a coupled evaluator, not ground truth, so the overlap does not establish judge correctness. It does not measure the deterministic, mechanistic lineage evidence the structural method produces. At the trajectory level the instrument did disagree with the judge (`is_hack = False` on the substitute episode); that disagreement does not extend to `fake_signal`. |
+| **Safe wording** | "It added no incremental artifact-level flagging coverage relative to `fake_signal` in this corpus." |
+| **Prohibited** | "The structural method adds nothing." "The structural instrument beats (or replaces) the WeaveBench judge." "The judge validated the structural claims." "The structural evidence is informationally identical to the judge's." |

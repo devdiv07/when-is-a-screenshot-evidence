@@ -5,6 +5,11 @@ Every artifact this package cites, what it is, and what it is authoritative for.
 Paths are relative to the repository root. Package files live under `package/`; everything
 else is the frozen research repository at tag `phaseJ-epistemic-boundary-v1` (`58f0eeb`).
 
+**Reading raw `outputs/` directly?** Start with [`outputs/README.md`](../outputs/README.md). It
+states which output files are historical, which are superseded, and which are authoritative
+for current interpretation — including why the analytic and empirical arms record opposite
+kill-criterion results.
+
 ---
 
 ## 1. Package documents
@@ -67,12 +72,12 @@ else is the frozen research repository at tag `phaseJ-epistemic-boundary-v1` (`5
 | File | Authoritative for |
 |---|---|
 | `outputs/audit_metrics.json` | R0–R5, by-channel splits, negative controls, judge comparison |
-| `outputs/recoverability_report.md` | the audit narrative; **§5.2 is the lookback sweep** |
+| `outputs/recoverability_report.md` | the audit narrative; **§5.2 is the lookback sweep**; §7's "high-precision" inference is historical wording, scoped by C26 |
 | `outputs/recoverability_cases.csv` | per-artifact audit rows |
 | `outputs/information_deficits.csv` | per-case deficit bundles; source for the D4-adjudicates-zero check |
 | `outputs/field_coverage.csv` | closure / resolution / adjudication curves |
 | `outputs/field_set_analysis.md` | **§1 records the withdrawn "83.6% by four fields" claim** |
-| `outputs/post_gate_summary.md` | the surviving narrow instrument: 23/453, 0/99 and 0/73 on controls |
+| `outputs/post_gate_summary.md` | the surviving narrow instrument: 23/453, 0/99 and 0/73 on controls; its "high precision, ~5% recall" phrasing is historical — scoped reading in `METHODOLOGY.md` §3.2 and C26 |
 
 ## 6. Prospective arm — Phase I
 

@@ -139,6 +139,51 @@ viewer that **was** installed.
 lists and started natively on both platforms in every run, with **zero fallbacks taken**. A
 latent fallback that cannot fire is a defect waiting for the run where it is needed.
 
+### H-9 — Raw `outputs/` could be read against the package **[EXTERNAL AUDIT; READER MAP ADDED]**
+
+**Question 8.** `outputs/adversarial_metrics.json` records `kill_criterion.fired = false`;
+`outputs/phase1_final_metrics.json` records the empirical arm with `kill_criterion_fired = true`.
+Only the analytic Markdown report carried a superseding banner; the analytic JSON and CSV files
+did not.
+
+**Resolution.** `outputs/README.md` maps authority by layer: retrospective audit → ANALYTIC ARM
+→ EMPIRICAL ARM → Phase I synthesis → Phase J. The analytic JSON is **not** edited:
+`fired = false` is a true record of that arm, superseded rather than wrong.
+
+### H-10 — "High precision, ~5% recall" invited a statistical reading **[EXTERNAL AUDIT; SCOPED]**
+
+**Questions 3, 9.** `METHODOLOGY.md` §3.2 summarised 0/99 and 0/73 as "high precision". No claim
+row licensed a precision estimate: the pools are selected by judge outputs, artifacts cluster by
+task, and NC-B carries artifact-level `fake_signal`.
+
+**Resolution.** Replaced by the non-vacuity/specificity wording, licensed by new row C26. The same
+phrasing in the frozen `post_gate_summary.md` and `recoverability_report.md` is left as written
+and scoped by `outputs/README.md` §3 and ledger E092. **Not adopted:** binomial p-values for the
+controls, because no justified independent-sampling model exists.
+
+### H-11 — Judge overlap was counted but never interpreted **[EXTERNAL AUDIT; LIMITATION ADDED]**
+
+**Question 6.** The frozen 2×2 in `audit_metrics.json` (5 both / 0 structural-only / 186
+judge-only / 192 neither) places every structural violation claim inside the judge's
+`fake_signal` set. That cuts against any detector framing and was not stated in the package.
+
+**Resolution.** `LIMITATIONS.md` §3, `RESULTS.md` §1.2, C27: no incremental artifact-level
+flagging coverage relative to that judge output in this corpus. The judge remains a coupled
+evaluator, not ground truth, and "the structural method adds nothing" is listed as prohibited.
+
+### H-12 — R0 partial-match policy was not visible at point of use **[EXTERNAL AUDIT; NOTE ADDED]**
+
+**Question 8.** Recomputing R0 with the 25 `P5_PARTIAL` rows yields a different number.
+`scripts/audit_metrics.py` counts a quote as localised only when `match_status` begins with
+`L`, so 181/257 is the deliberate strict policy. **Resolution.** A policy note beside R0 in
+`RESULTS.md` §1. The number is unchanged.
+
+**External audit points not adopted, recorded.** "Tier D is the entire contract": empirically
+`0+A+B+C` covers 0.0%, `0+A+B+C+D` 76.9% and `iso:D` 7.7%, so D behaves as a conjunctive gate,
+not as the contract. A hard OS/kernel ceiling on provenance: not tested, H-RB not executed, and
+prohibited by C14, C18 and C23. A new result-ceiling document, an application-attestation
+implementation, and any new experiment: all out of scope for a documentation pass.
+
 ### H-8 — A dependency that would have weakened reproducibility **[DECISION RECORDED]**
 
 `matplotlib` is not available in the analysis environment. Installing it would have added a
@@ -166,6 +211,12 @@ dependencies" truthfully.
 | 10 | Unscoped "Wayland" as result subject | regex for result verbs without "tested" | **0 hits** |
 | 11 | Figures are well-formed and match source | XML parse + `FIGURE_DATA.json` diff | **7/7 parse; every plotted value traced to its artifact** |
 | 12 | Frozen artifacts unmodified | `git status` + sha256 vs values recorded in the static trace | **adjudicator, recorder, adjudicate_empirical, adversarial_cases all unchanged** |
+
+Checks 1–12 record the original package pass. Re-run for `package-ready-v1.2.2` (H-9 to H-12):
+check 2, **45 relative Markdown links across tracked docs, 0 broken**; check 6, **27 rows
+defined, 27 cited, 0 dangling markers, 0 uncited rows**; check 12, no path under `infra/`,
+`specs/`, `outputs/empirical_raw/`, `outputs/13b_static_trace/`, `outputs/platform_raw/`,
+`package/figures/` or any metric JSON/CSV changed.
 
 ---
 

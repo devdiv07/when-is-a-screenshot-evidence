@@ -5,7 +5,8 @@ Complete inventory, pinned sources, regeneration commands and SHA-256 digests.
 **Repository state:** research frozen at tag `phaseJ-epistemic-boundary-v1`, commit
 `58f0eeb`. Immutable package releases: `package-ready-v1` at `61374e9` and
 `package-ready-v1.1` at `2f36db4`. Publication hardening is released as
-`package-ready-v1.2`; `package-ready-v1.2.1` adds platform-stable digest verification — see §7.
+`package-ready-v1.2`; `package-ready-v1.2.1` adds platform-stable digest verification;
+this manifest describes the reader-guidance hardening tree prepared after it — see §7.
 
 For platform-stable verification, UTF-8 text is normalized to CRLF before hashing;
 non-UTF-8 artifacts are hashed byte-for-byte. Regenerate every digest below with:
@@ -22,15 +23,15 @@ python package/scripts/manifest_hashes.py
 
 | SHA-256 | File |
 |---|---|
-| `ed083e6215b8be76ef84191cb4865ea778a843395500dc64aaafb25153642582` | `package/ARTIFACT_INDEX.md` |
-| `8bdde2ac67eb9ce2f1273b0809ae403c2d4589c7493345566423549db8dde9a8` | `package/CLAIM_TABLE.md` |
-| `7bc6bf19e28cdc50bc1403ba50c0a3919e96537dda4c38a8295ea2965eb88483` | `package/HOSTILE_REVIEW.md` |
-| `87d638d359f4d4cc437a89957790899b84faad14c531be9e9e37a61ab27ef36c` | `package/LIMITATIONS.md` |
-| `b1a6b868c7288925bd8ae930c59d5769b25b343b9f53ede95e4c56eaaaaf4f0c` | `package/METHODOLOGY.md` |
+| `a107fe6d212175e772b3ef2bf24eb430e0fb3212fb19e99ad5e20427e2105ffb` | `package/ARTIFACT_INDEX.md` |
+| `820dfbf2d11493bc47e8ddd71c5e96a7a0029ceb90b334887c281a4cef000af3` | `package/CLAIM_TABLE.md` |
+| `c1458f77ee74c00b5ed0fbdd2eac3f1004c2ef6a4282ef0033e4233c1c6b5d23` | `package/HOSTILE_REVIEW.md` |
+| `2e7c22dac8bf8751e9bcf1bdaac330504abeccdd8973eff55b186c26d942b16e` | `package/LIMITATIONS.md` |
+| `2e5304e9b06a0e8b72a960945fda8deef690305965f8f56c671a79d546ae7e70` | `package/METHODOLOGY.md` |
 | `93440250dd492c45c1b9ed39b2c12dcf7e7f6a54bfb595baea3fa3486b336ebe` | `package/README.md` |
 | `bc1604aec4d6c8e36a27d8bad491a9c535924f369da712796445b86d8ef71a70` | `package/RELATED_WORK.md` |
 | `55683c69a0f73c0f97dc4ac0e41964adf2c4f619dbbfe6b421d4971ac031f28a` | `package/REPRODUCIBILITY.md` |
-| `44b331c1575d34d68cae5b716ccd115f433314c049b77edc6d6d8be1cb915f89` | `package/RESULTS.md` |
+| `39dbee91fe78adef30b74777f79758a0c26f3371842224c017b9d6f72096e9a0` | `package/RESULTS.md` |
 | `7098c4ac2a954a4c85841afbb5afb0c2c79f5bc500a78a22da3cd54c7c35e959` | `package/TECHNICAL_REPORT.md` |
 | `f6e944a254e82f632ff1ad4db4cadace56233c43a7cd2b621e1d537151daae9b` | `package/figures/FIGURE_DATA.json` |
 | `7ca9e25b4112e152351d67a3af509da6ffd95fa32a07fdc36fbe7cb3ac8a4b56` | `package/figures/fig1_assurance_chain.svg` |
@@ -175,10 +176,18 @@ cited evidence rows and a pinned citation that the committed ledger did not yet 
 | `package-ready-v1.2` | tagged release commit | public front door, scope annotations, traceability, full digests, deterministic CI, license and citation metadata |
 | `package-ready-v1.2.1` | tagged release commit | identical scientific conclusions; platform-stable text hashing for deterministic CI |
 
+This manifest describes the publication-hardening tree prepared after `package-ready-v1.2.1`:
+identical numbers and scientific conclusions; `outputs/README.md` authority map, scoped
+negative-control wording (C26), judge-overlap limitation (C27), R0 strict-policy note. Release
+identity is established by the Git commit/tag and is not embedded prospectively in this
+manifest.
+
 `package-ready-v1` and `package-ready-v1.1` remain **immutable**. `v1.1` differs from `v1`
 by one metadata-only file. `v1.2` adds publication hardening and scope annotations without
 changing the frozen apparatus, figures, core result artifacts, or scientific conclusions.
 `v1.2.1` fixes cross-platform digest verification without changing those conclusions.
+The tree prepared after `v1.2.1` changes reader guidance and claim licensing only: no frozen
+artifact, figure, script or number changed. `outputs/README.md` is reader guidance outside the §1/§2 digest scope.
 
 The digests in §1 and §2 remain valid only while those files are unmodified — re-run
 `manifest_hashes.py` after any edit. This file's own digest is not listed there (§1) and

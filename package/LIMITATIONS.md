@@ -49,6 +49,25 @@ ground-truth evaluation"*.
 inherits whatever the judge chose to quote. It is a tractability measure, not a correctness
 measure.
 
+**Counter-evidence against a detector reading.** In this corpus, every structural positive also
+lay inside the judge's broader artifact-level `fake_signal` set: **5 both, 0 structural-only,
+186 judge-only** (192 neither; 383 artifacts with a recorded `fake_signal`,
+`audit_metrics.json` `judge_comparison`). Therefore the structural method added **no
+incremental artifact-level flagging coverage** relative to that particular judge output in
+this corpus. That statement is narrow:
+
+- the judge is a coupled evaluator, **not** independent ground truth; the overlap does not
+  establish that the judge is correct, nor that the 186 judge-only artifacts are fabricated;
+- it does not imply the structural evidence is informationally identical to the judge's
+  output — the structural method may still provide deterministic, mechanistic provenance
+  evidence, which this comparison does not measure;
+- it says only that the structural method found no additional flagged artifacts beyond that
+  judge output. The one place the structural instrument disagreed with the judge
+  (`is_hack = False` on the substitute episode, `RELATED_WORK.md`) is a disagreement with the
+  **trajectory-level** binary, not with `fake_signal`, which flagged the same four artifacts;
+- the structural method is **not** framed as a replacement detector, and nothing here shows it
+  beats the judge. `[C27]`
+
 ## 4. The empirical environment is X11-heavy, and containerised
 
 **What.** The prospective arm ran on Xvfb + Openbox in Docker, with Tk and ImageMagick
@@ -140,6 +159,8 @@ Each of these is narrow by construction, and the broad version is false or unest
 | **in this experiment** analytic vectors were overconfident in several safety-relevant cases | "analytic security evaluation is unreliable" — and note 34 of 42 disagreements ran the *safe* direction |
 | **no generic visual-display/scene provenance mechanism was found in the inspected pinned surface** of AgentProvenance | "AgentProvenance cannot capture screenshots" — never established |
 | scene provenance was **not recoverable from these traces** | "scene provenance is impossible to recover" |
+| **no violation claims** in NC-A (0/99) or NC-B (0/73), both containing STRONG-attributable captures — a non-vacuity/specificity check | "the instrument has high precision" read as a population estimate, or any p-value — the pools are selected by judge outputs, artifacts cluster by task, and NC-B carries judge `fake_signal` |
+| every structural violation claim also carried judge `fake_signal` (5 both, 0 structural-only, 186 judge-only) | "the structural method adds nothing" — it added no incremental *artifact-level flagging coverage* relative to that judge output; equally, "the structural instrument beats the judge" |
 
 ## 12. Known apparatus defects, and what they cost
 

@@ -18,6 +18,13 @@ from memory. `[C…]` markers map to [`CLAIM_TABLE.md`](CLAIM_TABLE.md).
 | R4 | scene classification | 453 | 81 | 17.9% |
 | R5 | target adjudication | 453 | 38 | 8.4% |
 
+**R0 uses the strict localisation policy.** A quote counts as localised only when a full-match
+level of the deterministic ladder succeeds (`scripts/quote_locator.py`; `L0_EXACT` 127,
+`L3_ELIDED` 28, `L4_BACKTICK` 18, `L1_WS` 4, `L5_NOWS` 2, `L6_ELIDED_NOWS` 2). The **25
+`P5_PARTIAL`** rows, where only some fragments of a quote were found, are recorded separately
+(`audit_metrics.json` `R0.partial`) and are **not** counted as localised in the 181/257
+headline; 51 are `NO_MATCH`. Counting partial matches would answer a different question.
+
 **R3 EXACT = 0.** Not one delivered capture in the corpus had its scene source established at
 EXACT confidence. `[C3, C4]`
 
@@ -68,6 +75,44 @@ was not manipulated independently.
 
 **Suppressed WEAK hypotheses** — what the strictness rule cost: 323 UNKNOWN, 41 TARGET_SCENE
 and 4 AGENT_SUBSTITUTE_SCENE claims were recorded as weak hypotheses and refused promotion.
+
+### 1.2 Negative controls and the coupled judge `[C26, C27]`
+
+**Source:** `outputs/audit_metrics.json` `negative_controls`, `judge_comparison`;
+`outputs/recoverability_cases.csv` artifact rows
+
+A *violation claim* is `AGENT_SUBSTITUTE_SCENE`, or `DIRECT_SYNTHESIS` where the task spec
+required a capture (`scripts/audit_metrics.py`).
+
+| Pool | artifacts | (run, task) episodes | capture-based | of which STRONG source | violation claims |
+|---|---:|---:|---:|---:|---:|
+| NC-A | 99 | 27 | 86 | 12 | **0** |
+| NC-B | 73 | 16 | 67 | 3 | **0** |
+| Q (quote-bearing) | 281 | 60 | 241 | 11 | 5 |
+
+The instrument emitted no substitute/violation claims in either control pool, including
+control pools containing resolvable capture evidence. These controls are a
+non-vacuity/specificity check, **not a population precision estimate**: the pools are selected
+by judge outputs rather than sampled, and artifacts cluster by task. NC-B is not a
+conventional clean negative — 43 of its 73 artifacts carry judge `fake_signal = True` while
+trajectory-level `is_hack = False` on all 73 — so a claim there would not necessarily have
+been a false positive. No significance test is reported, because no justified
+independent-sampling model exists for these pools.
+
+**Structural violation claims vs the judge's artifact-level `fake_signal`** (383 artifacts with
+a recorded `fake_signal`; 70 carry none):
+
+| | `fake_signal = True` | `fake_signal = False` |
+|---|---:|---:|
+| structural violation claim | 5 | 0 |
+| no structural violation claim | 186 | 192 |
+
+In this corpus every structural violation claim also lay inside the judge's broader
+artifact-level `fake_signal` set: 5 both, 0 structural-only, 186 judge-only. The structural
+method therefore added **no incremental artifact-level flagging coverage** relative to that
+judge output in this corpus. The judge is a coupled evaluator, not ground truth: this neither
+validates the five claims nor establishes that the 186 judge-only artifacts are fabricated.
+See [`LIMITATIONS.md`](LIMITATIONS.md) §3.
 
 ## 2. The inference-policy result `[C2]`
 
